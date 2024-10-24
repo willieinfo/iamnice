@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="./css/MainApp.css">
+    <link rel="stylesheet" href="./css/Showcase.css">
+    <title>My Portfolio</title>
+
+    <!-- <style>
+        #image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+        }
+        img {
+            max-width: 200px;
+            margin: 10px;
+        }
+        .file-upload-label {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .file-upload-label input {
+            display: none; /* Hide the default file input */
+        }
+        #uploadButton {
+            padding: 10px 20px; 
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }    
+    </style> -->
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <div class="image-wrapper">
+            <img src="./Images/RemaxLogo1.JPG" alt="RTRG">
+        </div>
+        <hr>
+        <a href="#ShowCase">Showcase</a>
+        <a href="#Inventory">Inventory</a>
+        <a href="#Portfolio">Portfolio</a>
+        <a href="#AboutMe">About Me</a>
+        <a href="#Contact">Contact</a>
+        <hr>
+         <a href="#logout" >Log Out</a>
+    </div>
+
+
+    <div class="mainWrapper">
+        <div class="ShowcaseWrapper">
+            <div class="header">
+                <button class="openbtn">☰</button>
+                <div class="headerSide">
+                    <span>Remax</span>
+                </div>
+            </div>
+            
+            <div class="Showcase" id="ShowCase">
+                <section class='topSection' >
+                    <h2>Metes and Bounds Realty</h2>
+                    <p>Realtor Developer, Seasoned Agent</p>
+                </section>
+                <div>
+                    <div class="showcaseContents" >
+                        <div id="leftImage">
+                            <!-- <img src='./Images/Eunice Photo2.jpg' alt="leftPicture"> -->
+                            <img src='./Images/Eunice golf.jpg' alt="leftPicture">
+                        </div>
+                        <div id="rightCards">
+                            <div class="cardBottom">
+                               <h4 id="subTitles">Property Showcase</h4>
+                            </div> 
+                            <div class="card">
+                                <img src="./Images/condominium1.jpg" alt="">
+                                <p>High end Condos</p>
+                            </div>
+                            <div class="card">
+                                <img src="./Images/condominium2.jpg" alt="">
+                                <p>Affordable Condominiums</p>
+                            </div>
+                            <div class="card">
+                                <img src="./Images/townhouse1.jpg" alt="">
+                                <p>Townhouse 2 Toilet and Bath</p>
+                            </div>
+                            <div class="card">
+                                <img src="./Images/townhouse2.jpg" alt="">
+                                <p>Townhouse 2 Bedrooms</p>
+                            </div>
+                            <div class="cardBottom">
+                                <img src="./Images/condominium3.jpg" alt="">
+                                <p>Project Selling</p>
+                            </div>                       
+                        </div> 
+                    </div> 
+                </div>
+            </div>
+            <div class="Inventory" id="Inventory">
+                <p>INVENTORY Lorem ipsum dolor sit amet consectetur adipisicing</p>
+            </div>
+            <div class="Portfolio" id="Portfolio">
+                <p>PORTFOLIO Lorem ipsum dolor sit amet consectetur adipisicing</p>
+            </div>
+            <div class="AboutMe">
+                <p>ABOUT ME Lorem ipsum dolor sit amet consectetur adipisicing</p>
+            </div>
+            <div class="Contact"></div>
+        </div>
+    </div>
+    
+</div>
+
+    <script>
+        const button = document.querySelector('.openbtn');
+        const sidenav = document.getElementById('mySidenav');
+        const mainWrapper = document.querySelector('.mainWrapper');
+
+        // button.addEventListener('click', () => {
+        //     if (sidenav.classList.contains('closed')) {
+        //         sidenav.classList.remove('closed');
+        //         mainWrapper.classList.remove('closed');
+        //         //mainWrapper.style.width=calc('100%-250px');
+        //     } else {
+        //         sidenav.classList.add('closed');
+        //         mainWrapper.classList.add('closed');
+        //         mainWrapper.style.width='100%';
+                
+        //     }
+        // });
+
+        button.addEventListener('click', () => {
+            sidenav.classList.toggle('closed');
+            mainWrapper.classList.toggle('closed');
+        });
+
+    </script>
+
+
+</body>
+    
+    <!-- <label for="fileInput" class="file-upload-label">
+        Choose an image
+        <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
+    </label>
+    
+    <button id="uploadButton">Upload Image</button>
+
+    <h2>Uploaded Images</h2>
+    <div id="image-container"></div>
+
+    <script type="module" src="./src/MainApp.js"></script> -->
+
+</html>

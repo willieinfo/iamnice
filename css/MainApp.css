@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex; /* Enable flex on body */
+    flex-direction: column; /* Stack children vertically */
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+    z-index: 2000;
+    font-size: 12px; 
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.sidenav .image-wrapper {
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 0px;  
+    flex-direction: column;
+}
+
+.sidenav img {
+    border: 5px solid #fff; 
+    max-width: 100%; 
+    height: auto; 
+}
+
+.sidenav a {
+    display: block; 
+    color: #fff; 
+    text-decoration: none; 
+    padding: 10px; 
+    text-align: left;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 26px;
+}
+
+.sidenav a:hover {
+    background-color: #575757; 
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    position: sticky;
+    margin-top: 0;
+    padding-top: 0;
+    top: 0; 
+    height: 60px;
+    z-index: 1000; 
+    box-sizing: border-box; 
+    background-color: darkblue;
+    width: 100%;
+}
+
+.header .openbtn {
+    z-index: 1001; 
+}
+
+.header .headerSide {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-items: center;
+    flex-wrap: wrap; 
+    color: white;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: "Montserrat", sans-serif;
+    font-size: large;
+}
+
+/* When sidenav is closed */
+.sidenav.closed {
+    width: 0;
+    padding: 0;
+    overflow: hidden; /* Hide overflow */
+}
+.mainWrapper.closed {
+    /* margin-left: 0;  */
+    width: 100%; 
+}
+
+.mainWrapper {
+    display: flex;
+    width: calc(100% - 250px); /* Subtract sidenav width */
+    transition: width 0.5s; /* Smooth transition */
+}
+.mainWrapper > * {
+    padding: 10px; /* Add padding to all direct children */
+}
+
+.sidenav.closed + .mainWrapper {
+    margin-left: 0; /* No margin when sidenav is closed */
+}
+
+.sidenav:not(.closed) + .mainWrapper {
+    margin-left: 250px; /* Adjust margin when sidenav is open */
+}
+
+.ShowcaseWrapper.closed {
+    margin-left: 0; /* No margin when sidenav is closed */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    height: 60px;
+    background-color: darkblue;
+    width: 100%; /* Full width */
+}
+

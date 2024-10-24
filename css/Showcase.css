@@ -1,0 +1,152 @@
+.ShowcaseWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+    flex-grow: 1; 
+    transition: margin-left 0.5s; /* Smooth transition for margin */
+    padding: 0 10px 0 10px;
+}
+.ShowcaseWrapper > * {
+    padding: 20px; 
+}
+
+.Showcase {
+    display: flex;
+    flex-direction: column; /* Ensure vertical stacking */
+    width: 100%; /* Ensure it takes full width */
+    flex-wrap: wrap;
+    padding-top: 5px;
+    margin: 0;
+}
+
+.topSection {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    padding: 0px;
+    margin: 0;
+    /* background-color: rgb(79, 30, 30); */
+}
+.topSection h2 {
+    padding: 0;
+    margin: 0;
+}
+.topSection p {
+    padding: 0;
+    padding-bottom: 5px;
+    margin: 0;
+    font-size: 20px;
+}
+.showcaseContents {
+    display: flex;
+    width: 100%; /* Full width */
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  
+}
+
+#leftImage {
+    display: flex;
+    flex: 0 0 40%; 
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color:lightgrey;
+   
+}
+
+#leftImage img {
+    width: 100%; /* Full width */
+    height: 100%;   
+    object-fit: fill;
+    max-height: 1200px;
+}
+
+#rightCards {
+    display: flex;
+    flex-wrap: wrap; 
+    flex: 0 0 60%; 
+    background-color:lightgrey;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+.card {
+    width: calc(50% - 10px); 
+    margin: 0; 
+    padding: 10px;
+    box-sizing: border-box; 
+    /* border: 1px solid; */
+    
+} 
+#subTitles {
+    /* font-family: 'Times New Roman', Times, serif; */
+    /* font-style: italic; */
+    /* font-weight: bold; */
+    font-size: 26px;
+    margin: 0;
+    padding: 5px;
+    
+}
+.cardBottom {
+    width: 90%;
+    
+}
+.cardBottom img {
+    height: 300px; /* Fixed height for equal size */
+    width: 100%; /* Full width */
+    object-fit: cover;
+}
+/* Equal size for card images */
+.card img {
+    height: 300px; /* Fixed height for equal size */
+    width: 100%; /* Full width */
+    object-fit: fill;
+    /* border-radius: 10%; */
+}
+.card p,.cardBottom p {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+.Portfolio {
+    background-color: lightgray;
+   
+}
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1200px) {
+    #leftImage {
+        flex: 0 0 60%;
+    }
+    #rightCards {
+        flex: 0 0 40%; 
+      
+    }
+    .card {
+        width: 80%;
+    }
+ 
+}
+@media (max-width: 768px) {
+    #leftImage {
+        flex: 0 0 100%; /* Full width on small screens */
+        margin-right: 0; /* Remove margin */
+    }
+
+    #rightCards {
+        flex: 0 0 100%; /* Full width on small screens */
+    }
+    .showcaseContents {
+        height:auto;
+    }
+    #leftImage img {
+         object-fit: contain;
+    }
+    
+    
+}
