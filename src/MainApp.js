@@ -1,17 +1,12 @@
-
-
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
     import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-storage.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-analytics.js";
-    import { app, analytics } from "../firebase-config.js"
+    import { app } from "../firebase-config.js"
 
-    export function MainApp() {
+    export function Inventory(imgLocation,imgStorage) {
         const storage = getStorage(app);
-
-        const uploadButton = document.getElementById('uploadButton');
+        const uploadButton = document.getElementById('uploadTownhouse');
         const fileInput = document.getElementById('fileInput');
-        const imageContainer = document.getElementById('image-container');
+
+        const invenContainer = document.getElementById(imgLocation);
     
         uploadButton.addEventListener('click', async () => {
             const file = fileInput.files[0];
@@ -37,13 +32,14 @@
             // Preview file first
             const reader = new FileReader();
             reader.onload = (event) => {
-                const img = document.createElement('img');
-                img.src = event.target.result;
-                imageContainer.appendChild(img);
+                const inventoryImg = document.createElement('img');
+                inventoryImg.src = event.target.result;
+
+                invenContainer.appendChild(inventoryImg);
             };
             reader.readAsDataURL(file);            
     
-            const storageRef = ref(storage, 'images/' + file.name);
+            const storageRef = ref(storage, imgStorage + file.name);
     
             try {
                 await uploadBytes(storageRef, file);
@@ -55,31 +51,37 @@
             }
         });
     
-        async function fetchImages() {
+
+        async function fetchImages(imgStorage) {
             // Clear the container before fetching
-            imageContainer.innerHTML = '';
+            invenContainer.innerHTML = '';
     
-            const listRef = ref(storage, 'images/');
+            const listRef = ref(storage, imgStorage);
     
             // Fetching the image URLs
             const list = await listAll(listRef);
             list.items.forEach(async (itemRef) => {
                 const url = await getDownloadURL(itemRef);
+                invenContainer.classList.add('image-item');
                 displayImage(url);
             });
         }
     
         function displayImage(url) {
-            const img = document.createElement('img');
-            img.src = url;
-            img.alt = "Uploaded Image";
-            imageContainer.appendChild(img);
+            const imgInven = document.createElement('img');
+            imgInven.src = url;
+            imgInven.alt = "Uploaded Image";
+            invenContainer.appendChild(imgInven);
         }
     
         // Fetch images on page load
-        fetchImages();
+        fetchImages(imgStorage);
     
     }
-
-    window.onload = MainApp;
+    document.addEventListener("DOMContentLoaded", function() {
+        Inventory('townhouse-container','images/Townhouse'); 
+        Inventory('condo-container','images/Condo'); 
+        Inventory('houses-container','images/houses'); 
+    });        
+    //window.onload = Inventory;
     
