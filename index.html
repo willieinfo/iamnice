@@ -8,16 +8,23 @@
     <link rel="stylesheet" href="./css/Showcase.css">
     <title>My Portfolio</title>
 
-    <!-- <style>
-        #image-container {
+    <style>
+        /* Inventory Images */
+        .image-item {
+            padding: 10px;
+        }
+        .image-item img {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            /* border-radius: 5%; */
+            /* border: 1px solid;  */
+        }
+        #inventory-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
 
-        }
-        img {
-            max-width: 200px;
-            margin: 10px;
         }
         .file-upload-label {
             display: inline-block;
@@ -26,7 +33,7 @@
             color: white;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .file-upload-label input {
@@ -38,9 +45,9 @@
             color: white;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
         }    
-    </style> -->
+    </style>
 </head>
 <body>
     <div id="mySidenav" class="sidenav">
@@ -75,8 +82,11 @@
                 <div>
                     <div class="showcaseContents" >
                         <div id="leftImage">
-                            <!-- <img src='./Images/Eunice Photo2.jpg' alt="leftPicture"> -->
-                            <img src='./Images/Eunice golf.jpg' alt="leftPicture">
+                            <!-- <img class="companyPic w3-grayscale-max w3-opacity" src='./Images/Eunice Photo2.jpg' alt="leftPicture"> -->
+                            <img class="companyPic w3-sepia w3-opacity" src='./Images/Eunice Photo2.jpg' alt="leftPicture">
+                            <!-- <img src='img_girl.jpg' alt="leftPicture"> -->
+                            
+                         
                         </div>
                         <div id="rightCards">
                             <div class="cardBottom">
@@ -107,58 +117,73 @@
                 </div>
             </div>
             <div class="Inventory" id="Inventory">
-                <p>INVENTORY Lorem ipsum dolor sit amet consectetur adipisicing</p>
+                <div>
+                    <h4>Condominiums</h4>
+                    <label for="fileInput" class="file-upload-label">
+                        Choose an image
+                        <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
+                    </label>
+                    
+                    <button id="uploadCondo">Upload Image</button>
+
+                    <div id="condo-container"></div>
+                </div>
+                <div>
+                    <h4>Townhouses</h4>
+                    <label for="fileInput" class="file-upload-label">
+                        Choose an image
+                        <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
+                    </label>
+                    
+                    <button id="uploadTownhouse">Upload Image</button>
+
+                    <div id="townhouse-container"></div>
+                </div>
+                <div>
+                    <h4>Houses</h4>
+                    <label for="fileInput" class="file-upload-label">
+                        Choose an image
+                        <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
+                    </label>
+                    
+                    <button id="uploadHouses">Upload Image</button>
+
+                    <div id="houses-container"></div>
+                </div>
+
+ 
             </div>
+
+
             <div class="Portfolio" id="Portfolio">
                 <p>PORTFOLIO Lorem ipsum dolor sit amet consectetur adipisicing</p>
             </div>
-            <div class="AboutMe">
+            <div class="AboutMe" id="AboutMe">
                 <p>ABOUT ME Lorem ipsum dolor sit amet consectetur adipisicing</p>
             </div>
-            <div class="Contact"></div>
+            <div class="Contact" id="Contact"></div>
         </div>
     </div>
     
 </div>
 
-    <script>
-        const button = document.querySelector('.openbtn');
-        const sidenav = document.getElementById('mySidenav');
-        const mainWrapper = document.querySelector('.mainWrapper');
+<script>
+    const button = document.querySelector('.openbtn');
+    const sidenav = document.getElementById('mySidenav');
+    const mainWrapper = document.querySelector('.mainWrapper');
 
-        // button.addEventListener('click', () => {
-        //     if (sidenav.classList.contains('closed')) {
-        //         sidenav.classList.remove('closed');
-        //         mainWrapper.classList.remove('closed');
-        //         //mainWrapper.style.width=calc('100%-250px');
-        //     } else {
-        //         sidenav.classList.add('closed');
-        //         mainWrapper.classList.add('closed');
-        //         mainWrapper.style.width='100%';
-                
-        //     }
-        // });
+    button.addEventListener('click', () => {
+        sidenav.classList.toggle('closed');
+        mainWrapper.classList.toggle('closed');
+    });
 
-        button.addEventListener('click', () => {
-            sidenav.classList.toggle('closed');
-            mainWrapper.classList.toggle('closed');
-        });
+</script>
 
-    </script>
+<script type="module" src="./src/MainApp.js"></script> 
+
 
 
 </body>
     
-    <!-- <label for="fileInput" class="file-upload-label">
-        Choose an image
-        <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
-    </label>
-    
-    <button id="uploadButton">Upload Image</button>
-
-    <h2>Uploaded Images</h2>
-    <div id="image-container"></div>
-
-    <script type="module" src="./src/MainApp.js"></script> -->
 
 </html>
