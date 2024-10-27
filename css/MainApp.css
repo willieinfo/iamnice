@@ -5,6 +5,25 @@ body {
     flex-direction: column; /* Stack children vertically */
 }
 
+.chip {
+  display: inline-block;
+  padding: 0 25px;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: white;
+  text-align: center;
+ }
+
+.chip img {
+  float: left;
+  margin: -6px 10px 0 -25px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
 .sidenav {
     height: 100%;
     width: 250px; 
