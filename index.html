@@ -11,15 +11,12 @@
     <style>
         /* Inventory Images */
         .image-item {
-            padding: 10px;
-        }
-        .image-item img {
             width: 200px;
             height: 200px;
             margin: 10px;
-            /* border-radius: 5%; */
-            /* border: 1px solid;  */
+            padding: 10px;
         }
+
         #inventory-container {
             display: flex;
             flex-wrap: wrap;
@@ -47,6 +44,11 @@
             cursor: pointer;
             font-size: 14px;
         }    
+              
+        /* #condo-container {
+            background-color: cornflowerblue;
+        }
+         */
     </style>
 </head>
 <body>
@@ -61,14 +63,17 @@
         <a href="#AboutMe">About Me</a>
         <a href="#Contact">Contact</a>
         <hr>
-         <a href="#logout" >Log Out</a>
+        <a href="#settings" >Settings</a>
+        <hr>
+        <a href="#logout" >Log Out</a>
+        
     </div>
 
 
     <div class="mainWrapper">
         <div class="ShowcaseWrapper">
             <div class="header">
-                <button class="openbtn">☰</button>
+                <button class="openbtn">X</button>
                 <div class="headerSide">
                     <span>Remax</span>
                 </div>
@@ -83,7 +88,7 @@
                     <div class="showcaseContents" >
                         <div id="leftImage">
                             <!-- <img class="companyPic w3-grayscale-max w3-opacity" src='./Images/Eunice Photo2.jpg' alt="leftPicture"> -->
-                            <img class="companyPic w3-sepia w3-opacity" src='./Images/Eunice Photo2.jpg' alt="leftPicture">
+                            <img src='./Images/Eunice Remax page 2.jpg' alt="leftPicture">
                             <!-- <img src='img_girl.jpg' alt="leftPicture"> -->
                             
                          
@@ -117,8 +122,11 @@
                 </div>
             </div>
             <div class="Inventory" id="Inventory">
+                <div class="sectionHeader">
+                    <h2>Inventory</h2>
+                </div>
                 <div>
-                    <h4>Condominiums</h4>
+                    <h3>Condominiums</h3>
                     <label for="fileInput" class="file-upload-label">
                         Choose an image
                         <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
@@ -129,7 +137,7 @@
                     <div id="condo-container"></div>
                 </div>
                 <div>
-                    <h4>Townhouses</h4>
+                    <h3>Townhouses</h3>
                     <label for="fileInput" class="file-upload-label">
                         Choose an image
                         <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
@@ -140,7 +148,7 @@
                     <div id="townhouse-container"></div>
                 </div>
                 <div>
-                    <h4>Houses</h4>
+                    <h3>Houses</h3>
                     <label for="fileInput" class="file-upload-label">
                         Choose an image
                         <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
@@ -150,18 +158,30 @@
 
                     <div id="houses-container"></div>
                 </div>
-
- 
             </div>
 
 
             <div class="Portfolio" id="Portfolio">
+                <div class="sectionHeader">
+                    <h2>Portfolio</h2>
+                </div>       
                 <p>PORTFOLIO Lorem ipsum dolor sit amet consectetur adipisicing</p>
             </div>
             <div class="AboutMe" id="AboutMe">
+                <div class="sectionHeader">
+                    <h2>About Me</h2>
+                </div>            
                 <p>ABOUT ME Lorem ipsum dolor sit amet consectetur adipisicing</p>
             </div>
-            <div class="Contact" id="Contact"></div>
+            <div class="Contact" id="Contact">
+                <div class="sectionHeader">
+                    <h2>Contact</h2>
+                </div>
+
+                <div class="contactImg">
+                    <img src="./Images/Eunice Remax Main page.jpg" alt="">
+                </div>
+            </div>
         </div>
     </div>
     
@@ -173,14 +193,30 @@
     const mainWrapper = document.querySelector('.mainWrapper');
 
     button.addEventListener('click', () => {
-        sidenav.classList.toggle('closed');
+        const isClosed = sidenav.classList.toggle('closed');
         mainWrapper.classList.toggle('closed');
+
+        if (isClosed) {
+            button.textContent='☰'
+        } else [
+            button.textContent='X' 
+        ]
     });
 
+    
 </script>
 
-<script type="module" src="./src/MainApp.js"></script> 
 
+<script type="module" src="./src/MainApp.js"></script> 
+<script type="module" src="./src/UploadFile.js"></script>
+
+<script type="module">
+    import { UploadFile } from './src/UploadFile.js';
+
+    document.getElementById('uploadCondo').onclick = () => UploadFile('images/Condo','condo-container');
+    document.getElementById('uploadTownhouse').onclick = () => UploadFile('images/Townhouse','townhouse-container');
+    document.getElementById('uploadHouses').onclick = () => UploadFile('images/houses','houses-container');
+</script>
 
 
 </body>
