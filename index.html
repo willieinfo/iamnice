@@ -10,13 +10,6 @@
 
     <style>
         /* Inventory Images */
-        .image-item {
-            width: 200px;
-            height: 200px;
-            margin: 10px;
-            padding: 10px;
-        }
-
         #inventory-container {
             display: flex;
             flex-wrap: wrap;
@@ -53,8 +46,14 @@
 </head>
 <body>
     <div id="mySidenav" class="sidenav">
-        <div class="image-wrapper">
+        <!-- <div class="image-wrapper">
             <img src="./Images/RemaxLogo1.JPG" alt="RTRG">
+        </div> -->
+        <div class="image-wrapper">
+            <div class="chip">
+                <img src="./Images/RemaxID.jpg" alt="Picture ID" width="96" height="96">
+                <span></span>RE<em style="color:orangered; font-weight: bold;">/</em>MAX</span>
+            </div>
         </div>
         <hr>
         <a href="#ShowCase">Showcase</a>
@@ -75,16 +74,16 @@
             <div class="header">
                 <button class="openbtn">X</button>
                 <div class="headerSide">
-                    <span>Remax</span>
+                    <span>HOME of the Real Estate Professionals</span>
                 </div>
             </div>
             
             <div class="Showcase" id="ShowCase">
                 <section class='topSection' >
-                    <h2>Metes and Bounds Realty</h2>
-                    <p>Realtor Developer, Seasoned Agent</p>
+                    <h2>Eunice Joy A. Estrada</h2>
+                    <p>Real Estate Broker / Owner</p>
                 </section>
-                <div>
+                <div class="showcaseContainer">
                     <div class="showcaseContents" >
                         <div id="leftImage">
                             <!-- <img class="companyPic w3-grayscale-max w3-opacity" src='./Images/Eunice Photo2.jpg' alt="leftPicture"> -->
@@ -99,7 +98,7 @@
                             </div> 
                             <div class="card">
                                 <img src="./Images/condominium1.jpg" alt="">
-                                <p>High end Condos</p>
+                                <p>High End Condos</p>
                             </div>
                             <div class="card">
                                 <img src="./Images/condominium2.jpg" alt="">
@@ -195,7 +194,7 @@
     button.addEventListener('click', () => {
         const isClosed = sidenav.classList.toggle('closed');
         mainWrapper.classList.toggle('closed');
-
+        //button.textContent = if (isClosed)  '☰' : 'X'
         if (isClosed) {
             button.textContent='☰'
         } else [
