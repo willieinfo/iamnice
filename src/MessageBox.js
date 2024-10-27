@@ -1,4 +1,4 @@
-function MessageBox(message, buttons, alertMessage='Alert Message', backColor='lightgrey') {
+export function MessageBox(message, buttons, alertMessage='Alert Message', backColor='lightgrey') {
     return new Promise((resolve) => {
         // Disable background scrolling
         document.body.style.overflow = 'hidden';        

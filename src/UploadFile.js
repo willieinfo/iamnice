@@ -1,6 +1,7 @@
 import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-storage.js";
 import { app } from "../firebase-config.js";
 import { Inventory } from "./MainApp.js";
+import { MessageBox } from "./MessageBox.js";
 
 const storage = getStorage(app);
 
@@ -24,20 +25,20 @@ export async function UploadFile(imgStorage, imgContainer) {
         return;
     }            
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-        const inventoryImg = document.createElement('img');
-        inventoryImg.src = event.target.result;
-        document.getElementById(imgContainer).appendChild(inventoryImg);
-    };
-    reader.readAsDataURL(file);            
+    // const reader = new FileReader();
+    // reader.onload = (event) => {
+    //     const inventoryImg = document.createElement('img');
+    //     inventoryImg.src = event.target.result;
+    //     document.getElementById(imgContainer).appendChild(inventoryImg);
+    // };
+    // reader.readAsDataURL(file);            
 
     // This is where firebase get into play
     // imgStorage = is where the image is saved
     const storageRef = ref(storage, `${imgStorage}/${file.name}`);
     try {
         await uploadBytes(storageRef, file);
-        alert("Image uploaded successfully!");
+        MessageBox("Image uploaded successfully!",'Ok','Uploaded');
         Inventory(imgStorage, imgContainer); // Refresh the images after upload
     } catch (error) {
         console.error("Upload failed:", error);
