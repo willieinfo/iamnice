@@ -12,11 +12,13 @@
 
 .Showcase {
     display: flex;
-    flex-direction: column; /* Ensure vertical stacking */
-    width: 100%; /* Ensure it takes full width */
+    flex-direction: column;
+    width: 100%; 
     flex-wrap: wrap;
-    padding-top: 5px;
     margin: 0;
+    padding: 0;
+    padding-top: 5px;
+    box-sizing: border-box; 
 }
 
 .topSection {
@@ -26,7 +28,10 @@
     align-items: center;
     padding: 0px;
     margin: 0;
-    /* background-color: rgb(79, 30, 30); */
+    /* background-color:aliceblue; */
+    width: 100%;
+    border-bottom: .5px solid;
+    margin-bottom: 5px;
 }
 .topSection h2 {
     padding: 0;
@@ -34,9 +39,10 @@
 }
 .topSection p {
     padding: 0;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     margin: 0;
     font-size: 20px;
+ 
 }
 .showcaseContents {
     display: flex;
@@ -114,9 +120,83 @@
     justify-content: center;
     font-size: 20px;
 }
+/* Inventory Section */
+.Inventory {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  
+}
+
+/* Portfolio Section */
 .Portfolio {
-    background-color: lightgray;
-   
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: lightgray; 
+}
+
+/* About Me Section */
+.AboutMe {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-self: center;
+    width: 100%;
+}
+.aboutImg {
+    width: 100%;
+}
+.AboutMe img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Contact Me Section */
+.Contact {
+    margin: 0;
+    padding: 0;    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-self: center;
+    width: 100%;
+    background-color: lightgray; 
+}
+.contactImg {
+    width: 100%;
+}
+.Contact img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+/* Section Headers */
+.sectionHeader {
+    text-align: right;
+    width: 100%;
+    margin: 0;
+    padding: 0;;
+    height: auto;
+    border-top: 1px double;
+    border-bottom: 1px double;
+    align-items: center;
+    background-color:aliceblue;
+    margin-top: 10px;
+
+}
+.sectionHeader h2 {
+    padding-right: 20px;
 }
 /* Responsive adjustments for smaller screens */
 @media (max-width: 1200px) {
@@ -145,8 +225,13 @@
         height:auto;
     }
     #leftImage img {
-         object-fit: contain;
+        object-fit: contain;
     }
-    
+    .AboutMe img {
+        width:100%;
+        height: auto;
+        object-fit: contain;
+    }
+
     
 }

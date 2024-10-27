@@ -42,7 +42,7 @@ body {
     padding: 10px; 
     text-align: left;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 26px;
+    font-size: 22px;
 }
 
 .sidenav a:hover {
@@ -120,4 +120,15 @@ body {
     background-color: darkblue;
     width: 100%; /* Full width */
 }
+.openbtn {
+ 
+    cursor: pointer;
+}
+.openbtn:hover {
+    background-color: darkblue;
+    color: white;
+    border: .5px solid;
+    cursor: pointer;
+}
+
 
