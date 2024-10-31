@@ -3,12 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./css/MainApp.css">
     <link rel="stylesheet" href="./css/Showcase.css">
+    <!-- <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"></script> -->
+
     <title>My Portfolio</title>
 
     <style>
+        .header .fa {
+            display: inline-flex; 
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap; 
+
+        }
+
+        .header .fa:hover {
+            opacity: 0.7;
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+        .fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
         /* Inventory Images */
         #inventory-container {
             display: flex;
@@ -16,32 +46,28 @@
             justify-content: center;
 
         }
+
         .file-upload-label {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 8px 8px;
             background-color: #007bff;
             color: white;
-            border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
+            width: 90px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+        }
+
+        .file-upload-label:hover {
+            background-color: #3a6593;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); 
         }
 
         .file-upload-label input {
             display: none; /* Hide the default file input */
         }
-        #uploadButton {
-            padding: 10px 20px; 
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }    
               
-        /* #condo-container {
-            background-color: cornflowerblue;
-        }
-         */
     </style>
 </head>
 <body>
@@ -52,19 +78,19 @@
         <div class="image-wrapper">
             <div class="chip">
                 <img src="./Images/RemaxID.jpg" alt="Picture ID" width="96" height="96">
-                <span></span>RE<em style="color:orangered; font-weight: bold;">/</em>MAX</span>
+                <span>RE<em style="color:orangered; font-weight: bold;">/</em>MAX CAPITAL</span>
             </div>
         </div>
         <hr>
-        <a href="#ShowCase">Showcase</a>
-        <a href="#Inventory">Inventory</a>
-        <a href="#Portfolio">Portfolio</a>
-        <a href="#AboutMe">About Me</a>
-        <a href="#Contact">Contact</a>
+        <a href="#ShowCase" onclick="handleLinkClick()">Showcase</a>
+        <a href="#Inventory" onclick="handleLinkClick()">Inventory</a>
+        <a href="#Portfolio" onclick="handleLinkClick()">Portfolio</a>
+        <a href="#AboutMe"  onclick="handleLinkClick()">About Me</a>
+        <a href="#Contact"  onclick="handleLinkClick()">Contact</a>
         <hr>
-        <a href="#settings" >Settings</a>
+        <a href="#settings" onclick="handleLinkClick()">Settings</a>
         <hr>
-        <a href="#logout" >Log Out</a>
+        <a href="#logout" onclick="handleLinkClick()">Log Out</a>
         
     </div>
 
@@ -76,6 +102,16 @@
                 <div class="headerSide">
                     <span>HOME of the Real Estate Professionals</span>
                 </div>
+                 <span>
+                <!-- <a href="#" class="fa fa-facebook"></a> -->
+                <!-- <a href="#" class="fa fa-twitter"></a> -->
+
+                <i class="fa fa-facebook" ></i> 
+                <i class="fa fa-twitter" ></i> 
+
+                </span>
+
+
             </div>
             
             <div class="Showcase" id="ShowCase">
@@ -121,42 +157,9 @@
                 </div>
             </div>
             <div class="Inventory" id="Inventory">
-                <div class="sectionHeader">
-                    <h2>Inventory</h2>
-                </div>
-                <div>
-                    <h3>Condominiums</h3>
-                    <label for="fileInput" class="file-upload-label">
-                        Choose an image
-                        <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
-                    </label>
-                    
-                    <button id="uploadCondo">Upload Image</button>
-
-                    <div id="condo-container"></div>
-                </div>
-                <div>
-                    <h3>Townhouses</h3>
-                    <label for="fileInput" class="file-upload-label">
-                        Choose an image
-                        <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
-                    </label>
-                    
-                    <button id="uploadTownhouse">Upload Image</button>
-
-                    <div id="townhouse-container"></div>
-                </div>
-                <div>
-                    <h3>Houses</h3>
-                    <label for="fileInput" class="file-upload-label">
-                        Choose an image
-                        <input type="file" id="fileInput" accept="image/jpeg, image/png, image/bmp" />
-                    </label>
-                    
-                    <button id="uploadHouses">Upload Image</button>
-
-                    <div id="houses-container"></div>
-                </div>
+                <!-- This inventory section will be dynamically created 
+                using template literals and 'Category' document from Firebase 
+                This is done -->
             </div>
 
 
@@ -191,31 +194,50 @@
     const sidenav = document.getElementById('mySidenav');
     const mainWrapper = document.querySelector('.mainWrapper');
 
-    button.addEventListener('click', () => {
-        const isClosed = sidenav.classList.toggle('closed');
-        mainWrapper.classList.toggle('closed');
-        //button.textContent = if (isClosed)  '☰' : 'X'
-        if (isClosed) {
-            button.textContent='☰'
-        } else [
-            button.textContent='X' 
-        ]
+    // Function to toggle sidenav
+    function toggleSidenav() {
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+            // Only toggle for mobile devices
+            const isClosed = sidenav.classList.toggle('closed');
+            mainWrapper.classList.toggle('closed');
+            
+            button.textContent = isClosed ? '☰' : 'X';
+        } else {
+            // Toggle for larger screens without closing
+            sidenav.classList.toggle('closed');
+            mainWrapper.classList.toggle('closed');
+            
+            button.textContent = sidenav.classList.contains('closed') ? '☰' : 'X';
+        }
+    }
+
+    // Close sidenav when clicking links on mobile
+    function handleLinkClick() {
+        if (window.innerWidth <= 768) {
+            sidenav.classList.add('closed');
+            mainWrapper.classList.add('closed');
+            button.textContent = '☰'; // Reset button text
+        }
+    }
+
+    // Initial click event for the button
+    button.addEventListener('click', toggleSidenav);
+
+    // Close sidenav when resizing to mobile
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+            sidenav.classList.add('closed');
+            mainWrapper.classList.add('closed');
+            button.textContent = '☰'; // Reset button text
+        }
     });
 
-    
-</script>
-
-
+</script> 
 <script type="module" src="./src/MainApp.js"></script> 
-<script type="module" src="./src/UploadFile.js"></script>
-
-<script type="module">
-    import { UploadFile } from './src/UploadFile.js';
-
-    document.getElementById('uploadCondo').onclick = () => UploadFile('images/Condo','condo-container');
-    document.getElementById('uploadTownhouse').onclick = () => UploadFile('images/Townhouse','townhouse-container');
-    document.getElementById('uploadHouses').onclick = () => UploadFile('images/houses','houses-container');
-</script>
+<script type="module" src="./src/DisplayImage.js"></script>
+<script type="module" src="./src/InvenSection.js"></script>
 
 
 </body>
