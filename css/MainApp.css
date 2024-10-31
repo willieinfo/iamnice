@@ -5,23 +5,26 @@ body {
     flex-direction: column; /* Stack children vertically */
 }
 
-.chip {
-  display: inline-block;
-  padding: 0 25px;
-  height: 50px;
-  font-size: 16px;
-  line-height: 50px;
-  border-radius: 25px;
-  background-color: white;
-  text-align: center;
- }
+/* SideNav Elements */
+
+ .chip {
+    display: inline-block;
+    padding: 0 10px; 
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: white;
+    text-align: center;
+    white-space: nowrap; /* Prevent wrapping */
+  }
 
 .chip img {
-  float: left;
-  margin: -6px 10px 0 -25px;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
+    float: left;
+    margin: -6px 10px 0 -25px;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
 }
 
 .sidenav {
@@ -30,7 +33,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: rgb(0,64,128);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 20px;
@@ -68,23 +71,17 @@ body {
     background-color: #575757; 
 }
 
+/* Header Elements */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    position: sticky;
-    margin-top: 0;
-    padding-top: 0;
-    top: 0; 
     height: 60px;
-    z-index: 1000; 
-    box-sizing: border-box; 
-    background-color: darkblue;
-    width: 100%;
-}
-
-.header .openbtn {
-    z-index: 1001; 
+    background-color: rgb(0,64,128);
+    width: 100%; /* Full width */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header .headerSide {
@@ -99,15 +96,18 @@ body {
     font-size: large;
 }
 
+
+
 /* When sidenav is closed */
 .sidenav.closed {
     width: 0;
     padding: 0;
     overflow: hidden; /* Hide overflow */
+    transform: translateX(-100%);
 }
 .mainWrapper.closed {
-    /* margin-left: 0;  */
     width: 100%; 
+    transition: margin-left 0.5s ease; 
 }
 
 .mainWrapper {
@@ -125,29 +125,74 @@ body {
 
 .sidenav:not(.closed) + .mainWrapper {
     margin-left: 250px; /* Adjust margin when sidenav is open */
+    transform: translateX(0);
 }
 
 .ShowcaseWrapper.closed {
     margin-left: 0; /* No margin when sidenav is closed */
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    height: 60px;
-    background-color: darkblue;
-    width: 100%; /* Full width */
-}
-.openbtn {
- 
-    cursor: pointer;
-}
-.openbtn:hover {
-    background-color: darkblue;
+/* Footer Styles */
+footer {
     color: white;
-    border: .5px solid;
-    cursor: pointer;
+    display:flex;
+    justify-content: space-between; /* Space out items to the left and right */
+    align-items: center;      /* Center items vertically */
+    width: 100%;
+    height: 60px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    background-color: rgb(0,64,128);
+    font-family: 'Times New Roman';
+    font-style: italic;
+    font-size: 18px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    
+}
+
+footer img {
+    width: 40px;
+    height: 40px;
+    padding-right: 10px;
+}
+
+.logoWinfoPlus {
+    display: flex; 
+    align-items: center; 
+
+}
+.imageWrapper p {
+    margin-left: 10px; /* Add some space between the image and text */
 }
 
 
+/* Try it here on sideNav when on mobile device */
+@media (max-width: 768px) {
+    .sidenav {
+        width: 0; /* Close by default */
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+    
+    .sidenav:not(.closed) {
+        width: 250px; /* Opened width */
+        transform: translateX(0);
+        transition: transform 0.5s ease;
+    }
+
+    .mainWrapper {
+        width: 100%; /* Full width when sidenav is closed */
+        transition: width 0.5s; /* Smooth transition */
+    }
+
+    .mainWrapper.closed {
+        margin-left: 0; /* No margin when sidenav is closed */
+        transition: margin-left 0.5s ease; 
+    }
+    
+    .mainWrapper:not(.closed) {
+        margin-left: 250px; /* Margin when sidenav is open */
+        transition: margin-left 0.5s ease; 
+    }
+}
+    
