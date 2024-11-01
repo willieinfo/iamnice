@@ -75,7 +75,7 @@
             flex-direction: row;
             max-height: 100%; /* Allow the height to grow based on content */
             /* background-color: aquamarine; */
-            height:fit-content;
+           height:max-content;
         }
 
         .Inventory {
@@ -509,36 +509,113 @@
 <script type="module" src="./src/MainApp.js"></script> 
 <script type="module" src="./src/AddImage.js"></script>
 
+<!-- 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const inventory = document.querySelector('.Inventory');
-        const listing = document.querySelector('.Listing');
+    const inventory = document.querySelector('.Inventory');
+    const listing = document.querySelector('.Listing');
 
-        function adjustListingHeight() {
-            const inventoryHeight = inventory.clientHeight;
-            listing.style.height = `${inventoryHeight}px`;
+    function adjustListingHeight() {
+        const inventoryHeight = inventory.clientHeight;
+        listing.style.height = `${inventoryHeight}px`;
 
-            //console.log('inventory',inventoryHeight)
-            //console.log('listing',listing.style.height)
-        }
-        
+        console.log('inventory', inventoryHeight);
+        console.log('listing', listing.style.height);
+    }
 
-        // Call the function to adjust the height on initial load
-        adjustListingHeight();
+    function onImagesLoaded() {
+        // Use requestAnimationFrame to adjust height after images are loaded
+        requestAnimationFrame(adjustListingHeight);
+    }
 
-        // Adjust height on window resize
-        window.addEventListener('resize', adjustListingHeight);
+    // Wait for all images to load
+    function waitForImagesToLoad() {
+        const images = inventory.querySelectorAll('img');
+        let loadedImagesCount = 0;
 
-        // If you're dynamically adding content, call this function after that
-        function onInventoryUpdated() {
+        if (images.length === 0) {
+            // No images to load, adjust height immediately
             adjustListingHeight();
+            return;
         }
 
-        // Example: Call this function when you dynamically add items to Inventory
-        // onInventoryUpdated();
-    });
-</script>
+        images.forEach((img) => {
+            if (img.complete) {
+                loadedImagesCount++;
+                if (loadedImagesCount === images.length) {
+                    onImagesLoaded();
+                }
+            } else {
+                img.addEventListener('load', () => {
+                    loadedImagesCount++;
+                    if (loadedImagesCount === images.length) {
+                        onImagesLoaded();
+                    }
+                });
+                img.addEventListener('error', () => {
+                    loadedImagesCount++;
+                    if (loadedImagesCount === images.length) {
+                        onImagesLoaded();
+                    }
+                });
+            }
+        });
+    }
 
+    // Use load event to ensure all resources are loaded
+    // window.addEventListener('load', () => {
+    //     waitForImagesToLoad();
+    // });
+
+    // Adjust height on window resize
+    window.addEventListener('resize', () => {
+        requestAnimationFrame(adjustListingHeight);
+    });
+
+    // If you're dynamically adding content, call this function after that
+    function onInventoryUpdated() {
+        waitForImagesToLoad();
+    }
+
+    // Example: Call this function when you dynamically add items to Inventory
+    // onInventoryUpdated();
+});
+
+</script> -->
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const inventory = document.querySelector('.Inventory');
+    const listing = document.querySelector('.Listing');
+
+    function adjustListingHeight() {
+        const inventoryHeight = inventory.clientHeight;
+        listing.style.height = `${inventoryHeight}px`;
+
+        console.log('inventory', inventoryHeight);
+        console.log('listing', listing.style.height);
+    }
+    
+    // Use load event to ensure all resources are loaded
+    window.addEventListener('load', () => {
+        requestAnimationFrame(adjustListingHeight);
+    });
+
+    // Adjust height on window resize
+    window.addEventListener('resize', adjustListingHeight);
+
+    // If you're dynamically adding content, call this function after that
+    function onInventoryUpdated() {
+        adjustListingHeight();
+    }
+
+    // Example: Call this function when you dynamically add items to Inventory
+    // onInventoryUpdated();
+});
+
+</script> 
 
 </body>
     
