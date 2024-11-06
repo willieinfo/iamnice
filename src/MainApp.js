@@ -10,6 +10,8 @@ const db = getFirestore(app);
 async function fetchCategories() {
     const categoriesCollection = collection(db, 'Category'); 
     const categorySnapshot = await getDocs(categoriesCollection);
+
+    // console.log(categoriesCollection)
     return categorySnapshot.docs.map(doc => ({ categnme: doc.data().categnme }));
 }
 
@@ -18,10 +20,12 @@ async function setupInventory() {
     const divCategnme = await fetchCategories();
     // console.log(divCategnme);
 
+    // .Inventory DOM
     let invCategories = ``;
     let styles = '';
 
-    // Create DOM first
+
+    // Create .Inventory DOM first
     divCategnme.forEach((item, ctr) => {
         const categnme = item.categnme;
         invCategories += `
@@ -29,7 +33,7 @@ async function setupInventory() {
                 <h3>${categnme}</h3>
                 <div id="${categnme}-container"></div>
                 <label for="fileInput${ctr + 1}" class="file-upload-label">
-                    Add Image
+                    Add ${categnme} Image
                     <input type="file" id="fileInput${ctr + 1}" accept="image/jpeg, image/png, image/bmp" />
                 </label>
             </div>
@@ -41,8 +45,11 @@ async function setupInventory() {
             #${categnme}-container {
                 display: flex;
                 flex-wrap: wrap; 
-                justify-content: flex-start; 
+                // justify-content: flex-start; 
                 padding: 10px; 
+                justify-content: center;   
+                align-items: center;          
+
             }
         `;
     });
@@ -57,8 +64,9 @@ async function setupInventory() {
     // Display Inventory Images to HTML Inventory Section
     // Parameters: Images, Image Container
     divCategnme.forEach((item, ctr) => {
-        const fileInput = document.getElementById(`fileInput${ctr + 1}`);
+        const fileInput = document.getElementById(`fileInput${ctr + 1}`); //Input type='file' id
         getImageFile(fileInput, item.categnme);
+
         Inventory('images/' + item.categnme, `${item.categnme}-container`);
     });
 }
@@ -123,7 +131,7 @@ export function Inventory(imgStorage, imgContainer) {
         deleteIcon.onclick = () => deleteImage(itemRef);
 
         const imageWrapper = document.createElement('div');
-        imageWrapper.appendChild(imgInven);
+        imageWrapper.appendChild(imgInven); 
         imageWrapper.appendChild(deleteIcon);
         imageWrapper.classList.add('imageWrapper');
         invenContainer.appendChild(imageWrapper);
@@ -132,6 +140,7 @@ export function Inventory(imgStorage, imgContainer) {
     // delete icon image onclick() function
     async function deleteImage(itemRef) {
         const confirmed = confirm("Are you sure you want to delete this image?");
+        //console.log(itemRef)
         if (confirmed) {
             try {
                 await deleteObject(itemRef);
@@ -146,15 +155,200 @@ export function Inventory(imgStorage, imgContainer) {
     fetchImages(imgStorage);
 }
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     Inventory('images/Condominiums', 'Condominiums-container');
-//     Inventory('images/Houses', 'Houses-container');
-//     Inventory('images/Townhouse', 'Townhouse-container');
-//     Inventory('images/Lots', 'Lots-container');
+// Fetch Listings data
+async function fetchListings() {
+    const listingsCollection = collection(db, 'Listings'); 
+    const listingsSnapshot = await getDocs(listingsCollection);
+    return listingsSnapshot.docs.map(doc => (
+         { 
+         categnme: doc.data().categnme ,
+         locaname: doc.data().locaname ,
+         maindesc: doc.data().maindesc ,
+         descript: doc.data().descript ,
+         itemprce: doc.data().itemprce ,
+         url_site: doc.data().url_site ,
+         source__: doc.data().source__ 
+        }
+    ));
+}
 
-// });
+async function setupListings() {
+    const divListings = await fetchListings();
+    let invListings = ``;
+
+    divListings.forEach((item) => {
+        invListings += `
+            <div class="liDiv" onclick="showListingForm()">
+                <li>
+                    ${item.categnme ? `<p id="p1">${item.categnme}</p>` : ''}
+                    ${item.locaname ? `<p id="p2">${item.locaname}</p>` : ''}
+                    ${item.maindesc ? `<p id="p3">${item.maindesc}</p>` : ''}
+                    ${item.descript ? `<p id="p4">${item.descript}</p>` : ''}
+                    ${item.itemprce ? `<p id="p5">Price: ${item.itemprce}</p>` : ''}
+                </li>
+            </div>
+        `;
+
+        // Call the new function to append the image if url_site exists
+        
+        // if (item.url_site && item.source__ !== 'Firestore') {
+        //    displayListingImage(item.url_site, item.categnme);
+        // }
+        if (item.url_site) {
+            displayListingImage(item.url_site, item.categnme);
+         }
+     });
+
+    // Only add the header if there are any listings
+    if (invListings) {
+        invListings = `<span>Property Listings</span>` + invListings;
+    } else {
+        invListings = `<span>No Listings Available</span>`;
+    }
+
+    document.getElementById('Listings').innerHTML = invListings;
+
+    if (window.innerWidth > 768) {
+        const inventoryHeight = document.querySelector('.Inventory').clientHeight;
+        document.getElementById('Listings').style.height = `${inventoryHeight}px`;
+    }    
+}
+
+// Modified function to append the image to the appropriate container
+function displayListingImage(url, categnme) {
+    const containerId = `${categnme.trim()}-container`;
+    const container = document.getElementById(containerId);
+    
+    if (container) {
+        const imgElement = document.createElement('img');
+        imgElement.src = url;
+        imgElement.alt = `Listing Image for ${categnme}`;
+        imgElement.classList.add('image-item');
+
+        const imageWrapper = document.createElement('div');
+        imageWrapper.appendChild(imgElement); 
+        imageWrapper.classList.add('imageWrapper');
+        container.appendChild(imageWrapper);
+
+        // container.onclick = () => alert('Image is clicked');
+        container.onclick = () => showListingForm();
+
+    } else {
+        console.error(`Container with ID ${containerId} not found.`);
+    }
+}
+
+// Call setupListings after DOM content is loaded
+document.addEventListener("DOMContentLoaded", setupListings);
+
+window.showListingForm = function()  {
+    if (document.getElementById('inventory-form')) {
+        return; // If it already exists, do nothing
+    }
+    console.log("inventory-form exist")
+    // Create the form element
+    const listForm = document.createElement('form');
+    listForm.id = "inventory-form";
+    listForm.style.display = "none";  // Start with it hidden
+
+    listForm.innerHTML = `
+        <div id="titleBar">Property Description</div>
+        <br>
+        <div id="inputSection">
+            <label for="categList">Select Category</label>
+            <select id="categList" tabindex="1">
+                <option>Option 1</option>
+                <option>Option 2</option>
+            </select>
+            <br>
+            <label for="locaname">Location</label>
+            <input type="text" id="locaname" name="locaname" spellcheck="false" required>
+            
+            <label for="maindesc">Description</label>
+            <input type="text" id="maindesc" name="maindesc" spellcheck="false" required>
+            
+            <label for="descript">Particulars</label>
+            <textarea id="descript" name="descript" spellcheck="false"></textarea>
+            
+            <label for="url_site">URL (Image Address)</label>
+            <textarea id="url_site" name="url_site" spellcheck="false"></textarea>
+
+            <div id="btnDiv">
+                <button type="submit" id="saveBtn">Save</button>
+                <button type="button" id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    `;
+
+    // Create the overlay background for the modal
+    const overlay = document.createElement('div');
+    overlay.id = 'modal-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Semi-transparent black background
+    overlay.style.zIndex = 999; 
+
+        // Append the form to the container with id 'Inventory'
+    document.getElementById('Inventory').appendChild(listForm);
+    // document.getElementById('Inventory').appendChild(overlay);
+
+    // Show the form by changing its display style
+    document.getElementById('inventory-form').style.display = 'flex';
+
+    // Use scrollIntoView to bring the modal into view
+    document.getElementById('inventory-form').scrollIntoView({
+        behavior: 'smooth',   // Smooth scroll animation
+        block: 'center',      // Center the modal vertically in the viewport
+        inline: 'nearest'     // Align it horizontally
+    });
+
+    // Event listener for Cancel button to close the modal
+    document.getElementById('cancelBtn').addEventListener('click', () => {
+        // document.getElementById('inventory-form').style.display = 'none'; // Hide the form
+        document.getElementById('inventory-form').remove(); // Remove the form from the DOM
+
+    });
+
+    // document.body.appendChild(overlay);
+}
 
 
+// function showListingForm() {
+//     const listForm=`
+//         <form id="inventory-form" style="display: none">
+//         <div id="titleBar">Property Description</div>
+//         <br>
+//         <div id="inputSection">
+//             <label for="categList">Select Category</label>
+//             <select id="categList" tabindex=1>
+//                 <option>Option 1</option>
+//                 <option>Option 2</option>
+//             </select>
+//             <br>
+//             <label for="locaname">Location</label>
+//             <input type="text" id="locaname" name="locaname" spellcheck="false" required>
+            
+//             <label for="maindesc">Description</label>
+//             <input type="text" id="maindesc" name="maindesc" spellcheck="false" required>
+            
+//             <label for="descript">Particulars</label>
+//             <textarea type="text" id="descript" name="descript" spellcheck="false"></textarea>
+            
+//             <label for="url_site">URL (Image Address)</label>
+//             <textarea type="text" id="url_site" name="url_site" spellcheck="false"></textarea>
+
+//             <div id="btnDiv">
+//                 <button id="saveBtn">Save</button>
+//                 <button id="cancelBtn">Cancel</button>
+//             </div>
+//         </div>
+//     `
+//     document.getElementById('Inventory').appendChild(listForm)
+//     document.getElementById('inventory-form').display='flex'
+// }
 
 // Remember, writing code is all about practice and patience—everyone starts somewhere. 
 // If you keep experimenting and asking questions, you’ll continue to improve. 
