@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./css/MainApp.css">
     <link rel="stylesheet" href="./css/Showcase.css">
+    <link rel="stylesheet" href="./css/ListForm.css">
     <!-- <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"></script> -->
 
     <title>My Portfolio</title>
@@ -47,7 +48,7 @@
 
         }
 
-        .file-upload-label {
+        /* .file-upload-label {
             display: inline-block;
             padding: 8px 8px;
             background-color: #007bff;
@@ -57,11 +58,22 @@
             width: 90px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+        } */
+        .file-upload-label {
+            display: inline-block;
+            padding: 8px 8px;
+            color: blue;
+            cursor: pointer;
+            font-size: 12px;
+            width: auto;
+            text-align: center;
         }
 
         .file-upload-label:hover {
-            background-color: #3a6593;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); 
+            /* background-color: #3a6593;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);  */
+            color:#3B5998;
+            background-color: lightgray;
         }
 
         .file-upload-label input {
@@ -69,13 +81,14 @@
         }
 
         /* Inventory Section */
+        
+        /* Inventory Section */
         .InvenList {
-            /* Top most div for Inventory */
             display: flex;
             flex-direction: row;
-            max-height: 100%; /* Allow the height to grow based on content */
+            max-height: 100%; 
+            height: max-content;
             /* background-color: aquamarine; */
-           height:max-content;
         }
 
         .Inventory {
@@ -85,35 +98,25 @@
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
-            /* background-color: blanchedalmond; */
-            height: fit-content;
+            flex: 1;
+            border-right: 1px solid;
+            height: fit-content; 
         }
 
-
         /* Side Listings */
-        .Listing {
+        .Listings {
             border-left: 1px solid; 
-            width: 30%; 
+            flex: 0 0 40%; 
             background-color: #3B5998;
             padding: 10px;
             color: white;
-            /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);  */
-            height: 100%;
-            /* height: auto; */
-            overflow: hidden;
+            height: 100%;  
+            overflow: auto;
+            /* overflow: hidden;
             overflow-x: auto; 
-            overflow-y: auto; 
+            overflow-y: auto;  */
         }
-
-
-        /* Add a media query or specific max-height if needed */
-        /* Adjust as necessary */
-        /* Set a maximum height for scrolling */
-        /* @media (min-height: 400px) { 
-            .Listing {
-                max-height: 400px; 
-            }
-        }  */
+        
 
         .liDiv {
             padding-left: 0;
@@ -135,19 +138,16 @@
             font-size: 20px;
         }
 
-        .Listing ul {
+        .Listings li {
             list-style-type: none; /* Remove bullet points */
-            padding: 0; /* Remove padding */
-            margin: 0; /* Remove margin */
-        }
-
-        .Listing li {
             margin: 0; 
         }
 
-        .Listing span {
+        .Listings span {
             display: block; /* Ensure it takes full width */
             text-align: center; 
+            font-size: 20px;
+            font-weight: bold;
         }
 
         /* Animated Menu Icon */
@@ -202,7 +202,7 @@
     <div class="mainWrapper">
         <div class="ShowcaseWrapper">
             <div class="header">
-                <div class="conMenuIcon change" onclick="toggleMenu(this)">
+                <div id="conMenuIcon" class="conMenuIcon change" onclick="toggleMenu(this)">
                     <div class="bar1"></div>
                     <div class="bar2"></div>
                     <div class="bar3"></div>
@@ -269,107 +269,20 @@
                     using template literals and 'Category' document from Firebase 
                     This is done -->
                 </div>
-                <div class="Listing" >
-                    <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet tempore facere quis ullam ab suscipit quasi ad nostrum fuga a illo fugit beatae officia voluptatem tenetur officiis eaque sequi, autem voluptatum asperiores sit eligendi nulla vitae. Nemo quam aspernatur vero tempore exercitationem distinctio pariatur corporis, officiis eligendi quae explicabo ipsam nesciunt tempora dolorem assumenda culpa voluptas sunt soluta repudiandae quas voluptatum? Sapiente quod consectetur eaque asperiores labore, adipisci harum accusamus quaerat mollitia tempore quos ea cupiditate praesentium, consequuntur repellat ad voluptates similique rerum veniam natus odit minus? Et eius, magni fugit numquam nam ipsa atque explicabo praesentium. Molestias, iure repellat.
-
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet tempore facere quis ullam ab suscipit quasi ad nostrum fuga a illo fugit beatae officia voluptatem tenetur officiis eaque sequi, autem voluptatum asperiores sit eligendi nulla vitae. Nemo quam aspernatur vero tempore exercitationem distinctio pariatur corporis, officiis eligendi quae explicabo ipsam nesciunt tempora dolorem assumenda culpa voluptas sunt soluta repudiandae quas voluptatum? Sapiente quod consectetur eaque asperiores labore, adipisci harum accusamus quaerat mollitia tempore quos ea cupiditate praesentium, consequuntur repellat ad voluptates similique rerum veniam natus odit minus? Et eius, magni fugit numquam nam ipsa atque explicabo praesentium. Molestias, iure repellat.                     -->
-                    <span>Property List</span>
+                <div class="Listings" id="Listings">
+                    <!-- <span>Property List</span>
                     <ul>
                         <div class="liDiv">
                             <li>
-                                <p id="p1">Houses</p>
-                                <p id="p2">BF Resort Village</p>
-                                <p id="p3">
-                                    2 bedrooms, 1 toilet and bath, 1 car garage,
-                                    120 sqm
-                                </p>
+                                <p id="p1">categnme</p>
+                                <p id="p2">locaname</p>
+                                <p id="p3">maindesc</p>  
+                                <p id="p4">descript</p>
+                                <p id="p5">itemprce</p>                     
+                                
                             </li>
                         </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Lots</p>
-                                <p id="p2">BF Resort Village</p>
-                                <p id="p3">List of inventories Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                            </li>
-                        </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Lots</p>
-                                <p id="p2">BF Resort Village</p>
-                                <p id="p3">List of inventories Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                            </li>
-                        </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Townhouse</p>
-                                <p id="p2">Theresa Park</p>
-                                <p id="p3">List of inventories Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                            </li>
-                        </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Houses</p>
-                                <p id="p2">BF Resort Village</p>
-                                <p id="p3">
-                                    2 bedrooms, 1 toilet and bath, 1 car garage,
-                                    120 sqm
-                                </p>
-                            </li>
-                        </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Lots</p>
-                                <p id="p2">BF Resort Village</p>
-                                <p id="p3">List of inventories Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                            </li>
-                        </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Lots</p>
-                                <p id="p2">BF Resort Village</p>
-                                <p id="p3">List of inventories Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                            </li>
-                        </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Townhouse</p>
-                                <p id="p2">Theresa Park</p>
-                                <p id="p3">List of inventories Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                            </li>
-                        </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Houses</p>
-                                <p id="p2">BF Resort Village</p>
-                                <p id="p3">
-                                    2 bedrooms, 1 toilet and bath, 1 car garage,
-                                    120 sqm
-                                </p>
-                            </li>
-                        </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Lots</p>
-                                <p id="p2">BF Resort Village</p>
-                                <p id="p3">List of inventories Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                            </li>
-                        </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Lots</p>
-                                <p id="p2">BF Resort Village</p>
-                                <p id="p3">List of inventories Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                            </li>
-                        </div>
-                        <div class="liDiv">
-                            <li>
-                                <p id="p1">Townhouse</p>
-                                <p id="p2">Theresa Park</p>
-                                <p id="p3">List of inventories Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                            </li>
-                        </div>
-
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
 
@@ -407,7 +320,7 @@
                     <p>Web InfoPlus</p>
                 </div>
                 <div>
-                    <p>For your website needs, contact #0949 143 1584</p>
+                    <p>Get a Website for your business, contact #0949 143 1584</p>
                 </div>
             </footer>
     
@@ -419,9 +332,6 @@
 
 <script>
     function toggleMenu(icon) {
-        icon.classList.toggle("change");
-
-        // const button = document.querySelector('.openbtn');
         const sidenav = document.getElementById('mySidenav');
         const mainWrapper = document.querySelector('.mainWrapper');
 
@@ -429,91 +339,98 @@
 
         if (isMobile) {
             const isClosed = sidenav.classList.toggle('closed');
-            mainWrapper.classList.toggle('closed');
+            mainWrapper.classList.toggle('closed', sidenav.classList.contains('closed'));
+            // icon.classList.toggle("change", sidenav.classList.contains('closed'))    
         } else {
             sidenav.classList.toggle('closed');
             mainWrapper.classList.toggle('closed');
+
         }
+        icon.classList.toggle("change");
+        
     }
 
-    // const button = document.querySelector('.openbtn');
     const sidenav = document.getElementById('mySidenav');
     const mainWrapper = document.querySelector('.mainWrapper');
-
+    const conMenuIcon=document.getElementById('conMenuIcon')
 
     // Close sidenav when clicking links on mobile
     function handleLinkClick() {
         if (window.innerWidth <= 768) {
             sidenav.classList.add('closed');
             mainWrapper.classList.add('closed');
+
+            conMenuIcon.classList.toggle("change");
+            // document.querySelector('.conMenuIcon').classList.add("change")
+            // conMenuIcon.classList.toggle("change", sidenav.classList.contains('closed'))    
+
         }
     }
 
-    // Close sidenav when resizing to mobile
+    //Close sidenav when resizing to mobile
     window.addEventListener('resize', () => {
         if (window.innerWidth <= 768) {
             sidenav.classList.add('closed');
             mainWrapper.classList.add('closed');
+            conMenuIcon.classList.remove("change");
         }
     });
+    
 </script>
-
-
-<!-- <script>
-    const button = document.querySelector('.openbtn');
-    const sidenav = document.getElementById('mySidenav');
-    const mainWrapper = document.querySelector('.mainWrapper');
-
-    // Function to toggle sidenav
-    function toggleSidenav() {
-        const isMobile = window.innerWidth <= 768;
-
-        if (isMobile) {
-            // Only toggle for mobile devices
-            const isClosed = sidenav.classList.toggle('closed');
-            mainWrapper.classList.toggle('closed');
-            
-            button.textContent = isClosed ? '☰' : 'X';
-        } else {
-            // Toggle for larger screens without closing
-            sidenav.classList.toggle('closed');
-            mainWrapper.classList.toggle('closed');
-            
-            button.textContent = sidenav.classList.contains('closed') ? '☰' : 'X';
-        }
-    }
-
-    // Close sidenav when clicking links on mobile
-    function handleLinkClick() {
-        if (window.innerWidth <= 768) {
-            sidenav.classList.add('closed');
-            mainWrapper.classList.add('closed');
-            button.textContent = '☰'; // Reset button text
-        }
-    }
-
-    // Initial click event for the button
-    button.addEventListener('click', toggleSidenav);
-
-    // Close sidenav when resizing to mobile
-    window.addEventListener('resize', () => {
-        if (window.innerWidth <= 768) {
-            sidenav.classList.add('closed');
-            mainWrapper.classList.add('closed');
-            button.textContent = '☰'; // Reset button text
-        }
-    });
-
-</script>  -->
 
 <script type="module" src="./src/MainApp.js"></script> 
 <script type="module" src="./src/AddImage.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const inventory = document.querySelector('.Inventory');
+        const listing = document.querySelector('.Listings');
+
+        function adjustListingHeight() {
+            // if (window.innerWidth > 768) {
+            //     const inventoryHeight = inventory.clientHeight;
+            //     listing.style.height = `${inventoryHeight}px`;
+    
+            //     // console.log('inventory', inventoryHeight);
+            //     // console.log('listing', listing.style.height);
+            // }
+
+            // Only adjust height if screen width is greater than 768px
+            if (window.innerWidth > 768) {
+                const inventoryHeight = inventory.clientHeight;
+                listing.style.height = `${inventoryHeight}px`;  // Set the height of Listings to match Inventory
+            } else {
+                listing.style.height = 'fit-content';  // Reset to fit-content on mobile
+                listing.style.width = '100%';
+            }
+        }
+        
+        // Use load event to ensure all resources are loaded
+        window.addEventListener('load', () => {
+            requestAnimationFrame(adjustListingHeight);
+        });
+
+        // Adjust height on window resize
+        window.addEventListener('resize', () => {
+            requestAnimationFrame(adjustListingHeight);
+        });
+
+        // If you're dynamically adding content, call this function after that
+        function onInventoryUpdated() {
+            adjustListingHeight();
+        }
+
+        // Example: Call this function when you dynamically add items to Inventory
+        // onInventoryUpdated();
+    });
+
+</script>  
 
 <!-- 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
     const inventory = document.querySelector('.Inventory');
-    const listing = document.querySelector('.Listing');
+    const listing = document.querySelector('.Listings');
 
     function adjustListingHeight() {
         const inventoryHeight = inventory.clientHeight;
@@ -585,10 +502,17 @@
 
 
 
-<script>
+
+<!-- <script>
+let isRefreshing = false;
+
+window.addEventListener('beforeunload', () => {
+    isRefreshing = true; // Set flag when the user is about to refresh
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const inventory = document.querySelector('.Inventory');
-    const listing = document.querySelector('.Listing');
+    const listing = document.querySelector('.Listings');
 
     function adjustListingHeight() {
         const inventoryHeight = inventory.clientHeight;
@@ -597,25 +521,63 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('inventory', inventoryHeight);
         console.log('listing', listing.style.height);
     }
-    
-    // Use load event to ensure all resources are loaded
-    window.addEventListener('load', () => {
-        requestAnimationFrame(adjustListingHeight);
-    });
 
     // Adjust height on window resize
     window.addEventListener('resize', adjustListingHeight);
 
+    // Wait for all images to load
+    function waitForImagesToLoad() {
+        const images = inventory.querySelectorAll('img');
+        let loadedImagesCount = 0;
+
+        if (images.length === 0) {
+            // No images to load, adjust height immediately
+            adjustListingHeight();
+            return;
+        }
+
+        images.forEach((img) => {
+            if (img.complete) {
+                loadedImagesCount++;
+                if (loadedImagesCount === images.length) {
+                    adjustListingHeight();
+                }
+            } else {
+                img.addEventListener('load', () => {
+                    loadedImagesCount++;
+                    if (loadedImagesCount === images.length) {
+                        adjustListingHeight();
+                    }
+                });
+                img.addEventListener('error', () => {
+                    loadedImagesCount++;
+                    if (loadedImagesCount === images.length) {
+                        adjustListingHeight();
+                    }
+                });
+            }
+        });
+    }
+
+    // Use load event to ensure all resources are loaded
+    window.addEventListener('load', () => {
+        waitForImagesToLoad();
+        if (isRefreshing) {
+            window.dispatchEvent(new Event('resize')); // Trigger resize if refreshing
+            isRefreshing = false; // Reset flag after handling refresh
+        }
+    });
+
     // If you're dynamically adding content, call this function after that
     function onInventoryUpdated() {
-        adjustListingHeight();
+        waitForImagesToLoad();
     }
 
     // Example: Call this function when you dynamically add items to Inventory
     // onInventoryUpdated();
 });
+</script> -->
 
-</script> 
 
 </body>
     
