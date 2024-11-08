@@ -13,6 +13,7 @@
     <title>My Portfolio</title>
 
     <style>
+
         .contactImg .fa {
             display: inline-flex; 
             align-items: center; /* Center vertically */
@@ -80,8 +81,6 @@
             display: none; /* Hide the default file input */
         }
 
-        /* Inventory Section */
-        
         /* Inventory Section */
         .InvenList {
             display: flex;
@@ -187,7 +186,7 @@
         </div>
         <hr>
         <a href="#ShowCase" onclick="handleLinkClick()">Showcase</a>
-        <a href="#Inventory" onclick="handleLinkClick()">Inventory</a>
+        <a href="#InvenSect" onclick="handleLinkClick()">Inventory</a>
         <a href="#Portfolio" onclick="handleLinkClick()">Portfolio</a>
         <a href="#AboutMe"  onclick="handleLinkClick()">About Me</a>
         <a href="#Contact"  onclick="handleLinkClick()">Contact</a>
@@ -260,7 +259,7 @@
                 </div>
             </div>
 
-            <div class="sectionHeader">
+            <div class="sectionHeader" id="InvenSect">
                 <h2>Inventory</h2>
             </div>
             <div class="InvenList">
@@ -422,9 +421,31 @@
 
         // Example: Call this function when you dynamically add items to Inventory
         // onInventoryUpdated();
+
+        // Function to adjust scroll position for centering the section
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href').substring(1); // Get the target section ID
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    // Scroll to the element and adjust position
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 50, // Adjust for 50px header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+
     });
 
 </script>  
+
+
 
 <!-- 
 <script>
