@@ -1,10 +1,12 @@
 
 import { getStorage, ref, getDownloadURL, listAll, deleteObject } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-import { app } from "./firestore-config.js";
+// import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { collection, getDocs, addDoc, getDoc, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+import { app, db } from "./firestore-config.js";
 import { AddImage } from './AddImage.js';
 
-const db = getFirestore(app);
+// const db = getFirestore(app);
 
 // Fetch Category data
 async function fetchCategories() {
@@ -95,6 +97,7 @@ function getImageFile(fileInput, containerId) {
 
         // Add image after validation AddImage.js
         AddImage(file, 'images/' + containerId, containerId + '-container');
+        setupListings() // refresh the list
     });
 }
 
@@ -161,6 +164,7 @@ async function fetchListings() {
     const listingsSnapshot = await getDocs(listingsCollection);
     return listingsSnapshot.docs.map(doc => (
          { 
+         id: doc.id, 
          categnme: doc.data().categnme ,
          locaname: doc.data().locaname ,
          maindesc: doc.data().maindesc ,
@@ -178,32 +182,39 @@ async function setupListings() {
 
     divListings.forEach((item) => {
         invListings += `
-            <div class="liDiv" onclick="showListingForm()">
+            <div class="liDiv" onclick="showListingForm('${item.id}')">
                 <li>
                     ${item.categnme ? `<p id="p1">${item.categnme}</p>` : ''}
                     ${item.locaname ? `<p id="p2">${item.locaname}</p>` : ''}
+                    <br>
                     ${item.maindesc ? `<p id="p3">${item.maindesc}</p>` : ''}
                     ${item.descript ? `<p id="p4">${item.descript}</p>` : ''}
                     ${item.itemprce ? `<p id="p5">Price: ${item.itemprce}</p>` : ''}
+                    ${item.url_site ? `<p id="p6" style="display:none;">${item.url_site}</p>` : ''}
                 </li>
             </div>
         `;
 
         // Call the new function to append the image if url_site exists
-        
+       
         // if (item.url_site && item.source__ !== 'Firestore') {
         //    displayListingImage(item.url_site, item.categnme);
         // }
+        
         if (item.url_site) {
-            displayListingImage(item.url_site, item.categnme);
+            displayListingImage(item.url_site, item.categnme, item.id);
          }
      });
 
     // Only add the header if there are any listings
     if (invListings) {
-        invListings = `<span>Property Listings</span>` + invListings;
+        invListings = `
+            <div id="propTitle">
+            <span>Property Listings</span>
+            <button>Add Record</button>
+            </div>` + invListings;
     } else {
-        invListings = `<span>No Listings Available</span>`;
+        invListings = `<span id="propTitle">No Listings Available</span>`;
     }
 
     document.getElementById('Listings').innerHTML = invListings;
@@ -215,7 +226,7 @@ async function setupListings() {
 }
 
 // Modified function to append the image to the appropriate container
-function displayListingImage(url, categnme) {
+function displayListingImage(url, categnme, docId) {
     const containerId = `${categnme.trim()}-container`;
     const container = document.getElementById(containerId);
     
@@ -229,9 +240,8 @@ function displayListingImage(url, categnme) {
         imageWrapper.appendChild(imgElement); 
         imageWrapper.classList.add('imageWrapper');
         container.appendChild(imageWrapper);
-
-        // container.onclick = () => alert('Image is clicked');
-        container.onclick = () => showListingForm();
+        
+        container.onclick = () => showListingForm(docId);
 
     } else {
         console.error(`Container with ID ${containerId} not found.`);
@@ -241,11 +251,12 @@ function displayListingImage(url, categnme) {
 // Call setupListings after DOM content is loaded
 document.addEventListener("DOMContentLoaded", setupListings);
 
-window.showListingForm = function()  {
+window.showListingForm = function(docId)  {
     if (document.getElementById('inventory-form')) {
+        console.log("inventory-form exist")
         return; // If it already exists, do nothing
     }
-    console.log("inventory-form exist")
+
     // Create the form element
     const listForm = document.createElement('form');
     listForm.id = "inventory-form";
@@ -256,22 +267,22 @@ window.showListingForm = function()  {
         <br>
         <div id="inputSection">
             <label for="categList">Select Category</label>
-            <select id="categList" tabindex="1">
-                <option>Option 1</option>
-                <option>Option 2</option>
-            </select>
+            <select id="categList"></select>
             <br>
             <label for="locaname">Location</label>
             <input type="text" id="locaname" name="locaname" spellcheck="false" required>
-            
-            <label for="maindesc">Description</label>
+
+            <label for="maindesc">Address</label>
             <input type="text" id="maindesc" name="maindesc" spellcheck="false" required>
-            
+
             <label for="descript">Particulars</label>
-            <textarea id="descript" name="descript" spellcheck="false"></textarea>
+            <textarea id="descript" name="descript" spellcheck="false" style="font-family: Arial; font-size: 14px;"></textarea>
+
+            <label for="maindesc">Price</label>
+            <input type="text" id="itemprce" name="itemprce">
             
             <label for="url_site">URL (Image Address)</label>
-            <textarea id="url_site" name="url_site" spellcheck="false"></textarea>
+            <textarea id="url_site" name="url_site" spellcheck="false" style="font-family: Arial; font-size: 14px;"></textarea>
 
             <div id="btnDiv">
                 <button type="submit" id="saveBtn">Save</button>
@@ -291,7 +302,7 @@ window.showListingForm = function()  {
     overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Semi-transparent black background
     overlay.style.zIndex = 999; 
 
-        // Append the form to the container with id 'Inventory'
+    // Append the form to the container with id 'Inventory'
     document.getElementById('Inventory').appendChild(listForm);
     // document.getElementById('Inventory').appendChild(overlay);
 
@@ -307,48 +318,98 @@ window.showListingForm = function()  {
 
     // Event listener for Cancel button to close the modal
     document.getElementById('cancelBtn').addEventListener('click', () => {
-        // document.getElementById('inventory-form').style.display = 'none'; // Hide the form
         document.getElementById('inventory-form').remove(); // Remove the form from the DOM
+        // document.getElementById('overlay').remove();
 
     });
 
-    // document.body.appendChild(overlay);
+    // Event listener for Save button to edit data and close the modal
+    document.getElementById('saveBtn').addEventListener('click', (e) => {
+        e.preventDefault()
+        editRecordList(docId)
+        document.getElementById('inventory-form').remove(); // Remove the form from the DOM
+        // document.getElementById('overlay').remove();
+
+    });
+
+    showRecordList(docId)
 }
 
+async function showRecordList(docId) {
 
-// function showListingForm() {
-//     const listForm=`
-//         <form id="inventory-form" style="display: none">
-//         <div id="titleBar">Property Description</div>
-//         <br>
-//         <div id="inputSection">
-//             <label for="categList">Select Category</label>
-//             <select id="categList" tabindex=1>
-//                 <option>Option 1</option>
-//                 <option>Option 2</option>
-//             </select>
-//             <br>
-//             <label for="locaname">Location</label>
-//             <input type="text" id="locaname" name="locaname" spellcheck="false" required>
-            
-//             <label for="maindesc">Description</label>
-//             <input type="text" id="maindesc" name="maindesc" spellcheck="false" required>
-            
-//             <label for="descript">Particulars</label>
-//             <textarea type="text" id="descript" name="descript" spellcheck="false"></textarea>
-            
-//             <label for="url_site">URL (Image Address)</label>
-//             <textarea type="text" id="url_site" name="url_site" spellcheck="false"></textarea>
+    const item = await getListingRecord(docId);  // Fetch the specific document based on docId
+    if (!item) return;  // If no item is found, do nothing
 
-//             <div id="btnDiv">
-//                 <button id="saveBtn">Save</button>
-//                 <button id="cancelBtn">Cancel</button>
-//             </div>
-//         </div>
-//     `
-//     document.getElementById('Inventory').appendChild(listForm)
-//     document.getElementById('inventory-form').display='flex'
-// }
+    document.getElementById('locaname').value = item.locaname || '';
+    document.getElementById('maindesc').value = item.maindesc || '';
+    document.getElementById('descript').value = item.descript || '';
+    document.getElementById('itemprce').value = item.itemprce || '';
+    document.getElementById('url_site').value = item.url_site || '';
+
+    const divCategnme = await fetchCategories();
+    const categList = document.getElementById('categList')
+
+    // Clear any existing options first, if needed
+    categList.innerHTML = '';
+
+    // Populate the select dropdown with category options
+    divCategnme.forEach((category) => {
+        const categOption = document.createElement('option');
+        categOption.value = category.categnme; 
+        categOption.textContent = category.categnme;
+        
+        // Set the selected option if it matches the item.categnme
+        if (category.categnme === item.categnme) {
+            categOption.selected = true;  // This makes the option selected
+        }
+
+        categList.appendChild(categOption);
+    });    
+
+}
+// Get the record form "Listings" collection
+async function getListingRecord(docId) {
+    const docRef = doc(db, 'Listings', docId);  // Get reference to the document
+    const docSnap = await getDoc(docRef);       // Fetch the document
+
+    if (docSnap.exists()) {
+        return docSnap.data();  // Return the document data
+    } else {
+        console.log("No such document!");
+        return null;
+    }
+}
+
+// Add a new listing to the "Listings" collection
+export async function addRecordList(listingData) {
+    try {
+        const docRef = await addDoc(collection(db, 'Listings'), listingData);
+        setupListings() // refresh the list
+
+        console.log("Document written with ID: ", docRef.id);  // This is the auto-generated document ID
+        return docRef.id; // You can use this ID later
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
+}
+
+// Edit the record in the "Listings" collection
+async function editRecordList(docId) {
+    try {
+        await setDoc(doc(db, 'Listings', docId),{
+            categnme : document.getElementById('categList').value ,
+            locaname : document.getElementById('locaname').value ,
+            maindesc : document.getElementById('maindesc').value ,
+            descript : document.getElementById('descript').value ,
+            itemprce : document.getElementById('itemprce').value ,
+            url_site : document.getElementById('url_site').value
+        });
+        setupListings() // refresh the list
+    } catch (e) {
+        console.error("Error editing document: ", e);
+    } 
+}
+
 
 // Remember, writing code is all about practice and patience—everyone starts somewhere. 
 // If you keep experimenting and asking questions, you’ll continue to improve. 
