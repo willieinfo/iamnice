@@ -68,6 +68,7 @@
             font-size: 12px;
             width: auto;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
         }
 
         .file-upload-label:hover {
@@ -104,6 +105,14 @@
             height: fit-content; 
         }
 
+        h3 {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
         /* Side Listings */
         .Listings {
             border-left: 1px solid; 
@@ -113,16 +122,28 @@
             color: white;
             height: 100%;  
             overflow: auto;
+
+            margin: 0;
+            padding: 0;
+
             /* overflow: hidden;
             overflow-x: auto; 
             overflow-y: auto;  */
         }
         
-
+        #propTitle {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid;
+            margin-top: 10px;
+            padding-bottom: 10px;
+            justify-content: center;
+        }
         .liDiv {
             padding-left: 0;
             cursor: pointer;
             border-bottom: 1px solid;
+            padding: 0 10px; 
         }
         .liDiv:hover {
             background-color: #79849c;
@@ -134,10 +155,18 @@
         }
         #p2 {
             margin: 0;
+            padding: 0;
             font-family: 'Times New Roman', Times, serif;
             font-style: italic;
             font-size: 20px;
         }
+        #p3, #p4, #p5, #p6 {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
 
         .Listings li {
             list-style-type: none; /* Remove bullet points */
@@ -268,11 +297,10 @@
                 <div class="Inventory" id="Inventory">
                     <!-- This inventory section will be dynamically created 
                     using template literals and 'Category' document from Firebase 
-                    This is done -->
+                    -->
                 </div>
                 <div class="Listings" id="Listings">
                     <!-- <span>Property List</span>
-                    <ul>
                         <div class="liDiv">
                             <li>
                                 <p id="p1">categnme</p>
@@ -283,7 +311,7 @@
                                 
                             </li>
                         </div>
-                    </ul> -->
+                    -->
                 </div>
             </div>
 
