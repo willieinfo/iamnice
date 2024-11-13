@@ -337,8 +337,22 @@
                 <div class="sectionHeader">
                     <h2>Portfolio</h2>
                 </div>       
-                <p>PORTFOLIO Lorem ipsum dolor sit amet consectetur adipisicing</p>
+                <div class="portfolio-content">
+                    <p style="font-family: 'Times New Roman'; font-style: italic;">Dedicated to finding you the right property.</p>
+                    <p style="font-family: 'Times New Roman'; font-style: italic;">Work with me. Let us make your dream a reality!</p>
+                    <br>
+                    <p>Profile · Brokerage Firm</p>
+                    <p>Licensed Real Estate Broker at RE/MAX Capital</p>
+                    <p>Lives in Makati <span>&#129300;</span></p>
+                </div>
+                <div class="portfolio-images">
+                    <img class="portimage-item" src="./Images/remax_grp1.jpg" alt="">
+                    <img class="portimage-item" src="./Images/remax_grp2.jpg" alt="">
+                    <img class="portimage-item" src="./Images/remax_grp4.jpg" alt="">
+                    <img class="portimage-item" src="./Images/remax_grp3.jpg" alt="">
+                </div>
             </div>
+
             <div class="AboutMe" id="AboutMe">
                 <div class="sectionHeader">
                     <h2>About Me</h2>
@@ -490,161 +504,14 @@
 
     });
 
+    // document.querySelector('fa fa-facebook').addEventListener('click' , ()=> {
+    // })
+    document.querySelector('.fa-facebook').addEventListener('click', () => {
+        window.open('https://www.facebook.com/profile.php?id=100094091657200', '_blank');
+    });
+
 </script>  
 
-
-
-<!-- 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const inventory = document.querySelector('.Inventory');
-    const listing = document.querySelector('.Listings');
-
-    function adjustListingHeight() {
-        const inventoryHeight = inventory.clientHeight;
-        listing.style.height = `${inventoryHeight}px`;
-
-        console.log('inventory', inventoryHeight);
-        console.log('listing', listing.style.height);
-    }
-
-    function onImagesLoaded() {
-        // Use requestAnimationFrame to adjust height after images are loaded
-        requestAnimationFrame(adjustListingHeight);
-    }
-
-    // Wait for all images to load
-    function waitForImagesToLoad() {
-        const images = inventory.querySelectorAll('img');
-        let loadedImagesCount = 0;
-
-        if (images.length === 0) {
-            // No images to load, adjust height immediately
-            adjustListingHeight();
-            return;
-        }
-
-        images.forEach((img) => {
-            if (img.complete) {
-                loadedImagesCount++;
-                if (loadedImagesCount === images.length) {
-                    onImagesLoaded();
-                }
-            } else {
-                img.addEventListener('load', () => {
-                    loadedImagesCount++;
-                    if (loadedImagesCount === images.length) {
-                        onImagesLoaded();
-                    }
-                });
-                img.addEventListener('error', () => {
-                    loadedImagesCount++;
-                    if (loadedImagesCount === images.length) {
-                        onImagesLoaded();
-                    }
-                });
-            }
-        });
-    }
-
-    // Use load event to ensure all resources are loaded
-    // window.addEventListener('load', () => {
-    //     waitForImagesToLoad();
-    // });
-
-    // Adjust height on window resize
-    window.addEventListener('resize', () => {
-        requestAnimationFrame(adjustListingHeight);
-    });
-
-    // If you're dynamically adding content, call this function after that
-    function onInventoryUpdated() {
-        waitForImagesToLoad();
-    }
-
-    // Example: Call this function when you dynamically add items to Inventory
-    // onInventoryUpdated();
-});
-
-</script> -->
-
-
-
-
-<!-- <script>
-let isRefreshing = false;
-
-window.addEventListener('beforeunload', () => {
-    isRefreshing = true; // Set flag when the user is about to refresh
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const inventory = document.querySelector('.Inventory');
-    const listing = document.querySelector('.Listings');
-
-    function adjustListingHeight() {
-        const inventoryHeight = inventory.clientHeight;
-        listing.style.height = `${inventoryHeight}px`;
-
-        console.log('inventory', inventoryHeight);
-        console.log('listing', listing.style.height);
-    }
-
-    // Adjust height on window resize
-    window.addEventListener('resize', adjustListingHeight);
-
-    // Wait for all images to load
-    function waitForImagesToLoad() {
-        const images = inventory.querySelectorAll('img');
-        let loadedImagesCount = 0;
-
-        if (images.length === 0) {
-            // No images to load, adjust height immediately
-            adjustListingHeight();
-            return;
-        }
-
-        images.forEach((img) => {
-            if (img.complete) {
-                loadedImagesCount++;
-                if (loadedImagesCount === images.length) {
-                    adjustListingHeight();
-                }
-            } else {
-                img.addEventListener('load', () => {
-                    loadedImagesCount++;
-                    if (loadedImagesCount === images.length) {
-                        adjustListingHeight();
-                    }
-                });
-                img.addEventListener('error', () => {
-                    loadedImagesCount++;
-                    if (loadedImagesCount === images.length) {
-                        adjustListingHeight();
-                    }
-                });
-            }
-        });
-    }
-
-    // Use load event to ensure all resources are loaded
-    window.addEventListener('load', () => {
-        waitForImagesToLoad();
-        if (isRefreshing) {
-            window.dispatchEvent(new Event('resize')); // Trigger resize if refreshing
-            isRefreshing = false; // Reset flag after handling refresh
-        }
-    });
-
-    // If you're dynamically adding content, call this function after that
-    function onInventoryUpdated() {
-        waitForImagesToLoad();
-    }
-
-    // Example: Call this function when you dynamically add items to Inventory
-    // onInventoryUpdated();
-});
-</script> -->
 
 
 </body>
