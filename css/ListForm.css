@@ -47,7 +47,7 @@ label {
     align-items: center;
     padding: 10px;
 }
-button {
+#saveBtn, #cancelBtn {
     height: 30px;
     width: 140px;
     margin: 10px;
@@ -72,7 +72,7 @@ input {
     background-color: red;
 }
 #saveBtn:hover {
-    background-color:blue;
+    background-color:#55ACEE;
 }
 #titleBar {
     display: flex;
