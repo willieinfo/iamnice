@@ -1,6 +1,5 @@
 
 import { getStorage, ref, getDownloadURL, listAll, deleteObject } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
-// import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { collection, getDocs, addDoc, getDoc, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 import { app, db } from "./firestore-config.js";
@@ -69,7 +68,7 @@ async function setupInventory() {
         const fileInput = document.getElementById(`fileInput${ctr + 1}`); //Input type='file' id
         getImageFile(fileInput, item.categnme);
 
-        Inventory('images/' + item.categnme, `${item.categnme}-container`);
+       Inventory('images/' + item.categnme, `${item.categnme}-container`);
     });
 }
 
@@ -176,6 +175,8 @@ async function fetchListings() {
     ));
 }
 
+// ${item.categnme ? `<p id="p1">${item.categnme}</p>` : ''}
+
 async function setupListings() {
     const divListings = await fetchListings();
     let invListings = ``;
@@ -184,7 +185,13 @@ async function setupListings() {
         invListings += `
             <div class="liDiv" onclick="showListingForm('${item.id}')">
                 <li>
-                    ${item.categnme ? `<p id="p1">${item.categnme}</p>` : ''}
+                    ${item.categnme ? `        
+                    <div class="categnme-container">
+                        <p id="p1">${item.categnme}</p>
+                        ${item.source__ === 'Firestore' ? `<p class="storage">Storage</p>` : ''}
+                    </div>
+                ` : ''}        
+
                     ${item.locaname ? `<p id="p2">${item.locaname}</p>` : ''}
                     <br>
                     ${item.maindesc ? `<p id="p3">${item.maindesc}</p>` : ''}
@@ -217,7 +224,7 @@ async function setupListings() {
         invListings = 
                 `<div id="propTitle">
                     <span>No Property Listing Record</span>
-                    <button id="addPropBtn">Add Record</button>
+                    <button id="addPropBtn" onclick="showListingForm('')">Add Record</button>
                 </div>`;
     }
 
@@ -373,8 +380,7 @@ window.showListingForm = function(docId) {
         document.getElementById('url_site').value = '';
     }
 
-    // Populate categories for selection
-    populateCategories();
+    populateCategories()
 }
 
 async function populateCategories() {
@@ -404,14 +410,14 @@ async function showRecordList(docId) {
     document.getElementById('descript').value = item.descript || '';
     document.getElementById('itemprce').value = item.itemprce || '';
     document.getElementById('url_site').value = item.url_site || '';
-
+  
+    // Populate the select dropdown with category options
     const divCategnme = await fetchCategories();
-    const categList = document.getElementById('categList')
+    const categList = document.getElementById('categList');
 
     // Clear any existing options first, if needed
     categList.innerHTML = '';
 
-    // Populate the select dropdown with category options
     divCategnme.forEach((category) => {
         const categOption = document.createElement('option');
         categOption.value = category.categnme; 
@@ -424,8 +430,10 @@ async function showRecordList(docId) {
 
         categList.appendChild(categOption);
     });    
+    
 
 }
+
 // Get the record form "Listings" collection
 async function getListingRecord(docId) {
     const docRef = doc(db, 'Listings', docId);  // Get reference to the document
@@ -439,15 +447,6 @@ async function getListingRecord(docId) {
     }
 }
 
-function addBlankListing() {
-
-    document.getElementById('locaname').value = '';
-    document.getElementById('maindesc').value = '';
-    document.getElementById('descript').value = '';
-    document.getElementById('itemprce').value = '';
-    document.getElementById('url_site').value = '';
-
-}
 
 // Add a new listing to the "Listings" collection
 export async function addRecordList(listingData) {
