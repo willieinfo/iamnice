@@ -210,11 +210,15 @@ async function setupListings() {
     if (invListings) {
         invListings = `
             <div id="propTitle">
-            <span>Property Listings</span>
-            <button>Add Record</button>
+                <span>Property Listings</span>
+                <button id="addPropBtn" onclick="showListingForm('')">Add Record</button>
             </div>` + invListings;
     } else {
-        invListings = `<span id="propTitle">No Listings Available</span>`;
+        invListings = 
+                `<div id="propTitle">
+                    <span>No Property Listing Record</span>
+                    <button id="addPropBtn">Add Record</button>
+                </div>`;
     }
 
     document.getElementById('Listings').innerHTML = invListings;
@@ -229,8 +233,17 @@ async function setupListings() {
 function displayListingImage(url, categnme, docId) {
     const containerId = `${categnme.trim()}-container`;
     const container = document.getElementById(containerId);
-    
+
     if (container) {
+        // Check if the image already exists in the container by comparing the URL
+        const existingImage = container.querySelector(`img[src="${url}"]`);
+        if (existingImage) {
+            // If the image already exists, don't add it again
+            console.log("Image already exists in the container, skipping.");
+            return;
+        }
+
+        // If no existing image, create a new image element
         const imgElement = document.createElement('img');
         imgElement.src = url;
         imgElement.alt = `Listing Image for ${categnme}`;
@@ -240,20 +253,22 @@ function displayListingImage(url, categnme, docId) {
         imageWrapper.appendChild(imgElement); 
         imageWrapper.classList.add('imageWrapper');
         container.appendChild(imageWrapper);
-        
-        container.onclick = () => showListingForm(docId);
 
+        // Add an onclick event to open the listing form
+        container.onclick = () => showListingForm(docId);
     } else {
         console.error(`Container with ID ${containerId} not found.`);
     }
 }
 
+
 // Call setupListings after DOM content is loaded
 document.addEventListener("DOMContentLoaded", setupListings);
 
-window.showListingForm = function(docId)  {
+
+window.showListingForm = function(docId) {
     if (document.getElementById('inventory-form')) {
-        console.log("inventory-form exist")
+        console.log("inventory-form exists");
         return; // If it already exists, do nothing
     }
 
@@ -304,7 +319,7 @@ window.showListingForm = function(docId)  {
 
     // Append the form to the container with id 'Inventory'
     document.getElementById('Inventory').appendChild(listForm);
-    // document.getElementById('Inventory').appendChild(overlay);
+    document.getElementById('Inventory').appendChild(overlay);
 
     // Show the form by changing its display style
     document.getElementById('inventory-form').style.display = 'flex';
@@ -319,21 +334,65 @@ window.showListingForm = function(docId)  {
     // Event listener for Cancel button to close the modal
     document.getElementById('cancelBtn').addEventListener('click', () => {
         document.getElementById('inventory-form').remove(); // Remove the form from the DOM
-        // document.getElementById('overlay').remove();
-
+        document.getElementById('modal-overlay').remove();  // Remove overlay
     });
 
-    // Event listener for Save button to edit data and close the modal
+    // Event listener for Save button to edit or add data and close the modal
     document.getElementById('saveBtn').addEventListener('click', (e) => {
-        e.preventDefault()
-        editRecordList(docId)
-        document.getElementById('inventory-form').remove(); // Remove the form from the DOM
-        // document.getElementById('overlay').remove();
+        e.preventDefault();
+        
+        if (docId) {
+            // Edit existing record
+            editRecordList(docId);
+        } else {
+            // Add new record
+            const newListingData = {
+                categnme: document.getElementById('categList').value,
+                locaname: document.getElementById('locaname').value,
+                maindesc: document.getElementById('maindesc').value,
+                descript: document.getElementById('descript').value,
+                itemprce: document.getElementById('itemprce').value,
+                url_site: document.getElementById('url_site').value,
+            };
+            addRecordList(newListingData); // Add new record
+        }
 
+        document.getElementById('inventory-form').remove(); // Remove the form from the DOM
+        document.getElementById('modal-overlay').remove();  // Remove overlay
     });
 
-    showRecordList(docId)
+    // If editing an existing record, show its details
+    if (docId) {
+        showRecordList(docId);
+    } else {
+        // If adding new, populate with default empty values
+        document.getElementById('locaname').value = '';
+        document.getElementById('maindesc').value = '';
+        document.getElementById('descript').value = '';
+        document.getElementById('itemprce').value = '';
+        document.getElementById('url_site').value = '';
+    }
+
+    // Populate categories for selection
+    populateCategories();
 }
+
+async function populateCategories() {
+    const divCategnme = await fetchCategories();
+    const categList = document.getElementById('categList');
+
+    // Clear any existing options first, if needed
+    categList.innerHTML = '';
+
+    // Populate the select dropdown with category options
+    divCategnme.forEach((category) => {
+        const categOption = document.createElement('option');
+        categOption.value = category.categnme;
+        categOption.textContent = category.categnme;
+        categList.appendChild(categOption);
+    });
+}
+
 
 async function showRecordList(docId) {
 
@@ -378,6 +437,16 @@ async function getListingRecord(docId) {
         console.log("No such document!");
         return null;
     }
+}
+
+function addBlankListing() {
+
+    document.getElementById('locaname').value = '';
+    document.getElementById('maindesc').value = '';
+    document.getElementById('descript').value = '';
+    document.getElementById('itemprce').value = '';
+    document.getElementById('url_site').value = '';
+
 }
 
 // Add a new listing to the "Listings" collection
