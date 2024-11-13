@@ -31,7 +31,7 @@ async function setupInventory() {
     divCategnme.forEach((item, ctr) => {
         const categnme = item.categnme;
         invCategories += `
-            <div class="container">
+            <div class="container">    
                 <h3>${categnme}</h3>
                 <div id="${categnme}-container"></div>
                 <label for="fileInput${ctr + 1}" class="file-upload-label">
