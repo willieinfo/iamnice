@@ -144,8 +144,8 @@
     font-size: 26px;
     margin: 20px;
     padding: 30px;
-    border-top-left-radius: 20px; /* Top left rounded corner */
-    border-bottom-right-radius: 20px; /* Bottom right rounded corner */
+    border-top-left-radius: 30px; /* Top left rounded corner */
+    border-bottom-right-radius: 30px; /* Bottom right rounded corner */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional shadow for more depth */
 }
 
@@ -381,15 +381,6 @@
         height: auto;
         object-fit: contain;
     }
-    /* .InvenList {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .Listings {
-        height: fit-content;
-        flex: initial;
-        width: 100%;
-    } */
 
     .InvenList {
         flex-direction: column;
