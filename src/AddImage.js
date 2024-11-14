@@ -24,7 +24,7 @@ export async function AddImage(imgFile,imgStorage, imgContainer) {
                 categnme: categnme,
                 maindesc: imgFile.name,
                 url_site: url_site,
-                source__: 'Firestore'
+                source__: 'Firestore',
             }
         )
 
