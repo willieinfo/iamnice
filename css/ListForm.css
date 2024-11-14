@@ -22,6 +22,7 @@
     background-color: rgba(245,245,245,0.9);
     /* background-color: '#fff'; */
     z-index: 1000;
+    overflow: auto;
 }
 
 label {
@@ -100,4 +101,10 @@ textarea {
     box-sizing: border-box; 
     height: 120px;
     resize: none; 
+}
+
+@media (max-width: 600px) {
+    #inventory-form {
+        width:90%
+    }
 }

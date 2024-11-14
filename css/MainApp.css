@@ -41,6 +41,8 @@ body {
     font-size: 12px; 
     padding: 20px;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -49,6 +51,8 @@ body {
     justify-content: center; 
     margin-bottom: 0px;  
     flex-direction: column;
+    padding: 10px;
+    margin: 10px;
 }
 
 .sidenav img {
@@ -61,10 +65,12 @@ body {
     display: block; 
     color: #fff; 
     text-decoration: none; 
-    padding: 10px; 
     text-align: left;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 22px;
+    padding: 10px;
+    margin: 10px;
+
 }
 
 .sidenav a:hover {
@@ -95,8 +101,6 @@ body {
     font-family: "Montserrat", sans-serif;
     font-size: large;
 }
-
-
 
 /* When sidenav is closed */
 .sidenav.closed {

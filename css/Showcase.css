@@ -110,7 +110,7 @@
 .card img {
     height: 300px; /* Fixed height for equal size */
     width: 100%; /* Full width */
-    object-fit: fill;
+    object-fit: cover;
     /* border-radius: 10%; */
 }
 .card p,.cardBottom p {
@@ -181,6 +181,15 @@
     height: 500px;
     /* object-fit: cover; */
 }
+
+#port_1st_p em {
+    font-family: Times New Roman;
+    font-style: italic;
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+}
+
 
 
 /* Media Queries for responsiveness */
@@ -292,6 +301,31 @@
 
 .delete-button:hover {
     background-color: red; /* Change color on hover */
+}
+
+#delete-icon {
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    display: flex;    
+}
+/* Ensure the delete icon's hover state is properly defined */
+#delete-icon:hover {
+    background-color: red !important; /* Use !important if you need to override other rules */
+}
+
+/* If you want the icon's color to stay unaffected by .liDiv hover */
+#delete-icon:hover,
+#delete-icon {
+    color: white; 
 }
 
 /* Contact Me Section */
