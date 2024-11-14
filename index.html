@@ -19,8 +19,8 @@
             align-items: center; /* Center vertically */
             justify-content: center; /* Center horizontally */
             font-size: 20px;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             text-align: center;
             text-decoration: none;
@@ -35,6 +35,7 @@
         .fa-facebook {
             background: #3B5998;
             color: white;
+            cursor: pointer;
         }
         .fa-twitter {
             background: #55ACEE;
@@ -49,17 +50,6 @@
 
         }
 
-        /* .file-upload-label {
-            display: inline-block;
-            padding: 8px 8px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            font-size: 12px;
-            width: 90px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
-        } */
         .file-upload-label {
             display: inline-block;
             padding: 8px 8px;
@@ -122,13 +112,10 @@
             color: white;
             height: 100%;  
             overflow: auto;
-
             margin: 0;
             padding: 0;
+            position: relative; /* This makes it the reference for absolute positioning */
 
-            /* overflow: hidden;
-            overflow-x: auto; 
-            overflow-y: auto;  */
         }
         
         #propTitle {
@@ -136,14 +123,18 @@
             flex-direction: column;
             border-bottom: 1px solid;
             margin-top: 10px;
-            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 0;
             justify-content: center;
-            box-sizing: border-box; 
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: #3B5998;
         }
 
-        #propTitle button{
+        #addPropBtn{
             width: 100%;
-            height:30px;
+            height:40px;
             margin:0;
             padding:0;
             background-color: #3B5998;
@@ -155,21 +146,69 @@
             background-color:#55ACEE;
         }
 
+
+        #fixedAddBtn {
+            position: absolute; /* Position relative to .Listings */
+            bottom: 20px; /* Distance from the bottom of the .Listings div */
+            right: 20px; /* Distance from the right edge of the .Listings div */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Makes the button round */
+            background-color: red; /* Button color */
+            color: white;
+            border: none;
+            font-size: 24px; /* Larger text to make the "+" visible */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000; /* Make sure it's above other content */
+        }
+
+        #fixedAddBtn:hover {
+            background-color: #D50000; /* Darker red on hover */
+        }
+
         .liDiv {
             padding-left: 0;
             cursor: pointer;
             border-bottom: 1px solid;
             padding: 0 10px; 
+            margin: 0;
+            position: relative;
         }
         .liDiv:hover {
-            background-color: rgb(143, 211, 248);
+            background-color: rgb(111,183,255);
             color:black;
         }
+
+
         #p1 {
             font-weight: bold;
             font-size: 18px;
+            /* font-size: 1em; */
             margin-bottom: 0;
+            margin-top: 0;
         }
+
+        .categnme-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%; 
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        .storage {
+            margin-left: 10px;  
+            color: white;
+            font-size: 14px;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+
         #p2 {
             margin: 0;
             padding: 0;
@@ -236,12 +275,11 @@
         <a href="#ShowCase" onclick="handleLinkClick()">Showcase</a>
         <a href="#InvenSect" onclick="handleLinkClick()">Inventory</a>
         <a href="#Portfolio" onclick="handleLinkClick()">Portfolio</a>
-        <a href="#AboutMe"  onclick="handleLinkClick()">About Me</a>
+        <!-- <a href="#AboutMe"  onclick="handleLinkClick()">About Me</a> -->
         <a href="#Contact"  onclick="handleLinkClick()">Contact</a>
         <hr>
         <a href="#settings" onclick="handleLinkClick()">Settings</a>
-        <hr>
-        <a href="#logout" onclick="handleLinkClick()">Log Out</a>
+        <!-- <a href="#logout" onclick="handleLinkClick()">Log Out</a> -->
         
     </div>
 
@@ -338,7 +376,7 @@
                     <h2>Portfolio</h2>
                 </div>       
                 <div class="portfolio-content">
-                    <p style="font-family: 'Times New Roman'; font-style: italic;">Dedicated to finding you the right property.</p>
+                    <p id="port_1st_p" style="font-family: 'Times New Roman'; font-style: italic;"><em>"D</em>edicated to finding you the right property.</p>
                     <p style="font-family: 'Times New Roman'; font-style: italic;">Work with me. Let us make your dream a reality!</p>
                     <br>
                     <p>Profile · Brokerage Firm</p>
@@ -353,12 +391,12 @@
                 </div>
             </div>
 
-            <div class="AboutMe" id="AboutMe">
+            <!-- <div class="AboutMe" id="AboutMe">
                 <div class="sectionHeader">
                     <h2>About Me</h2>
                 </div>            
                 <p>ABOUT ME Lorem ipsum dolor sit amet consectetur adipisicing</p>
-            </div>
+            </div> -->
             <div class="Contact" id="Contact">
                 <div class="sectionHeader">
                     <h2>Contact</h2>
@@ -391,39 +429,37 @@
 
 
 <script>
-    function toggleMenu(icon) {
-        const sidenav = document.getElementById('mySidenav');
-        const mainWrapper = document.querySelector('.mainWrapper');
-
-        const isMobile = window.innerWidth <= 768;
-
-        if (isMobile) {
-            const isClosed = sidenav.classList.toggle('closed');
-            mainWrapper.classList.toggle('closed', sidenav.classList.contains('closed'));
-            // icon.classList.toggle("change", sidenav.classList.contains('closed'))    
-        } else {
-            sidenav.classList.toggle('closed');
-            mainWrapper.classList.toggle('closed');
-
-        }
-        icon.classList.toggle("change");
-        
-    }
-
     const sidenav = document.getElementById('mySidenav');
     const mainWrapper = document.querySelector('.mainWrapper');
     const conMenuIcon=document.getElementById('conMenuIcon')
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+        // Check if the viewport is mobile-sized and set the initial state
+        if (window.innerWidth <= 768) {
+            sidenav.classList.add('closed'); // Close the sidenav on mobile
+            mainWrapper.classList.add('closed'); // Adjust main wrapper layout
+            conMenuIcon.classList.remove('change'); // Set the icon to bars (not X)
+        }
+    });
+
+    function toggleMenu(icon) {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            const isClosed = sidenav.classList.toggle('closed');
+            mainWrapper.classList.toggle('closed', sidenav.classList.contains('closed'));
+        } else {
+            sidenav.classList.toggle('closed');
+            mainWrapper.classList.toggle('closed');
+        }
+        icon.classList.toggle("change");
+    }
 
     // Close sidenav when clicking links on mobile
     function handleLinkClick() {
         if (window.innerWidth <= 768) {
             sidenav.classList.add('closed');
             mainWrapper.classList.add('closed');
-
             conMenuIcon.classList.toggle("change");
-            // document.querySelector('.conMenuIcon').classList.add("change")
-            // conMenuIcon.classList.toggle("change", sidenav.classList.contains('closed'))    
-
         }
     }
 
@@ -447,13 +483,6 @@
         const listing = document.querySelector('.Listings');
 
         function adjustListingHeight() {
-            // if (window.innerWidth > 768) {
-            //     const inventoryHeight = inventory.clientHeight;
-            //     listing.style.height = `${inventoryHeight}px`;
-    
-            //     // console.log('inventory', inventoryHeight);
-            //     // console.log('listing', listing.style.height);
-            // }
 
             // Only adjust height if screen width is greater than 768px
             if (window.innerWidth > 768) {
