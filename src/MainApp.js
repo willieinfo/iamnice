@@ -46,11 +46,9 @@ async function setupInventory() {
             #${categnme}-container {
                 display: flex;
                 flex-wrap: wrap; 
-                // justify-content: flex-start; 
                 padding: 10px; 
                 justify-content: center;   
                 align-items: center;          
-
             }
         `;
     });
@@ -68,7 +66,7 @@ async function setupInventory() {
         const fileInput = document.getElementById(`fileInput${ctr + 1}`); //Input type='file' id
         getImageFile(fileInput, item.categnme);
 
-       Inventory('images/' + item.categnme, `${item.categnme}-container`);
+    //    Inventory('images/' + item.categnme, `${item.categnme}-container`);
     });
 }
 
@@ -146,18 +144,21 @@ export function Inventory(imgStorage, imgContainer) {
         if (confirmed) {
             try {
                 await deleteObject(itemRef);
-                fetchImages(imgStorage); // Refresh the image list
+                //fetchImages(imgStorage); // Refresh the image list
+                //fetchImages is disabled, Im trying to use deleteListing instead
+                //to delete and and setupListing to refresh images from Firebase storage
             } catch (error) {
                 console.error("Error deleting image:", error);
                 alert("Error deleting image.");
             }
         }
+        return
     }
 
     fetchImages(imgStorage);
 }
 
-// Fetch Listings data
+// Fetch Listings data, called from setupListings
 async function fetchListings() {
     const listingsCollection = collection(db, 'Listings'); 
     const listingsSnapshot = await getDocs(listingsCollection);
@@ -200,7 +201,7 @@ async function setupListings() {
                     ${item.itemprce ? `<p id="p5">Price: ${item.itemprce}</p>` : ''}
                     ${item.url_site ? `<p id="p6" style="display:none;">${item.url_site}</p>` : ''}
                 </li>
-                <i class="fa fa-trash" id="delete-icon" onclick="deleteListing(event, '${item.id}','${item.source__}','${item.url_site}','${item.categnme}')"></i> 
+                <i class="fa fa-trash" id="delete-icon" onclick="deleteListing(event, '${item.id}','${item.source__}','${item.url_site}')"></i> 
             </div>
 
         `;
@@ -230,7 +231,7 @@ async function setupListings() {
                     <button id="addPropBtn" onclick="showListingForm('')">Add Record</button>
                 </div>`;
     }
-    invListings+=`<p id="p3">Listing count: ${nInvCounter}</p>`
+    invListings+=`<p id="p7">Listing count: ${nInvCounter}</p>`
 
     document.getElementById('Listings').innerHTML = invListings;
 
@@ -278,8 +279,13 @@ function displayListingImage(url, categnme, docId) {
         imgElement.alt = "./Images/W.jpg";
         imgElement.classList.add('image-item');
 
+        const deleteIcon = document.createElement('i');
+        deleteIcon.classList.add('fa', 'fa-trash', 'delete-button'); 
+        deleteIcon.onclick = () => deleteImage(itemRef);
+
         const imageWrapper = document.createElement('div');
         imageWrapper.appendChild(imgElement); 
+        imageWrapper.appendChild(deleteIcon);
         imageWrapper.classList.add('imageWrapper');
         container.appendChild(imageWrapper);
 
@@ -501,11 +507,12 @@ async function editRecordList(docId) {
 }
 
 // Delete a record in the Property Listings
-window.deleteListing = async function(event, itemId, source__, url_site, categnme) {
+window.deleteListing = async function(event, itemId, source__, url_site) {
     event.stopPropagation();
     const confirmed = confirm("Are you sure you want to delete this record?");
     
-    const imgStorage = categnme + '-container';  // Not used directly in deletion but for refreshing image list
+    // Not used directly in deletion but for refreshing image list
+    // const imgStorage = categnme + '-container';  
     
     if (confirmed) {
         // Delete Firestore record first
@@ -532,7 +539,7 @@ window.deleteListing = async function(event, itemId, source__, url_site, categnm
                 await deleteObject(storageRef);
                 console.log("Image deleted successfully.");
 
-                fetchImages(imgStorage);
+                //fetchImages(imgStorage);
             } catch (e) {
                 console.error("Error deleting image: ", e);
             }

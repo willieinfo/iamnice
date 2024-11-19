@@ -14,7 +14,7 @@ export async function AddImage(imgFile,imgStorage, imgContainer) {
     try {
         await uploadBytes(storageRef, imgFile);
         MessageBox("Image uploaded successfully!",'Ok','Uploaded');
-        Inventory(imgStorage, imgContainer); // Refresh the images after upload
+        //Inventory(imgStorage, imgContainer); // Refresh the images after upload
 
         const url_site = await getDownloadURL(storageRef);
         const categnme=imgContainer.split('-')[0]
