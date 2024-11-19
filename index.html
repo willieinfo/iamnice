@@ -5,42 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
     <link rel="stylesheet" href="./css/MainApp.css">
     <link rel="stylesheet" href="./css/Showcase.css">
     <link rel="stylesheet" href="./css/ListForm.css">
+    <link rel="stylesheet" href="./css/Contact.css">
+    
+    
     <!-- <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"></script> -->
 
-    <title>My Portfolio</title>
+    <title>Meet Your Property</title>
 
     <style>
-
-        .contactImg .fa {
-            display: inline-flex; 
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
-            font-size: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            text-align: center;
-            text-decoration: none;
-            white-space: nowrap; 
-
-        }
-
-        .contactImg .fa:hover {
-            opacity: 0.7;
-        }
-
-        .fa-facebook {
-            background: #3B5998;
-            color: white;
-            cursor: pointer;
-        }
-        .fa-twitter {
-            background: #55ACEE;
-            color: white;
-        }
 
         /* Inventory Images */
         #inventory-container {
@@ -181,8 +158,10 @@
             background-color: rgb(111,183,255);
             color:black;
         }
-
-
+        .liDiv:hover #delete-icon {
+            display: flex;
+        }
+        
         #p1 {
             font-weight: bold;
             font-size: 18px;
@@ -216,14 +195,16 @@
             font-style: italic;
             font-size: 20px;
         }
-        #p3, #p4, #p5, #p6 {
+        #p3, #p4, #p5, #p6 #p7 {
             margin: 0;
             padding: 0;
             font-size: 18px;
             font-family: Arial, Helvetica, sans-serif;
         }
-
-
+        #p7 {
+            text-align: center;
+        }
+        
         .Listings li {
             list-style-type: none; /* Remove bullet points */
             margin: 0; 
@@ -309,13 +290,11 @@
                 </section>
                 <div class="showcaseContainer">
                     <div class="showcaseContents" >
+                        
                         <div id="leftImage">
-                            <!-- <img class="companyPic w3-grayscale-max w3-opacity" src='./Images/Eunice Photo2.jpg' alt="leftPicture"> -->
                             <img src='./Images/Eunice Remax page 2.jpg' alt="leftPicture">
-                            <!-- <img src='img_girl.jpg' alt="leftPicture"> -->
-                            
-                         
                         </div>
+
                         <div id="rightCards">
                             <div class="cardBottom">
                                <h4 id="subTitles">Property Showcase</h4>
@@ -402,14 +381,44 @@
                     <h2>Contact</h2>
                 </div>
 
-                <div class="contactImg">
-                    <div class="socialMedia">
-                        <span>
-                            <i class="fa fa-facebook" ></i> 
-                            <i class="fa fa-twitter" ></i> 
-                        </span>
+                <div class="contactMain">
+                    <div class="contactForm">
+                        <div class="socialMedia">
+                            <span>
+                                <p>Follow us</p>
+                                <div>
+                                    <i class="fa fa-facebook" ></i> 
+                                    <i class="fa fa-twitter" ></i> 
+                                </div>
+                            </span>
+                        </div>
+                        
+                        <form id="email-form">
+                            <div id="titleBar">Email Message</div>
+                            <br>
+                            <div id="inputSection">
+                                <label for="message_">Message</label>
+                                <textarea type="text" id="message_" spellcheck="false"  required></textarea>
+                    
+                                <label for="fromname">From:</label>
+                                <input type="text" id="fromname"  spellcheck="false">
+                    
+                                <label for="emailfrom">Contact Email:</label>
+                                <input type="email" id="emailfrom"  spellcheck="false" required>
+                    
+                                <div id="btnDiv">
+                                    <button type="submit" id="sendBtn">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2730.5867284589845!2d121.03577268348337!3d14.562979851934989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c85493400c75%3A0xc179fb618cb6c453!2sRockwell%20Center!5e0!3m2!1sen!2sph!4v1731979686899!5m2!1sen!2sph" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
-                    <img src="./Images/Eunice Remax Main page.jpg" alt="">
+                    <div class="contactImg">
+                        <img src="./Images/Eunice Remax Main page.jpg" alt="">
+                    </div>
+
                 </div>
             </div>
             <footer>
@@ -473,9 +482,6 @@
     });
     
 </script>
-
-<script type="module" src="./src/MainApp.js"></script> 
-<script type="module" src="./src/AddImage.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -541,9 +547,10 @@
 
 </script>  
 
+<script type="module" src="./src/MainApp.js"></script> 
+<script type="module" src="./src/AddImage.js"></script>
+<script type="module" src="./src/Contact.js"></script>
 
 
 </body>
-    
-
 </html>
