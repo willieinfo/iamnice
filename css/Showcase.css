@@ -366,9 +366,13 @@
     border: none;
     background-color: #3B5998;
     cursor: pointer;
-    width: 80px;
+    width: 180px;
 }
-#propTitle button:hover{
+#addPropBtn {
+    width: 100px;
+}
+
+#addPropBtn:hover,#searchBtn:hover, #sign_in_:hover {
     background-color:#55ACEE;
 }
 
