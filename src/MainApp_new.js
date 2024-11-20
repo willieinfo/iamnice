@@ -157,7 +157,8 @@ export function Inventory(imgStorage, imgContainer) {
 async function fetchListings(filterRecord = '') {
     const listingsCollection = collection(db, 'Listings'); 
     const listingsSnapshot = await getDocs(listingsCollection);
-    
+    console.log(filterRecord)
+
     // Filter the listings if filterRecord is provided
     const divListings = listingsSnapshot.docs.map(doc => ({
         id: doc.id, 
@@ -229,11 +230,9 @@ async function setupListings(filterRecord = '') {
         invListings = `
             <div id="propTitle">
                 <span>Property Listings</span>
-                <div id="searchDiv">
-                    <input type="text" id="searchRec" spellcheck="false" placeholder="Search property">
-                    <button id="searchBtn" onclick="filterRecordList()">Search</button>
-                    <button id="addPropBtn" onclick="showListingForm('')">Add</button>
-                </div>
+                <input type="text" id="searchRec" spellcheck="false" placeholder="Search property">
+                <button id="searchBtn" onclick="filterRecordList()">Submit Search</button>
+                <button id="addPropBtn" onclick="showListingForm('')">Add Record</button>
             </div>` + invListings;
     } else {
         invListings = 
@@ -539,7 +538,9 @@ window.deleteListing = async function(event, itemId, sourcedb, url_site) {
                 // Extract the storage path from the download URL
                 const storagePath = getStoragePathFromUrl(url_site);
                 const storageRef = ref(storage, storagePath);  // Create a reference to the file in Firebase Storage
-   
+    
+                console.log(storagePath);
+    
                 // Verify if the file exists by checking its metadata
                 const metadata = await getMetadata(storageRef);
                 console.log("File metadata:", metadata);  // You can check the metadata to verify file info
