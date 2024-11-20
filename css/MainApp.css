@@ -116,23 +116,22 @@ body {
     
 }
 
-
 .sectionHeader {
-    text-align: right;
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; /* Center content vertically */
     width: 100%;
     margin: 0;
     padding: 0;
-    height: auto;
+    height: 60px;
     border-top: 1px double;
     border-bottom: 1px double;
-    align-items: center;
     background-image: linear-gradient(to right, #f0f8ff, #2973af); 
     margin-bottom: 10px;
 }
 
 .sectionHeader h2 {
-    padding-right: 60px;
-    color: white;
+    margin: 0; 
 }
 
 .socialMedia {
