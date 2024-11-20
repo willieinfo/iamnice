@@ -265,6 +265,7 @@
     object-fit: cover;
 }
 
+/* Parts of .Listing Section */
 .imageWrapper {
     position: relative; 
     width: 200px;
@@ -341,37 +342,35 @@
     color: white; 
 }
 
-/* Section Headers */
-
-.sectionHeader {
-    text-align: right;
-    width: 100%;
-    margin: 0;
+#searchDiv {
+    margin:0;
     padding: 0;
-    height: auto;
-    border-top: 1px double;
-    border-bottom: 1px double;
-    align-items: center;
-    background-image: linear-gradient(to right, #f0f8ff, #2973af); 
-    margin-bottom: 10px;
+    display: flex;
+}
+#searchRec {
+    border-radius: 15px; /* Rounded corners, increase value for more rounded effect */
+    margin: 0 10px; /* Left and right margin */
+    padding: 8px 12px; /* Optional: adds padding inside the input field */
+    border: 1px solid #ccc; /* Optional: defines border style */
+    outline: none; /* Removes the default outline when focused */
 }
 
-.sectionHeader h2 {
-    padding-right: 60px;
+#searchRec:focus {
+    border-color: #007bff; /* Optional: color of the border when focused */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional: adds a subtle shadow when focused */
+}
+#searchBtn {
+    margin: 0 10px 0 0;
     color: white;
-}
-
-.socialMedia {
-    text-align: right;
-    width: 100%;
-    align-items: center;
-    margin-bottom: 10px;
+    border: none;
+    background-color: #3B5998;
 
 }
-.socialMedia span{
-    margin-right: 10px;
-
+#addPropBtn {
+    margin: 0 10px 0 10px;
+    padding: 0;
 }
+
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 1200px) {

@@ -102,6 +102,52 @@ body {
     font-size: large;
 }
 
+
+.headerSide button {
+    color: white;
+    background-color: rgb(0,64,128);
+    border: none;
+}
+
+.headerSide button:hover {
+    color: white;
+    background-color: rgb(100, 117, 134);
+    cursor: pointer;
+    
+}
+
+
+.sectionHeader {
+    text-align: right;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    border-top: 1px double;
+    border-bottom: 1px double;
+    align-items: center;
+    background-image: linear-gradient(to right, #f0f8ff, #2973af); 
+    margin-bottom: 10px;
+}
+
+.sectionHeader h2 {
+    padding-right: 60px;
+    color: white;
+}
+
+.socialMedia {
+    text-align: right;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+.socialMedia span{
+    margin-right: 10px;
+
+}
+
+
 /* When sidenav is closed */
 .sidenav.closed {
     width: 0;
