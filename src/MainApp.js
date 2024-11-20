@@ -231,8 +231,12 @@ async function setupListings(filterRecord = '') {
                 <span>Property Listings</span>
                 <div id="searchDiv">
                     <input type="text" id="searchRec" spellcheck="false" placeholder="Search property">
-                    <button id="searchBtn" onclick="filterRecordList()">Search</button>
-                    <button id="addPropBtn" onclick="showListingForm('')">Add</button>
+                    <button id="searchBtn" onclick="filterRecordList()">
+                        <i class="fa fa-search"></i> Search
+                    </button>
+                    <button id="addPropBtn" onclick="showListingForm('')">
+                        <i class="fa fa-plus"></i> Add
+                    </button>
                 </div>
             </div>` + invListings;
     } else {
