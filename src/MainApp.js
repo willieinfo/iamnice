@@ -1,5 +1,5 @@
 
-import { getStorage, ref, getDownloadURL, listAll, deleteObject } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
+import { getStorage, ref, getDownloadURL, listAll, deleteObject, getMetadata } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
 import { collection, getDocs, addDoc, getDoc, setDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 import { app, db } from "./firestore-config.js";
@@ -19,7 +19,6 @@ async function fetchCategories() {
 // Dynamically build Inventory Section HTML in the DOM first
 async function setupInventory() {
     const divCategnme = await fetchCategories();
-    // console.log(divCategnme);
 
     // .Inventory DOM
     let invCategories = ``;
@@ -52,7 +51,6 @@ async function setupInventory() {
             }
         `;
     });
-
     document.getElementById('Inventory').innerHTML = invCategories;
     
     const styleElement = document.createElement('style');
@@ -140,13 +138,10 @@ export function Inventory(imgStorage, imgContainer) {
     // delete icon image onclick() function
     async function deleteImage(itemRef) {
         const confirmed = confirm("Are you sure you want to delete this image?");
-        //console.log(itemRef)
         if (confirmed) {
             try {
                 await deleteObject(itemRef);
-                //fetchImages(imgStorage); // Refresh the image list
-                //fetchImages is disabled, Im trying to use deleteListing instead
-                //to delete and and setupListing to refresh images from Firebase storage
+                // Refresh screen
             } catch (error) {
                 console.error("Error deleting image:", error);
                 alert("Error deleting image.");
@@ -159,27 +154,44 @@ export function Inventory(imgStorage, imgContainer) {
 }
 
 // Fetch Listings data, called from setupListings
-async function fetchListings() {
+async function fetchListings(filterRecord = '') {
     const listingsCollection = collection(db, 'Listings'); 
     const listingsSnapshot = await getDocs(listingsCollection);
-    return listingsSnapshot.docs.map(doc => (
-         { 
-         id: doc.id, 
-         categnme: doc.data().categnme ,
-         locaname: doc.data().locaname ,
-         maindesc: doc.data().maindesc ,
-         descript: doc.data().descript ,
-         itemprce: doc.data().itemprce ,
-         url_site: doc.data().url_site ,
-         source__: doc.data().source__ 
-        }
-    ));
+    
+    // Filter the listings if filterRecord is provided
+    const divListings = listingsSnapshot.docs.map(doc => ({
+        id: doc.id, 
+        categnme: doc.data().categnme ,
+        locaname: doc.data().locaname ,
+        maindesc: doc.data().maindesc ,
+        descript: doc.data().descript ,
+        itemprce: doc.data().itemprce ,
+        url_site: doc.data().url_site ,
+        sourcedb: doc.data().sourcedb
+    }));
+
+    const filterString = String(filterRecord).toLowerCase();
+
+    if (filterString && filterString.trim() !== '') {
+        // Filter the listings based on the search term
+        return divListings.filter(item => {
+            return (
+                item.categnme && item.categnme.toLowerCase().includes(filterString) ||
+                item.locaname && item.locaname.toLowerCase().includes(filterString) ||
+                item.maindesc && item.maindesc.toLowerCase().includes(filterString) ||
+                item.descript && item.descript.toLowerCase().includes(filterString) ||
+                item.itemprce && item.itemprce.toString().includes(filterString)
+            );
+        });
+    }
+    
+    // Return all listings if filterRecord is empty
+    return divListings;
 }
 
-// ${item.categnme ? `<p id="p1">${item.categnme}</p>` : ''}
 
-async function setupListings() {
-    const divListings = await fetchListings();
+async function setupListings(filterRecord = '') {
+    const divListings = await fetchListings(filterRecord);
     let invListings = ``;
     let nInvCounter = 0;
 
@@ -192,7 +204,7 @@ async function setupListings() {
                     ${item.locaname ? `        
                     <div class="categnme-container">
                         <p id="p2">${item.locaname}</p>
-                        ${item.source__ === 'Firestore' ? `<p class="storage">Storage</p>` : ''}
+                        ${item.sourcedb === 'Firestore' ? `<p class="storage">Storage</p>` : ''}
                     </div>
                 ` : ''}        
                     <br>
@@ -201,19 +213,14 @@ async function setupListings() {
                     ${item.itemprce ? `<p id="p5">Price: ${item.itemprce}</p>` : ''}
                     ${item.url_site ? `<p id="p6" style="display:none;">${item.url_site}</p>` : ''}
                 </li>
-                <i class="fa fa-trash" id="delete-icon" onclick="deleteListing(event, '${item.id}','${item.source__}','${item.url_site}')"></i> 
+                <i class="fa fa-trash" id="delete-icon" onclick="deleteListing(event, '${item.id}','${item.sourcedb}','${item.url_site}')"></i> 
             </div>
 
         `;
 
-        // Call the new function to append the image if url_site exists
-       
-        // if (item.url_site && item.source__ !== 'Firestore') {
-        //    displayListingImage(item.url_site, item.categnme);
-        // }
-        
+        // Call the function to append the image if url_site exists
         if (item.url_site) {
-            displayListingImage(item.url_site, item.categnme, item.id);
+            displayListingImage(item.url_site, item.categnme, item.id, item.sourcedb);
          }
      });
 
@@ -222,6 +229,10 @@ async function setupListings() {
         invListings = `
             <div id="propTitle">
                 <span>Property Listings</span>
+                <div id="searchDiv">
+                    <input type="text" id="searchRec" spellcheck="false" placeholder="Search property">
+                    <button id="searchBtn" onclick="filterRecordList()">Search</button>
+                </div>
                 <button id="addPropBtn" onclick="showListingForm('')">Add Record</button>
             </div>` + invListings;
     } else {
@@ -235,24 +246,6 @@ async function setupListings() {
 
     document.getElementById('Listings').innerHTML = invListings;
 
-// Add the updated listings HTML to the container
-document.getElementById('Listings').innerHTML = invListings;
-
-// Now create the round button and append it to .Listings
-const roundBtn = document.createElement('button');
-roundBtn.id = 'fixedAddBtn';
-roundBtn.setAttribute('aria-label', 'Add Property');
-roundBtn.textContent = '+';  // Add the "+" text to the button
-
-// Add an event listener to the button to trigger the same function as the "Add Record" button
-roundBtn.addEventListener('click', function() {
-    showListingForm('');
-});
-
-// Append the button to the Listings div
-//document.getElementById('InvenList').appendChild(roundBtn);
-
-
     if (window.innerWidth > 768) {
         const inventoryHeight = document.querySelector('.Inventory').clientHeight;
         document.getElementById('Listings').style.height = `${inventoryHeight}px`;
@@ -260,7 +253,7 @@ roundBtn.addEventListener('click', function() {
 }
 
 // Modified function to append the image to the appropriate container
-function displayListingImage(url, categnme, docId) {
+function displayListingImage(url, categnme, docId, sourcedb) {
     const containerId = `${categnme.trim()}-container`;
     const container = document.getElementById(containerId);
 
@@ -281,7 +274,8 @@ function displayListingImage(url, categnme, docId) {
 
         const deleteIcon = document.createElement('i');
         deleteIcon.classList.add('fa', 'fa-trash', 'delete-button'); 
-        deleteIcon.onclick = () => deleteImage(itemRef);
+        deleteIcon.onclick = (event) => deleteListing(event, docId, sourcedb, url);
+
 
         const imageWrapper = document.createElement('div');
         imageWrapper.appendChild(imgElement); 
@@ -296,9 +290,22 @@ function displayListingImage(url, categnme, docId) {
     }
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    setupListings('');  
+    
+    // Bind the filter button event after the DOM has loaded
+    const searchButton = document.getElementById('searchBtn');
+    if (searchButton) {
+        searchButton.addEventListener('click', filterRecordList);
+    }
+});
 
-// Call setupListings after DOM content is loaded
-document.addEventListener("DOMContentLoaded", setupListings);
+// This function is called when the user submits the search form
+window.filterRecordList = function() {
+    const filterRecord = document.getElementById('searchRec').value;  // Get the input value
+    setupListings(filterRecord);  // Call setupListings with the input value as filter
+    document.getElementById('searchRec').value = '';  // Optionally clear the input after the search
+}
 
 
 window.showListingForm = function(docId) {
@@ -507,13 +514,13 @@ async function editRecordList(docId) {
 }
 
 // Delete a record in the Property Listings
-window.deleteListing = async function(event, itemId, source__, url_site) {
+window.deleteListing = async function(event, itemId, sourcedb, url_site) {
     event.stopPropagation();
     const confirmed = confirm("Are you sure you want to delete this record?");
     
     // Not used directly in deletion but for refreshing image list
     // const imgStorage = categnme + '-container';  
-    
+
     if (confirmed) {
         // Delete Firestore record first
         try {
@@ -523,28 +530,36 @@ window.deleteListing = async function(event, itemId, source__, url_site) {
         } catch (e) {
             console.error("Error deleting document: ", e);
         }
-
-        // If source__ is 'Firestore', delete the image from Firebase Storage
-        if (source__ === 'Firestore' && url_site) {
+    
+        // If sourcedb is 'Firestore', delete the image from Firebase Storage
+        if (sourcedb === 'Firestore' && url_site) {
             const storage = getStorage(app);
-
+    
             try {
                 // Extract the storage path from the download URL
                 const storagePath = getStoragePathFromUrl(url_site);
                 const storageRef = ref(storage, storagePath);  // Create a reference to the file in Firebase Storage
-                
-                console.log(storagePath)
-
-                // Delete the image from Firebase Storage
+   
+                // Verify if the file exists by checking its metadata
+                const metadata = await getMetadata(storageRef);
+                console.log("File metadata:", metadata);  // You can check the metadata to verify file info
+    
+                // If metadata is found (i.e., file exists), delete the image
                 await deleteObject(storageRef);
                 console.log("Image deleted successfully.");
-
-                //fetchImages(imgStorage);
+                setupListings() // refresh the list
             } catch (e) {
-                console.error("Error deleting image: ", e);
+                if (e.code === 'storage/object-not-found') {
+                    // If file doesn't exist, handle accordingly
+                    console.log("File does not exist in Firebase Storage.");
+                } else {
+                    // Catch any other errors (e.g., network issues)
+                    console.error("Error deleting image: ", e);
+                }
             }
         }
-    }
+    }    
+
 };
 
 function getStoragePathFromUrl(downloadUrl) {

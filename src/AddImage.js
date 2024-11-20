@@ -18,13 +18,15 @@ export async function AddImage(imgFile,imgStorage, imgContainer) {
 
         const url_site = await getDownloadURL(storageRef);
         const categnme=imgContainer.split('-')[0]
+        const currdate = new Date();
 
         addRecordList(
             {
                 categnme: categnme,
                 maindesc: imgFile.name,
                 url_site: url_site,
-                source__: 'Firestore',
+                sourcedb: 'Firestore',
+                datereco: currdate,
             }
         )
 
