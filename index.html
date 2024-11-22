@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/dist/date-fns.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <link rel="stylesheet" href="./css/MainApp.css">
@@ -28,7 +30,7 @@
         }
 
         .file-upload-label {
-            display: inline-block;
+            /* display: inline-block; */
             padding: 8px 8px;
             color: blue;
             cursor: pointer;
@@ -36,11 +38,11 @@
             width: auto;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+            display: none;
+
         }
 
         .file-upload-label:hover {
-            /* background-color: #3a6593;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);  */
             color:white;
             background-color:#55ACEE
         }
@@ -91,6 +93,7 @@
             overflow: auto;
             margin: 0;
             padding: 0;
+            min-width: 460px;
             position: relative; /* This makes it the reference for absolute positioning */
 
         }
@@ -143,10 +146,14 @@
             background-color: rgb(111,183,255);
             color:black;
         }
-        .liDiv:hover #delete-icon {
+        /* .liDiv:hover #delete-icon {
+            display: flex;
+        } */
+        .liDiv.show-delete-icon:hover #delete-icon {
             display: flex;
         }
-        
+
+
         #p1 {
             font-weight: bold;
             font-size: 18px;
@@ -259,8 +266,11 @@
                     <div class="bar3"></div>
                 </div>
 
-                <div class="headerSide">
-                    <button id="sign_in_"> <i class="fa fa-sign-in"></i> Sign In</button>
+                <div class="headerLogIn">
+                    <label id="labelLogIn">
+                        You may log in here as my guest: </label>
+                    <input type="text" id="inputLogIn" placeholder="Your name here.." style="display: none" >
+                    <button id="btnLogIn"><i class="fa fa-sign-in"></i> Log In</button>
                 </div>
             </div>
             
@@ -285,8 +295,8 @@
                                 <p>High End Condos</p>
                             </div>
                             <div class="card">
-                                <img src="./Images/condominium2.jpg" alt="">
-                                <p>Affordable Condominiums</p>
+                                <img src="./Images/house5.jpg" alt="">
+                                <p>Affordable Houses</p>
                             </div>
                             <div class="card">
                                 <img src="./Images/townhouse1.jpg" alt="">
@@ -402,7 +412,7 @@
                         </div>
                     </div>
                     <div class="contactImg">
-                        <img src="./Images/Eunice Remax Main page.jpg" alt="">
+                        <img src="./Images/Eunice Remax Main page.jpg" alt="./Images/cariGirl1.jpg">
                     </div>
 
                 </div>
@@ -426,7 +436,8 @@
 <script>
     const sidenav = document.getElementById('mySidenav');
     const mainWrapper = document.querySelector('.mainWrapper');
-    const conMenuIcon=document.getElementById('conMenuIcon')
+    const conMenuIcon=document.getElementById('conMenuIcon');
+    const prodList=document.querySelector('.Listings');
 
     window.addEventListener('DOMContentLoaded', (event) => {
         // Check if the viewport is mobile-sized and set the initial state
@@ -434,6 +445,7 @@
             sidenav.classList.add('closed'); // Close the sidenav on mobile
             mainWrapper.classList.add('closed'); // Adjust main wrapper layout
             conMenuIcon.classList.remove('change'); // Set the icon to bars (not X)
+            prodList.style.width = '100%';
         }
     });
 
