@@ -265,6 +265,7 @@
     object-fit: cover;
 }
 
+
 /* Parts of .Listing Section */
 .imageWrapper {
     position: relative; 
@@ -277,14 +278,15 @@
 }
 
 .imageWrapper:hover {
-    width: 300px;
-    height: 400px;
+    width: 200px;
+    height: 300px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5); 
  }
 
- .imageWrapper:hover .delete-button {
+.imageWrapper.show-delete-button:hover .delete-button {
     display: flex;
 }
+
 
 
 .image-item {
@@ -349,7 +351,7 @@
     margin-bottom: 5px;
 }
 #searchRec {
-    border-radius: 15px; /* Rounded corners, increase value for more rounded effect */
+    /* border-radius: 15px;  */
     margin: 0 10px; /* Left and right margin */
     padding: 8px 12px; /* Optional: adds padding inside the input field */
     border: 1px solid #ccc; /* Optional: defines border style */
@@ -370,6 +372,7 @@
 }
 #addPropBtn {
     width: 100px;
+    display: none;
 }
 
 #addPropBtn:hover,#searchBtn:hover, #sign_in_:hover {
