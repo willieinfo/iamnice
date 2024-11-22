@@ -34,7 +34,7 @@ async function setupInventory() {
                 <div id="${categnme}-container"></div>
                 <label for="fileInput${ctr + 1}" class="file-upload-label">
                     Add ${categnme} Image
-                    <input type="file" id="fileInput${ctr + 1}" accept="image/jpeg, image/png, image/bmp" />
+                    <input class="categBtn" type="file" id="fileInput${ctr + 1}" accept="image/jpeg, image/png, image/bmp" />
                 </label>
             </div>
             <div style="border-bottom: 2px solid; height: 10px; width: 100%; color: #3B5998"></div>
@@ -92,7 +92,7 @@ function getImageFile(fileInput, containerId) {
 
         // Add image after validation AddImage.js
         AddImage(file, 'images/' + containerId, containerId + '-container');
-        setupListings() // refresh the list
+        setupListings('') // refresh the list
     });
 }
 
@@ -121,7 +121,7 @@ export function Inventory(imgStorage, imgContainer) {
     function displayImage(url, itemRef) {
         const imgInven = document.createElement('img');
         imgInven.src = url;
-        imgInven.alt = "./Images/W.jpg";
+        imgInven.alt = "Item Image";
         imgInven.classList.add('image-item');
 
         const deleteIcon = document.createElement('i');
@@ -158,18 +158,27 @@ async function fetchListings(filterRecord = '') {
     const listingsCollection = collection(db, 'Listings'); 
     const listingsSnapshot = await getDocs(listingsCollection);
     
-    // Filter the listings if filterRecord is provided
-    const divListings = listingsSnapshot.docs.map(doc => ({
-        id: doc.id, 
-        categnme: doc.data().categnme ,
-        locaname: doc.data().locaname ,
-        maindesc: doc.data().maindesc ,
-        descript: doc.data().descript ,
-        itemprce: doc.data().itemprce ,
-        url_site: doc.data().url_site ,
-        sourcedb: doc.data().sourcedb
-    }));
+    // Get the listings and map them to an array
+    const divListings = listingsSnapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+            id: doc.id, 
+            categnme: data.categnme,
+            locaname: data.locaname,
+            maindesc: data.maindesc,
+            descript: data.descript,
+            itemprce: data.itemprce,
+            url_site: data.url_site,
+            sourcedb: data.sourcedb,
+            datereco: data.datereco ? data.datereco.toDate() : new Date() 
+            // Convert Firestore Timestamp to JavaScript Date
+        };
+    });
 
+    // Sort listings by createdAt date in descending order
+    divListings.sort((a, b) => b.datereco - a.datereco); // Descending order
+
+    // Filter the listings if a filterRecord is provided
     const filterString = String(filterRecord).toLowerCase();
 
     if (filterString && filterString.trim() !== '') {
@@ -189,39 +198,42 @@ async function fetchListings(filterRecord = '') {
     return divListings;
 }
 
-
 async function setupListings(filterRecord = '') {
     const divListings = await fetchListings(filterRecord);
     let invListings = ``;
-    let nInvCounter = 0;
+    let nItemList = 0;
+    let nTotalRec = 0;
 
     divListings.forEach((item) => {
-        nInvCounter++
-        invListings += `
-            <div class="liDiv" onclick="showListingForm('${item.id}')">
-                <li>
-                    ${item.categnme ? `<p id="p1">${item.categnme}</p>` : ''}
-                    ${item.locaname ? `        
-                    <div class="categnme-container">
-                        <p id="p2">${item.locaname}</p>
-                        ${item.sourcedb === 'Firestore' ? `<p class="storage">Storage</p>` : ''}
-                    </div>
-                ` : ''}        
-                    <br>
-                    ${item.maindesc ? `<p id="p3">${item.maindesc}</p>` : ''}
-                    ${item.descript ? `<p id="p4">${item.descript}</p>` : ''}
-                    ${item.itemprce ? `<p id="p5">Price: ${item.itemprce}</p>` : ''}
-                    ${item.url_site ? `<p id="p6" style="display:none;">${item.url_site}</p>` : ''}
-                </li>
-                <i class="fa fa-trash" id="delete-icon" onclick="deleteListing(event, '${item.id}','${item.sourcedb}','${item.url_site}')"></i> 
-            </div>
+        nTotalRec++
+        // Limit list to 10 only
+        if (nItemList < 10) {
+            nItemList++
+            invListings += `
+                <div class="liDiv" onclick="showListingForm('${item.id}')">
+                    <li>
+                        ${item.categnme ? `<p id="p1">${item.categnme}</p>` : ''}
+                        ${item.locaname ? `        
+                        <div class="categnme-container">
+                            <p id="p2">${item.locaname}</p>
+                            ${item.sourcedb === 'Firestore' ? `<p class="storage">Storage</p>` : ''}
+                        </div>
+                    ` : ''}        
+                        <br>
+                        ${item.maindesc ? `<p id="p3">${item.maindesc}</p>` : ''}
+                        ${item.descript ? `<p id="p4">${item.descript}</p>` : ''}
+                        ${item.itemprce ? `<p id="p5">Price: ${item.itemprce}</p>` : ''}
+                        ${item.url_site ? `<p id="p6" style="display:none;">${item.url_site}</p>` : ''}
+                    </li>
+                    <i class="fa fa-trash" id="delete-icon" onclick="deleteListing(event, '${item.id}','${item.sourcedb}','${item.url_site}')"></i> 
+                </div>
+            `;
+            // Call the function to append the image if url_site exists
+            if (item.url_site) {
+                displayListingImage(item.url_site, item.categnme, item.id, item.sourcedb);
+            }
+        }
 
-        `;
-
-        // Call the function to append the image if url_site exists
-        if (item.url_site) {
-            displayListingImage(item.url_site, item.categnme, item.id, item.sourcedb);
-         }
      });
 
     // Only add the header if there are any listings
@@ -238,15 +250,30 @@ async function setupListings(filterRecord = '') {
                         <i class="fa fa-plus"></i> Add
                     </button>
                 </div>
-            </div>` + invListings;
+            </div>` + invListings ;
+
+            if (filterRecord.trim() !== '') {
+                invListings += `<p id="p7">Click on Search to Refresh list</p>`;
+            }
+
     } else {
         invListings = 
                 `<div id="propTitle">
                     <span>No Property Listing Record</span>
-                    <button id="addPropBtn" onclick="showListingForm('')">Add Record</button>
-                </div>`;
+                    <div id="searchDiv">
+                        <input type="text" id="searchRec" spellcheck="false" placeholder="Search property">
+                        <button id="searchBtn" onclick="filterRecordList()">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                        <button id="addPropBtn" onclick="showListingForm('')">
+                            <i class="fa fa-plus"></i> Add
+                        </button>
+                    </div>
+                </div>
+                <p id="p7">Click on Search to Refresh List</p>
+                `;
     }
-    invListings+=`<p id="p7">Listing count: ${nInvCounter}</p>`
+    invListings+=`<p id="p7">Total Records: ${nTotalRec}  List Count: ${nItemList}</p>`
 
     document.getElementById('Listings').innerHTML = invListings;
 
@@ -273,7 +300,7 @@ function displayListingImage(url, categnme, docId, sourcedb) {
         // If no existing image, create a new image element
         const imgElement = document.createElement('img');
         imgElement.src = url;
-        imgElement.alt = "./Images/W.jpg";
+        imgElement.alt = "Item Image";
         imgElement.classList.add('image-item');
 
         const deleteIcon = document.createElement('i');
@@ -295,24 +322,25 @@ function displayListingImage(url, categnme, docId, sourcedb) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    setupListings('');  
-    
     // Bind the filter button event after the DOM has loaded
     const searchButton = document.getElementById('searchBtn');
     if (searchButton) {
         searchButton.addEventListener('click', filterRecordList);
     }
+    setupListings('');  
 });
 
 // This function is called when the user submits the search form
 window.filterRecordList = function() {
     const filterRecord = document.getElementById('searchRec').value;  // Get the input value
     setupListings(filterRecord);  // Call setupListings with the input value as filter
-    document.getElementById('searchRec').value = '';  // Optionally clear the input after the search
 }
 
 
 window.showListingForm = function(docId) {
+
+    if (guestName.toLowerCase() !== 'siteadmin') return
+
     if (document.getElementById('inventory-form')) {
         console.log("inventory-form exists");
         return; // If it already exists, do nothing
@@ -392,6 +420,7 @@ window.showListingForm = function(docId) {
             editRecordList(docId);
         } else {
             // Add new record
+            const currdate = new Date();
             const newListingData = {
                 categnme: document.getElementById('categList').value,
                 locaname: document.getElementById('locaname').value,
@@ -399,6 +428,7 @@ window.showListingForm = function(docId) {
                 descript: document.getElementById('descript').value,
                 itemprce: document.getElementById('itemprce').value,
                 url_site: document.getElementById('url_site').value,
+                datereco: currdate,
             };
             addRecordList(newListingData); // Add new record
         }
@@ -491,7 +521,7 @@ async function getListingRecord(docId) {
 export async function addRecordList(listingData) {
     try {
         const docRef = await addDoc(collection(db, 'Listings'), listingData);
-        setupListings() // refresh the list
+        setupListings('') // refresh the list
 
         console.log("Document written with ID: ", docRef.id);  // This is the auto-generated document ID
         return docRef.id; // You can use this ID later
@@ -511,7 +541,7 @@ async function editRecordList(docId) {
             itemprce : document.getElementById('itemprce').value ,
             url_site : document.getElementById('url_site').value
         });
-        setupListings() // refresh the list
+        setupListings('') // refresh the list
     } catch (e) {
         console.error("Error editing document: ", e);
     } 
@@ -530,7 +560,7 @@ window.deleteListing = async function(event, itemId, sourcedb, url_site) {
         try {
             await deleteDoc(doc(db, "Listings", itemId));
             console.log("Document deleted successfully.");
-            setupListings(); // Refresh the listing after deletion
+            setupListings(''); // Refresh the listing after deletion
         } catch (e) {
             console.error("Error deleting document: ", e);
         }
@@ -551,7 +581,7 @@ window.deleteListing = async function(event, itemId, sourcedb, url_site) {
                 // If metadata is found (i.e., file exists), delete the image
                 await deleteObject(storageRef);
                 console.log("Image deleted successfully.");
-                setupListings() // refresh the list
+                setupListings('') // refresh the list
             } catch (e) {
                 if (e.code === 'storage/object-not-found') {
                     // If file doesn't exist, handle accordingly
@@ -572,6 +602,62 @@ function getStoragePathFromUrl(downloadUrl) {
     return path;
 }
 
+let guestName=''
+document.getElementById('btnLogIn').addEventListener('click', async () => {
+    const btnLogIn = document.getElementById('btnLogIn');
+    const inputLogIn = document.getElementById('inputLogIn');
+    const labelLogIn = document.getElementById('labelLogIn');
+
+    if (btnLogIn.innerHTML === '<i class="fa fa-sign-in"></i> Log In') {
+        inputLogIn.style.display = 'block';
+        labelLogIn.style.display = 'none';
+
+        inputLogIn.focus();
+        btnLogIn.innerHTML = '<i class="fa fa-sign-in"></i> Submit';
+        
+    } else {
+        
+        btnLogIn.innerHTML = '<i class="fa fa-sign-in"></i> Log In';
+        inputLogIn.style.display = 'none';
+        labelLogIn.style.display = 'block';
+
+        if (inputLogIn.value.trim()==='') return
+
+        guestName=inputLogIn.value.trim()
+
+        if (guestName.toLowerCase()==='siteadmin') {
+            document.getElementById('addPropBtn').style.display = 'block';  
+    
+            const fileuploadlabels = document.querySelectorAll('.file-upload-label');
+            fileuploadlabels.forEach((fileLabel) => {
+                fileLabel.style.display = 'inline-block';
+            });
+
+            // Fetch all .liDiv .imageWrapper elements and apply the class to each
+            const liDivs = document.querySelectorAll('.liDiv');
+            liDivs.forEach((liDiv) => {
+                liDiv.classList.add('show-delete-icon');
+            });
+
+            const imageWrappers = document.querySelectorAll('.imageWrapper');
+            imageWrappers.forEach((imageWrapper) => {
+                imageWrapper.classList.add('show-delete-button');
+            });
+
+            labelLogIn.innerText=`Dear administrator, you may update your website.`
+
+        } else {
+            labelLogIn.innerText=`Hello ${guestName}, welcome to my website.`
+        }
+        btnLogIn.style.display='none'
+        inputLogIn.style.display = 'none';
+        labelLogIn.style.display = 'block';
+
+    }
+});
+
+
 // Remember, writing code is all about practice and patience—everyone starts somewhere. 
 // If you keep experimenting and asking questions, you’ll continue to improve. 
 
+// Anydesk # 1 460 755 671
