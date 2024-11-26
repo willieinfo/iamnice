@@ -649,6 +649,7 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
             sessionStorage.setItem('admin','true')
             document.getElementById('addPropBtn').style.display = 'block';  
             document.getElementById('settings').style.display = 'block';  
+            document.getElementById('settingshr').style.display = 'block';  
     
             const fileuploadlabels = document.querySelectorAll('.file-upload-label');
             fileuploadlabels.forEach((fileLabel) => {
