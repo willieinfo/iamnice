@@ -628,6 +628,7 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
     const btnLogIn = document.getElementById('btnLogIn');
     const inputLogIn = document.getElementById('inputLogIn');
     const labelLogIn = document.getElementById('labelLogIn');
+    const fromname = document.getElementById('fromname')
 
     if (btnLogIn.innerHTML === '<i class="fa fa-sign-in"></i> Log In') {
         inputLogIn.style.display = 'block';
@@ -647,6 +648,7 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
         if (guestName.toLowerCase()==='siteadmin') {
             sessionStorage.setItem('admin','true')
             document.getElementById('addPropBtn').style.display = 'block';  
+            document.getElementById('settings').style.display = 'block';  
     
             const fileuploadlabels = document.querySelectorAll('.file-upload-label');
             fileuploadlabels.forEach((fileLabel) => {
@@ -669,6 +671,7 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
         } else {
             sessionStorage.setItem('admin','false')
             labelLogIn.innerText=`Hello ${guestName}, welcome to my website.`
+            fromname.value=guestName
         }
         btnLogIn.style.display='none'
         inputLogIn.style.display = 'none';
