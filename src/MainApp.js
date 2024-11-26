@@ -33,7 +33,7 @@ async function setupInventory() {
                 <h3>${categnme}</h3>
                 <div id="${categnme}-container"></div>
                 <label for="fileInput${ctr + 1}" class="file-upload-label">
-                    Add ${categnme} Image
+                    Upload ${categnme} Image
                     <input class="categBtn" type="file" id="fileInput${ctr + 1}" accept="image/jpeg, image/png, image/bmp" />
                 </label>
             </div>
@@ -281,6 +281,26 @@ async function setupListings(filterRecord = '') {
         const inventoryHeight = document.querySelector('.Inventory').clientHeight;
         document.getElementById('Listings').style.height = `${inventoryHeight}px`;
     }    
+
+    // Check if user is admin and reapply the necessary styles
+    if (sessionStorage.getItem('admin') === 'true') {
+        document.getElementById('addPropBtn').style.display = 'block';  
+        const liDivs = document.querySelectorAll('.liDiv');
+        liDivs.forEach((liDiv) => {
+            liDiv.classList.add('show-delete-icon');
+        });
+
+        const fileuploadlabels = document.querySelectorAll('.file-upload-label');
+        fileuploadlabels.forEach((fileLabel) => {
+            fileLabel.style.display = 'inline-block';
+        });
+
+        const imageWrappers = document.querySelectorAll('.imageWrapper');
+        imageWrappers.forEach((imageWrapper) => {
+            imageWrapper.classList.add('show-delete-button');
+        });
+    }
+
 }
 
 // Modified function to append the image to the appropriate container
@@ -339,7 +359,8 @@ window.filterRecordList = function() {
 
 window.showListingForm = function(docId) {
 
-    if (guestName.toLowerCase() !== 'siteadmin') return
+    // if (guestName.toLowerCase() !== 'siteadmin') return
+    if (sessionStorage.getItem('admin') !== 'true') return
 
     if (document.getElementById('inventory-form')) {
         console.log("inventory-form exists");
@@ -616,16 +637,15 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
         btnLogIn.innerHTML = '<i class="fa fa-sign-in"></i> Submit';
         
     } else {
-        
         btnLogIn.innerHTML = '<i class="fa fa-sign-in"></i> Log In';
         inputLogIn.style.display = 'none';
         labelLogIn.style.display = 'block';
 
         if (inputLogIn.value.trim()==='') return
-
         guestName=inputLogIn.value.trim()
 
         if (guestName.toLowerCase()==='siteadmin') {
+            sessionStorage.setItem('admin','true')
             document.getElementById('addPropBtn').style.display = 'block';  
     
             const fileuploadlabels = document.querySelectorAll('.file-upload-label');
@@ -644,9 +664,10 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
                 imageWrapper.classList.add('show-delete-button');
             });
 
-            labelLogIn.innerText=`Dear administrator, you may update your website.`
+            labelLogIn.innerText=`Hello, you may now update your website.`
 
         } else {
+            sessionStorage.setItem('admin','false')
             labelLogIn.innerText=`Hello ${guestName}, welcome to my website.`
         }
         btnLogIn.style.display='none'
@@ -655,6 +676,15 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
 
     }
 });
+
+
+// document.getElementById('colorPicker').addEventListener('input', function(event) {
+//     // Change the CSS variable when the color is picked
+//     document.documentElement.style.setProperty('--main-bg-color', event.target.value);
+// });
+
+// Change the value of the CSS variable
+// document.documentElement.style.setProperty('--main-bg-color', 'rgb(255, 99, 71)');  // Tomato red
 
 
 // Remember, writing code is all about practice and patience—everyone starts somewhere. 
