@@ -81,7 +81,7 @@
 .socialMedia {
     padding: 0;
     margin:0;
-    background-color: #0077cc;
+    background-color: var(--main-bg-color);
     justify-content: center; 
     align-items: center;
 }
@@ -117,7 +117,7 @@
 
 }
 .socialMedia i:hover {
-    background-color: darkblue;
+    background-color: var(--darker-bg-color);
 }
 
 #email-form {

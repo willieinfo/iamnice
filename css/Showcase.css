@@ -30,7 +30,7 @@
     width: 100%;
     border-bottom: .5px solid;
     margin-bottom: 5px;
-    background-image: linear-gradient(to bottom, #f0f8ff, #2973af); 
+    background-image: linear-gradient(to bottom, #f0f8ff, var(--main-bg-color)); 
 }
 .topSection h2 {
     padding: 0;
@@ -366,7 +366,7 @@
     margin: 0 10px 0 0;
     color: white;
     border: none;
-    background-color: #3B5998;
+    background-color: var(--second-bg-color);
     cursor: pointer;
     width: 180px;
 }
@@ -376,7 +376,7 @@
 }
 
 #addPropBtn:hover,#searchBtn:hover, #sign_in_:hover {
-    background-color:#55ACEE;
+    background-color:var(--second-bg-color);
 }
 
 
