@@ -32,7 +32,7 @@
         .file-upload-label {
             /* display: inline-block; */
             padding: 8px 8px;
-            color: blue;
+            color: black;
             cursor: pointer;
             font-size: 12px;
             width: auto;
@@ -44,7 +44,7 @@
 
         .file-upload-label:hover {
             color:white;
-            background-color:#55ACEE
+            background-color: var(--second-bg-color)
         }
 
         .file-upload-label input {
@@ -86,7 +86,7 @@
         .Listings {
             border-left: 1px solid; 
             flex: 0 0 40%; 
-            background-color: rgb(59, 89, 152);
+            background-color: var(--second-bg-color);
             padding: 10px;
             color: white;
             height: 100%;  
@@ -109,7 +109,7 @@
             position: sticky;
             top: 0;
             z-index: 1;
-            background-color: #3B5998;
+            background-color: var(--main-bg-color);
         }
 
         #fixedAddBtn {
@@ -250,8 +250,8 @@
         <a href="#Portfolio" onclick="handleLinkClick()">Portfolio</a>
         <!-- <a href="#AboutMe"  onclick="handleLinkClick()">About Me</a> -->
         <a href="#Contact"  onclick="handleLinkClick()">Contact</a>
-        <hr>
-        <a href="#settings" onclick="handleLinkClick()">Settings</a>
+        <hr id="settings">
+        <a href="#settings" id="settings" onclick="setUserColors()">Settings</a>
         <!-- <a href="#logout" onclick="handleLinkClick()">Log Out</a> -->
         
     </div>
@@ -537,14 +537,18 @@
 
     });
 
-    // document.querySelector('fa fa-facebook').addEventListener('click' , ()=> {
-    // })
     document.querySelector('.fa-facebook').addEventListener('click', () => {
         window.open('https://www.facebook.com/profile.php?id=100094091657200', '_blank');
     });
     document.querySelector('.fa-twitter').addEventListener('click', () => {
         window.open('https://www.facebook.com/meetyourproperty/', '_blank');
     });
+
+    function setUserColors() {
+        document.documentElement.style.setProperty('--main-bg-color', 'rgb(255, 99, 71)')
+        document.documentElement.style.setProperty('--second-bg-color', 'rgb(255, 146, 94)')
+        document.documentElement.style.setProperty('--darker-bg-color', 'rgb(221, 72, 0)')
+    }
 
 </script>  
 
