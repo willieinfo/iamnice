@@ -11,7 +11,7 @@ body {
     flex-direction: column; /* Stack children vertically */
 }
 
-#settings {
+#settings, #settingshr {
     display: none;
 }
 /* SideNav Elements */
