@@ -120,6 +120,3 @@ export async function setUserColor() {
     }
 }
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     setUserColor();
-// });
