@@ -5,8 +5,6 @@ import { collection, getDocs, addDoc, getDoc, setDoc, doc, deleteDoc } from "htt
 import { app, db } from "./firestore-config.js";
 import { AddImage } from './AddImage.js';
 
-// const db = getFirestore(app);
-
 // Fetch Category data
 async function fetchCategories() {
     const categoriesCollection = collection(db, 'Category'); 
@@ -650,6 +648,7 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
             document.getElementById('addPropBtn').style.display = 'block';  
             document.getElementById('settings').style.display = 'block';  
             document.getElementById('settingshr').style.display = 'block';  
+            document.getElementById('Settings').style.display = 'flex';  
     
             const fileuploadlabels = document.querySelectorAll('.file-upload-label');
             fileuploadlabels.forEach((fileLabel) => {
@@ -680,6 +679,11 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
 
     }
 });
+
+// document.getElementById('settings').addEventListener('click', (e) => {
+//     e.preventDefault();  // Prevent the default anchor behavior
+//     Settings(); // Call the settings function
+// });
 
 
 // document.getElementById('colorPicker').addEventListener('input', function(event) {
