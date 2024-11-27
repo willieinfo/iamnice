@@ -149,12 +149,12 @@ label {
     width: 90%;
     
 }
-#btnDiv {
+/* #btnDiv {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-}
+} */
 #sendBtn {
     height: 30px;
     width: 140px;

@@ -1,8 +1,8 @@
-:root {
+/* :root {
     --main-bg-color: rgb(0, 64, 128);
     --second-bg-color: rgb(59, 89, 152);
     --darker-bg-color: darkblue;
-}
+} */
 
 body {
     margin: 0;
@@ -11,7 +11,7 @@ body {
     flex-direction: column; /* Stack children vertically */
 }
 
-#settings, #settingshr {
+#Settings, #settingshr, #settings {
     display: none;
 }
 /* SideNav Elements */
@@ -135,7 +135,7 @@ body {
 }
 
 /* Category Names */
-.sectionHeader {
+.sectionHeader, .settingSection {
     display: flex; 
     justify-content: flex-end; 
     align-items: center; /* Center content vertically */
@@ -149,7 +149,7 @@ body {
     margin-bottom: 10px;
 }
 
-.sectionHeader h2 {
+.sectionHeader h2, .settingSection h2 {
     margin: 0 30px 0 0; 
     color: white;
 }
