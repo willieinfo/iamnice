@@ -9,10 +9,73 @@
     <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/dist/date-fns.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    <link rel="stylesheet" href="./css/MainApp.css">
+    <style>
+        :root {
+            --main-bg-color: rgb(0, 64, 128); /* Default */
+            --second-bg-color: rgb(59, 89, 152); /* Default */
+            --darker-bg-color: darkblue; /* Default */
+        }
+
+        /* Initially hide the body content */
+        #mySidenav, .mainWrapper {
+            visibility: hidden;
+        }
+        
+        /* Full-screen loading overlay */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            z-index: 9999;
+        }
+
+        /* Optional: Add a spinner icon (FontAwesome) */
+        #loading-spinner {
+            margin-right: 10px;
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }        
+    </style>
+
+
+    <script type="module">
+        import { setUserColor } from './src/Settings.js';  // Import the function from the module
+
+        async function applyColorsAndShowContent() {
+            // Apply user color preferences
+            await setUserColor();
+
+            // Hide the loading screen once the colors are applied
+            document.getElementById('loading-overlay').style.display = 'none';
+
+            // Once colors are applied, make the body visible
+            document.getElementById('mySidenav').style.visibility = 'visible';
+            document.querySelector('.mainWrapper').style.visibility = 'visible';
+        }
+
+        // Run the function once the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            applyColorsAndShowContent();
+        });
+    </script>
+
     <link rel="stylesheet" href="./css/Showcase.css">
     <link rel="stylesheet" href="./css/ListForm.css">
     <link rel="stylesheet" href="./css/Contact.css">
+    <link rel="stylesheet" href="./css/Settings.css">
+    <link rel="stylesheet" href="./css/MainApp.css">
     
     
     <!-- <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"></script> -->
@@ -20,7 +83,6 @@
     <title>Meet Your Property</title>
 
     <style>
-
         /* Inventory Images */
         #inventory-container {
             display: flex;
@@ -144,7 +206,7 @@
         }
         .liDiv:hover {
             background-color: var(--second-bg-color);
-            color:black;
+            color:white;
         }
         /* .liDiv:hover #delete-icon {
             display: flex;
@@ -234,6 +296,14 @@
     </style>
 </head>
 <body>
+    <!-- Loading overlay screen -->
+    <div id="loading-overlay">
+        <div id="loading-spinner">
+            <i class="fa fa-spinner"></i> <!-- FontAwesome spinner icon -->
+        </div>
+        Loading, please wait...
+    </div>
+    
     <div id="mySidenav" class="sidenav">
         <!-- <div class="image-wrapper">
             <img src="./Images/RemaxLogo1.JPG" alt="RTRG">
@@ -250,7 +320,7 @@
         <a href="#Portfolio" onclick="handleLinkClick()">Portfolio</a>
         <a href="#Contact"  onclick="handleLinkClick()">Contact</a>
         <hr id="settingshr">
-        <a href="#settings" id="settings" onclick="setUserColors()">Settings</a>
+        <a href="#Settings" id='settings' onclick="handleLinkClick()">Settings</a>
         
         
     </div>
@@ -416,6 +486,30 @@
 
                 </div>
             </div>
+
+            <div class="Settings" id="Settings">
+                <div class="settingSection">
+                    <h2>Settings</h2>
+                </div>       
+                <div id="colorsDiv">
+                    <p>Choose Theme Color</p>
+                    <div class="grpColorDivs">
+                        <div id="blueDiv"></div>
+                        <div id="greenDiv"></div>
+                        <div id="violetDiv"></div>
+                    </div>
+                    <div class="grpColorDivs">
+                        <div id="maroonDiv"></div>
+                        <div id="redDiv"></div>
+                        <div id="tomatoDiv"></div>
+                    </div>
+                    <div id="btnDiv">
+                        <button type="submit" id="saveBtn">Save</button>
+                        <button type="button" id="cancelBtn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
             <footer>
                 <div class="logoWinfoPlus">
                     <img src="./Images/InfoPlus.png" alt="Web InfoPlus">
@@ -543,20 +637,12 @@
         window.open('https://www.facebook.com/meetyourproperty/', '_blank');
     });
 
-    function setUserColors() {
-        document.documentElement.style.setProperty('--main-bg-color', 'rgb(255, 99, 71)')
-        document.documentElement.style.setProperty('--second-bg-color', 'rgb(255, 146, 94)')
-        document.documentElement.style.setProperty('--darker-bg-color', 'rgb(221, 72, 0)')
-    }
 
 </script>  
-
+<script type="module" src="./src/Settings.js"></script>
 <script type="module" src="./src/MainApp.js"></script> 
 <script type="module" src="./src/AddImage.js"></script>
 <script type="module" src="./src/Contact.js"></script>
-
-<!-- <label for="colorPicker">Choose a background color:</label>
-<input type="color" id="colorPicker" value="#004080"> -->
 
 </body>
 </html>
