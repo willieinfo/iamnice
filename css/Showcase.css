@@ -392,7 +392,12 @@
     .card {
         width: 80%;
     }
- 
+    .InvenList, .showcaseContents {
+        flex-direction: column;
+        flex-wrap: wrap;
+        height:auto;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -416,10 +421,10 @@
         object-fit: contain;
     }
 
-    .InvenList {
+    /* .InvenList {
         flex-direction: column;
         flex-wrap: wrap;
-    }
+    } */
     .Inventory {
         border-right: none;
     }
