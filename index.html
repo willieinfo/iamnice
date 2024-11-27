@@ -305,26 +305,24 @@
     </div>
     
     <div id="mySidenav" class="sidenav">
-        <!-- <div class="image-wrapper">
-            <img src="./Images/RemaxLogo1.JPG" alt="RTRG">
-        </div> -->
-        <div class="image-wrapper">
-            <div class="chip">
-                <img src="./Images/Remax_ID.jpg" alt="Picture ID" width="96" height="96">
-                <span>RE<em style="color:orangered; font-weight: bold;">/</em>MAX CAPITAL</span>
+        <div id="content">
+            <div class="image-wrapper">
+                <div class="chip">
+                    <img src="./Images/Remax_ID.jpg" alt="Picture ID" width="96" height="96">
+                    <span>RE<em style="color:orangered; font-weight: bold;">/</em>MAX CAPITAL</span>
+                </div>
             </div>
+            <hr>
+            <a href="#ShowCase" onclick="handleLinkClick()">Showcase</a>
+            <a href="#InvenSect" onclick="handleLinkClick()">Inventory</a>
+            <a href="#Portfolio" onclick="handleLinkClick()">Portfolio</a>
+            <a href="#Contact" onclick="handleLinkClick()">Contact</a>
+            <hr id="settingshr">
+            <a href="#Settings" id="settings" onclick="handleLinkClick()">Settings</a>
         </div>
-        <hr>
-        <a href="#ShowCase" onclick="handleLinkClick()">Showcase</a>
-        <a href="#InvenSect" onclick="handleLinkClick()">Inventory</a>
-        <a href="#Portfolio" onclick="handleLinkClick()">Portfolio</a>
-        <a href="#Contact"  onclick="handleLinkClick()">Contact</a>
-        <hr id="settingshr">
-        <a href="#Settings" id='settings' onclick="handleLinkClick()">Settings</a>
-        
-        
+    
+        <div id="viewCounter"></div> <!-- Make sure it's directly inside #mySidenav -->
     </div>
-
 
     <div class="mainWrapper">
         <div class="ShowcaseWrapper">
@@ -639,6 +637,40 @@
 
 
 </script>  
+
+<script type="module">
+    import { db } from "./src/firestore-config.js";
+    import { doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    async function updateViewCount() {
+        // Reference to the document in Firestore
+        const docRef = doc(db, 'ViewsCtr', 'viewCounter');  
+
+        // Get the document snapshot
+        const docSnap = await getDoc(docRef);  
+
+        let ctr = 0;  // Default value if document does not exist
+
+        if (docSnap.exists()) {
+            // If the document exists, get the current count and increment it
+            ctr = docSnap.data().countView || 0; // Use default 0 if countView is undefined
+            ctr++;
+            // Update the document with the new count
+            await updateDoc(docRef, { countView: ctr });
+        } else {
+            // If the document does not exist, create it with countView set to 1
+            await setDoc(docRef, { countView: 1 });
+            ctr = 1;
+        }
+
+        // Update the view count on the page
+        document.getElementById('viewCounter').innerText = `Views: ${ctr}`;
+    }
+
+    // Call the function to update view count
+    updateViewCount();
+</script>
+
 <script type="module" src="./src/Settings.js"></script>
 <script type="module" src="./src/MainApp.js"></script> 
 <script type="module" src="./src/AddImage.js"></script>
