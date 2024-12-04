@@ -1,6 +1,6 @@
 import { setDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { db } from "./firestore-config.js";
-import { MessageBox } from "./MessageBox.js";
+// import { MessageBox } from "./MessageBox.js";
 
 // Variable to store the previous theme
 let previousTheme = {
@@ -33,8 +33,8 @@ document.getElementById('saveBtn').addEventListener('click', async () => {
         const docRef = doc(db, 'UserColor', 'colorSettings'); // Reference to the specific document
         await setDoc(docRef, currentTheme); // Save the color data
 
-        console.log("Theme saved successfully!");
-        MessageBox("Theme saved successfully!",'Ok','Color Theme');
+        showNotification("Theme saved successfully!");
+        // MessageBox("Theme saved successfully!",'Ok','Color Theme');
     } catch (error) {
         console.error("Error saving theme: ", error);
     }

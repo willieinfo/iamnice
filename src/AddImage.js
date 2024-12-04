@@ -4,7 +4,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstati
 import { app } from "./firestore-config.js";
 
 import { Inventory, addRecordList } from "./MainApp.js";
-import { MessageBox } from "./MessageBox.js";
+// import { MessageBox } from "./MessageBox.js";
 
 const storage = getStorage(app);
 
@@ -13,7 +13,8 @@ export async function AddImage(imgFile,imgStorage, imgContainer) {
     
     try {
         await uploadBytes(storageRef, imgFile);
-        MessageBox("Image uploaded successfully!",'Ok','Uploaded');
+        console.log("Image uploaded successfully!")
+        // MessageBox("Image uploaded successfully!",'Ok','Uploaded');
         //Inventory(imgStorage, imgContainer); // Refresh the images after upload
 
         const url_site = await getDownloadURL(storageRef);

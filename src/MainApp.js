@@ -307,14 +307,6 @@ function displayListingImage(url, categnme, docId, sourcedb) {
     const container = document.getElementById(containerId);
 
     if (container) {
-        // Check if the image already exists in the container by comparing the URL
-        const existingImage = container.querySelector(`img[src="${url}"]`);
-        if (existingImage) {
-            // If the image already exists, don't add it again
-            console.log("Image already exists in the container, skipping.");
-            return;
-        }
-
         // If no existing image, create a new image element
         const imgElement = document.createElement('img');
         imgElement.src = url;
@@ -325,6 +317,13 @@ function displayListingImage(url, categnme, docId, sourcedb) {
         deleteIcon.classList.add('fa', 'fa-trash', 'delete-button'); 
         deleteIcon.onclick = (event) => deleteListing(event, docId, sourcedb, url);
 
+        // Check if the image already exists in the container by comparing the URL
+        const existingImage = container.querySelector(`img[src="${url}"]`);
+        if (existingImage) {
+            // If the image already exists, don't add it again
+            console.log("Image already exists in the container, skipping.");
+            return;
+        }
 
         const imageWrapper = document.createElement('div');
         imageWrapper.appendChild(imgElement); 
@@ -541,7 +540,7 @@ export async function addRecordList(listingData) {
     try {
         const docRef = await addDoc(collection(db, 'Listings'), listingData);
         setupListings('') // refresh the list
-
+        showNotification('New property added successfully!')
         console.log("Document written with ID: ", docRef.id);  // This is the auto-generated document ID
         return docRef.id; // You can use this ID later
     } catch (e) {
@@ -579,6 +578,7 @@ window.deleteListing = async function(event, itemId, sourcedb, url_site) {
         try {
             await deleteDoc(doc(db, "Listings", itemId));
             console.log("Document deleted successfully.");
+            showNotification("Document deleted successfully.");
             setupListings(''); // Refresh the listing after deletion
         } catch (e) {
             console.error("Error deleting document: ", e);
@@ -600,6 +600,7 @@ window.deleteListing = async function(event, itemId, sourcedb, url_site) {
                 // If metadata is found (i.e., file exists), delete the image
                 await deleteObject(storageRef);
                 console.log("Image deleted successfully.");
+                showNotification("Image deleted successfully.");
                 setupListings('') // refresh the list
             } catch (e) {
                 if (e.code === 'storage/object-not-found') {

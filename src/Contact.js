@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Reset the form fields after successful email sending
                         form.reset();
 
-                        alert('Email sent successfully!');
+                        showNotification('Email sent successfully!');
                     }, (error) => {
                         console.error('Failed to send email:', error);
                         alert('Failed to send email. Please try again.');
