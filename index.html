@@ -351,6 +351,12 @@
                     <h2>Eunice Joy A. Estrada</h2>
                     <p>Real Estate Broker / Owner</p>
                 </section>
+                <div class="showcaseContents" >
+                    <video autoplay muted loop>
+                        <source src="./Images/video1.mp4" type="video/mp4">
+                        <p>It seems your browser does not support videos. <a href="./Images/video1.mp4" download>Download the video here</a>.</p>
+                    </video>
+                </div>
                 <div class="showcaseContainer">
                     <div class="showcaseContents" >
                         
@@ -676,7 +682,7 @@
             ctr = docSnap.data().countView || 0; // Use default 0 if countView is undefined
             ctr++;
             // Update the document with the new count
-            await updateDoc(docRef, { countView: ctr });
+            //await updateDoc(docRef, { countView: ctr });
         } else {
             // If the document does not exist, create it with countView set to 1
             await setDoc(docRef, { countView: 1 });
