@@ -53,6 +53,13 @@
     max-height:min-content;
 }
 
+.showcaseContents video {
+    width: 100%;
+    height: calc(100%-200px);
+    object-fit: cover; /* Ensures the video fills the container proportionally */
+    display: block; /* Removes any inline spacing */
+}
+
 #leftImage {
     display: flex;
     flex: 0 0 40%; 
