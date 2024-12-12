@@ -682,7 +682,7 @@
             ctr = docSnap.data().countView || 0; // Use default 0 if countView is undefined
             ctr++;
             // Update the document with the new count
-            //await updateDoc(docRef, { countView: ctr });
+            await updateDoc(docRef, { countView: ctr });
         } else {
             // If the document does not exist, create it with countView set to 1
             await setDoc(docRef, { countView: 1 });
