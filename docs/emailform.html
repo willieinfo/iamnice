@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            emailjs.init('GFktXS-2plDn9lgcr'); // Initialize EmailJS
+            console.log(emailjs);  // Debugging
+        });
+    </script>
+    <title>Test Email Template</title>
+
+    <style>
+    #email-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;  
+        align-items: center;         
+        padding: 20px;
+
+        height: fit-content;
+        width: 400px;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center the form on the page */
+        
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 14px;
+        border: 1px solid;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        padding: 0;
+
+        background-color: rgba(245,245,245,0.9);
+        /* background-color: '#fff'; */
+        z-index: 1000;
+        overflow: auto;
+    }
+
+    label {
+        margin-left: 5px;
+    }
+    #inputSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2px;
+        margin: 0;
+        width: 90%;
+        
+    }
+    #btnDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+    #sendBtn, #cancelBtn {
+        height: 30px;
+        width: 140px;
+        margin: 10px;
+        background-color: rgb(0,64,128);
+        color: white;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+    }
+    input {
+        width: 100%;
+        height: 30px;
+        margin: 2px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        padding: 0 10px;  /* Reapply the padding that was removed from the form */
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #cancelBtn:hover {
+        background-color: red;
+    }
+    #sendBtn:hover {
+        background-color:#55ACEE;
+    }
+    #titleBar {
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        width: 100%;
+        height: 30px;
+        background-color: rgb(0,64,128);
+        color: white;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    textarea {
+        margin-top: 5px;
+        min-height: 30px;
+        max-height: 180px;
+        min-width: 300px;
+        padding: 10px;
+    }
+    textarea {
+        width: 100%;  
+        max-width: 100%; 
+        box-sizing: border-box; 
+        height: 120px;
+        resize: none; 
+    }
+
+    @media (max-width: 600px) {
+        #email-form {
+            width:90%
+        }
+    }
+
+
+    </style>
+</head>
+<body>
+
+    <form id="email-form" style="display: flex">
+        <div id="titleBar">Email Message</div>
+        <br>
+        <div id="inputSection">
+            <label for="message_">Message</label>
+            <textarea type="text" id="message_" spellcheck="false"  required></textarea>
+
+            <label for="fromname">From:</label>
+            <input type="text" id="fromname"  spellcheck="false">
+
+            <label for="emailfrom">Contact Email:</label>
+            <input type="email" id="emailfrom"  spellcheck="false" required>
+
+            <div id="btnDiv">
+                <button id="sendBtn">Send</button>
+                <button id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        // document.getElementById('cancelBtn').addEventListener('click', () => {
+        //     document.getElementById('email-form').remove(); 
+        // });
+
+        // Option 1
+        // document.getElementById('sendBtn').addEventListener('click', function(event) {
+        //     event.preventDefault();  // Prevent form submission
+            
+        //     const recipient = document.getElementById('send_to_').value;
+        //     const message = document.getElementById('message_').value;
+
+        //     const cSubject = 'My interest in your portfolio';
+        //     const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(cSubject)}&body=${encodeURIComponent(message)}`;
+
+
+        //     // Open the user's email client
+        //     window.location.href = mailtoLink;
+        // });
+
+
+        // Option 2 :EmailJS send function
+        document.getElementById('cancelBtn').addEventListener('click', () => {
+            document.getElementById('email-form').remove(); 
+        });
+
+        document.getElementById('sendBtn').addEventListener('click', function(event) {
+            event.preventDefault();  // Prevent form submission
+            
+            // Get values from the form
+            // const send_to_ = document.getElementById('send_to_').value;
+            const message_ = document.getElementById('message_').value;
+            const subject_ = "Inquiry about your Website";  // Replace with custom subject or get from input
+            const fromname = document.getElementById('fromname').value;  
+            const emailfrom = document.getElementById('emailfrom').value; 
+
+            // Prepare the parameters for EmailJS
+            const templateParams = {
+                to_email: 'willie.estrada@regent-trg.com',    // owner's email
+                message: message_,     // Message content
+                subject: subject_,     // Subject of the email
+                from_name: fromname,   // Sender's Name
+                emailfrom: emailfrom   // Sender's email
+            };
+
+            // Send email using EmailJS
+            emailjs.send('service_h1fn1di', 'template_tvkz92s', templateParams)
+                .then((response) => {
+                    console.log('Email sent successfully:', response);
+                    alert('Email sent successfully!');
+                }, (error) => {
+                    console.error('Failed to send email:', error);
+                    alert('Failed to send email. Please try again.');
+                });
+        });
+
+
+        // OPTION using Node.js
+        // const nodemailer = require('nodemailer');
+        // const transporter = nodemailer.createTransport({
+        //     service: 'gmail',
+        //     auth: {
+        //         user: 'your-email@gmail.com',
+        //         pass: 'your-email-password'
+        //     }
+        // });
+
+        // const mailOptions = {
+        //     from: 'your-email@gmail.com',
+        //     to: recipient,  // The email address from the form
+        //     subject: cSubject,  // Your subject
+        //     text: message  // The body of the email
+        // };
+
+        // transporter.sendMail(mailOptions, (error, info) => {
+        //     if (error) {
+        //         console.log('Error:', error);
+        //     } else {
+        //         console.log('Email sent:', info.response);
+        //     }
+        // });
+
+    </script>
+</body>
+</html>

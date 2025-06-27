@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="./src/Contact.js"></script>
+
+    <link rel="stylesheet" href="./css/Contact.css">
+    <link rel="stylesheet" href="./css/Showcase.css">
+
+    
+    <title>EmailJS Test</title>
+</head>
+<body>
+    <div class="Contact" id="Contact">
+        <div class="sectionHeader">
+            <h2>Contact</h2>
+        </div>
+
+        <div class="contactMain">
+            <div class="contactImg">
+                <div class="socialMedia">
+                    <span>
+                        <i class="fa fa-facebook" ></i> 
+                        <i class="fa fa-twitter" ></i> 
+                    </span>
+                </div>
+                <img src="./Images/Eunice Remax Main page.jpg" alt="">
+            </div>
+            <div class="contactForm">
+                <form id="email-form" style="display: flex">
+                    <div id="titleBar">Email Message</div>
+                    <br>
+                    <div id="inputSection">
+                        <label for="message_">Message</label>
+                        <textarea type="text" id="message_" spellcheck="false"  required></textarea>
+            
+                        <label for="fromname">From:</label>
+                        <input type="text" id="fromname"  spellcheck="false">
+            
+                        <label for="emailfrom">Contact Email:</label>
+                        <input type="email" id="emailfrom"  spellcheck="false" required>
+            
+                        <div id="btnDiv">
+                            <button id="sendBtn">Send Email Message</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="map" style="height: 500px; width: 100%;">
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2730.5867284589845!2d121.03577268348337!3d14.562979851934989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c85493400c75%3A0xc179fb618cb6c453!2sRockwell%20Center!5e0!3m2!1sen!2sph!4v1731979686899!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2730.5867284589845!2d121.03577268348337!3d14.562979851934989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c85493400c75%3A0xc179fb618cb6c453!2sRockwell%20Center!5e0!3m2!1sen!2sph!4v1731979686899!5m2!1sen!2sph&zoomControl=false&draggable=false" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                </div>
+            
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 14.562979, lng: 121.035772},
+          zoom: 16
+        });
+    
+        google.maps.event.addListener(map, 'click', function(event) {
+          alert('You clicked on: ' + event.latLng);
+        });
+      }
+    </script>
+    
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+    
+</body>
+</html>

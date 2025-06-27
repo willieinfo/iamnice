@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Notification</title>
+  
+  <style>
+    /* Notification styles */
+    .notification {
+      position: fixed;
+      top: 100px;
+      right: -300px; /* Start offscreen */
+      background-color: rgb(0, 64, 128);
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      transition: right 0.5s ease; /* Slide-in effect */
+      z-index: 1000;
+    }
+
+    /* For the notification when it's visible */
+    .notification.show {
+      right: 20px; /* Visible position */
+    }
+
+    #notification-message{
+      padding: 10px;
+      margin:0;
+      border: 1px solid;
+      color: white;
+      border-radius: 5px;
+    }
+  </style>
+
+<script>
+    // Function to show the notification
+    function showNotification(cMessage) {
+        const notification = document.getElementById("notification");
+        const notificationMessage = document.getElementById("notification-message");
+
+        // Display the notification with a sliding effect
+        notificationMessage.innerHTML=`<i class="fa fa-check"></i>  ${cMessage}`;
+        notification.classList.add("show");
+
+        // Set a time delay for how long the notification will stay visible (e.g., 3 seconds)
+        setTimeout(function() {
+            notification.classList.remove("show");
+        }, 3000); // 3000ms = 3 seconds
+    }
+
+</script>
+
+</head>
+<body>
+
+  <!-- Notification div -->
+  <div id="notification" class="notification">
+    <p id="notification-message"></p>
+  </div>
+
+  <button onclick="showNotification('Record has been added successfully!')">Show Notification</button>
+
+  <!-- '&#x1F44D' -->
+  <!-- <script src="script.js"></script> -->
+</body>
+</html>

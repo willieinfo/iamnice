@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/dist/date-fns.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
+    <link rel="stylesheet" href="./css/Showcase.css">
+    <link rel="stylesheet" href="./css/Inventory.css">
+    <!-- <link rel="stylesheet" href="./css/ListForm.css"> -->
+    <link rel="stylesheet" href="./css/Contact.css">
+    <link rel="stylesheet" href="./css/Settings.css">
+    <link rel="stylesheet" href="./css/MainApp.css">
+
+    <title>Meet Your Property</title>
+
+</head>
+<body>
+    <div id="notification" class="notification">
+        <p id="notification-message"></p>
+    </div>
+    
+    <!-- Loading overlay screen -->
+    <div id="loading-overlay">
+        <div id="loading-spinner">
+            <i class="fa fa-spinner"></i> <!-- FontAwesome spinner icon -->
+        </div>
+        Loading, please wait...
+    </div>
+    
+    <div id="mySidenav" class="sidenav">
+        <div id="content">
+            <div class="image-wrapper">
+                <div class="chip">
+                    <img src="./Images/Remax_ID.jpg" alt="Picture ID" width="96" height="96">
+                    <span>RE<em style="color:orangered; font-weight: bold;">/</em>MAX CAPITAL</span>
+                </div>
+            </div>
+            <hr>
+            <a href="#ShowCase" onclick="handleLinkClick()">Showcase</a>
+            <a href="#InvenSect" onclick="handleLinkClick()">Inventory</a>
+            <a href="#Contact" onclick="handleLinkClick()">Contact</a>
+            <a href="#Portfolio" onclick="handleLinkClick()">Portfolio</a>
+            <hr id="settingshr">
+            <a href="#Settings" id="settings" onclick="handleLinkClick()">Theme</a>
+        </div>
+    
+        <div id="viewCounter"></div> <!-- Make sure it's directly inside #mySidenav -->
+    </div>
+
+    <div class="mainWrapper">
+        <div class="ShowcaseWrapper">
+            <div class="header">
+                <div id="conMenuIcon" class="conMenuIcon change" onclick="toggleMenu(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+
+                <div class="headerLogIn">
+                    <label id="labelLogIn">
+                        You may log in here as my guest: </label>
+                    <input type="text" id="inputLogIn" placeholder="Your name here.." style="display: none" >
+                    <button id="btnLogIn"><i class="fa fa-sign-in"></i> Log In</button>
+                </div>
+            </div>
+            
+            <div class="Showcase" id="ShowCase">
+                <section class='topSection' >
+                    <h2>Eunice Joy A. Estrada</h2>
+                    <p>Real Estate Broker / Owner</p>
+                </section>
+                <div class="showcaseContents" >
+                    <video autoplay muted loop>
+                        <source src="./Images/video1.mp4" type="video/mp4">
+                        <p>It seems your browser does not support videos. <a href="./Images/video1.mp4" download>Download the video here</a>.</p>
+                    </video>
+                </div>
+                <div class="showcaseContainer">
+                    <div class="showcaseContents" >
+                        
+                        <div id="leftImage">
+                            <img src='./Images/Eunice Remax page 3.jpg' alt="leftPicture">
+                        </div>
+
+                        <div id="rightCards">
+                            <div class="cardBottom">
+                               <h4 id="subTitles">Property Showcase</h4>
+                            </div> 
+                            <div class="card">
+                                <img src="./Images/condominium1.jpg" alt="">
+                                <p>High End Condos</p>
+                            </div>
+                            <div class="card">
+                                <img src="./Images/house5.jpg" alt="">
+                                <p>Affordable Houses</p>
+                            </div>
+                            <div class="card">
+                                <img src="./Images/townhouse1.jpg" alt="">
+                                <p>Townhouse 2 Toilet and Bath</p>
+                            </div>
+                            <div class="card">
+                                <img src="./Images/townhouse2.jpg" alt="">
+                                <p>Townhouse 2 Bedrooms</p>
+                            </div>
+                            <div class="cardBottom">
+                                <img src="./Images/condominium3.jpg" alt="">
+                                 <p>Project Selling</p>
+                            </div>                       
+                        </div> 
+                    </div> 
+                </div>
+            </div>
+            <div class="sectionHeader" id="InvenSect">
+                <h2>Inventory</h2>
+            </div>
+
+            <div class="InvenList" id="InvenList">
+                <!-- <div class="Inventory" id="Inventory">
+                    <div id="divTownhouses" class="image-section">
+                        <h4>Townhouses</h4>
+                    </div>
+                    <div id="divHouses" class="image-section">
+                        <h4>Houses</h4>
+                    </div>
+                    <div id="divCondominiums" class="image-section">
+                        <h4>Condominiums</h4>
+                    </div>
+                    <div id="divLots" class="image-section">
+                        <h4>Lots</h4>
+                    </div>
+                </div> -->
+                <!-- <div class="Listings" id="Listings">
+                    <span>Property List</span>
+                    <div class="liDiv">
+                        <li>
+                            <p id="p1">categnme</p>
+                            <p id="p2">locaname</p>
+                            <p id="p3">maindesc</p>  
+                            <p id="p4">descript</p>
+                            <p id="p5">itemprce</p>                     
+                        </li>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="Contact" id="Contact">
+                <div class="sectionHeader">
+                    <h2>Contact</h2>
+                </div>
+
+                <div class="contactMain">
+                    <div class="contactForm">
+                        <div class="socialMedia">
+                            <span>
+                                <p>Follow us</p>
+                                <div>
+                                    <i class="fa fa-facebook" ></i> 
+                                    <i class="fa fa-twitter" ></i> 
+                                </div>
+                            </span>
+                        </div>
+                        
+                        <form id="email-form">
+                            <div id="titleBar">Email Message</div>
+                            <br>
+                            <div id="inputSection">
+                                <label for="message_">Message</label>
+                                <textarea type="text" id="message_" spellcheck="false"  required></textarea>
+                    
+                                <label for="fromname">From:</label>
+                                <input type="text" id="fromname"  spellcheck="false">
+                    
+                                <label for="emailfrom">Contact Email:</label>
+                                <input type="email" id="emailfrom"  spellcheck="false" required>
+                    
+                                <div id="btnDiv">
+                                    <button type="submit" id="sendBtn">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2730.5867284589845!2d121.03577268348337!3d14.562979851934989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c85493400c75%3A0xc179fb618cb6c453!2sRockwell%20Center!5e0!3m2!1sen!2sph!4v1731979686899!5m2!1sen!2sph" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <div class="contactImg">
+                        <img src="./Images/Eunice Remax Main page.jpg" alt="./Images/cariGirl1.jpg">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="Portfolio" id="Portfolio">
+                <div class="sectionHeader">
+                    <h2>Portfolio</h2>
+                </div>       
+                <div class="portfolio-content">
+                    <p id="port_1st_p" style="font-family: 'Times New Roman'; font-style: italic;"><em>"D</em>edicated to finding you the right property.</p>
+                    <p style="font-family: 'Times New Roman'; font-style: italic;">Work with me. Let us make your dream a reality!</p>
+                    <br>
+                    <p>Profile · Brokerage Firm</p>
+                    <p>Licensed Real Estate Broker at RE/MAX Capital</p>
+                    <p>Lives in Makati <span>&#129300;</span></p>
+                </div>
+                <div class="portfolio-images">
+                    <img class="portimage-item" src="./Images/remax_grp1.jpg" alt="">
+                    <img class="portimage-item" src="./Images/remax_grp2.jpg" alt="">
+                    <img class="portimage-item" src="./Images/remax_grp4.jpg" alt="">
+                    <img class="portimage-item" src="./Images/remax_grp3.jpg" alt="">
+                </div>
+            </div>
+
+
+            <div class="Settings" id="Settings">
+                <div class="settingSection">
+                    <h2>Color</h2>
+                </div>       
+                <div id="colorsDiv">
+                    <p>Choose Theme Color</p>
+                    <div class="grpColorDivs">
+                        <div id="blueDiv"></div>
+                        <div id="greenDiv"></div>
+                        <div id="violetDiv"></div>
+                    </div>
+                    <div class="grpColorDivs">
+                        <div id="maroonDiv"></div>
+                        <div id="redDiv"></div>
+                        <div id="tomatoDiv"></div>
+                    </div>
+                    <div id="btnDiv">
+                        <button type="submit" id="saveBtn">Save</button>
+                        <button type="button" id="cancelBtn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="logoWinfoPlus">
+                    <img src="./Images/InfoPlus.png" alt="Web InfoPlus">
+                    <p>Web InfoPlus</p>
+                </div>
+                <div>
+                    <p>Get a Website for your business, contact #0949 143 1584</p>
+                </div>
+            </footer>
+    
+        </div>
+    </div>
+    
+</div>
+
+
+<script>
+    const sidenav = document.getElementById('mySidenav');
+    const mainWrapper = document.querySelector('.mainWrapper');
+    const conMenuIcon=document.getElementById('conMenuIcon');
+    const prodList=document.querySelector('.Listings');
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+        // Check if the viewport is mobile-sized and set the initial state
+        if (window.innerWidth <= 768) {
+            sidenav.classList.add('closed'); // Close the sidenav on mobile
+            mainWrapper.classList.add('closed'); // Adjust main wrapper layout
+            conMenuIcon.classList.remove('change'); // Set the icon to bars (not X)
+            prodList.style.width = '100%';
+        }
+    });
+
+    function toggleMenu(icon) {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            const isClosed = sidenav.classList.toggle('closed');
+            mainWrapper.classList.toggle('closed', sidenav.classList.contains('closed'));
+        } else {
+            sidenav.classList.toggle('closed');
+            mainWrapper.classList.toggle('closed');
+        }
+        icon.classList.toggle("change");
+    }
+
+    // Close sidenav when clicking links on mobile
+    function handleLinkClick() {
+        if (window.innerWidth <= 768) {
+            sidenav.classList.add('closed');
+            mainWrapper.classList.add('closed');
+            conMenuIcon.classList.toggle("change");
+        }
+    }
+
+    //Close sidenav when resizing to mobile
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+            sidenav.classList.add('closed');
+            mainWrapper.classList.add('closed');
+            conMenuIcon.classList.remove("change");
+        }
+    });
+    
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // const inventory = document.querySelector('.Inventory');
+        // const listing = document.querySelector('.Listings');
+
+        // function adjustListingHeight() {
+
+        //     // Only adjust height if screen width is greater than 768px
+        //     if (window.innerWidth > 768) {
+        //         const inventoryHeight = inventory.clientHeight;
+        //         listing.style.height = `${inventoryHeight}px`;  // Set the height of Listings to match Inventory
+        //     } else {
+        //         listing.style.height = 'fit-content';  // Reset to fit-content on mobile
+        //         listing.style.width = '100%';
+        //     }
+        // }
+        
+        // // Use load event to ensure all resources are loaded
+        // window.addEventListener('load', () => {
+        //     requestAnimationFrame(adjustListingHeight);
+        // });
+
+        // // Adjust height on window resize
+        // window.addEventListener('resize', () => {
+        //     requestAnimationFrame(adjustListingHeight);
+        // });
+
+        // // If you're dynamically adding content, call this function after that
+        // function onInventoryUpdated() {
+        //     adjustListingHeight();
+        // }
+
+
+        // Function to adjust scroll position for centering the section
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href').substring(1); // Get the target section ID
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    // Scroll to the element and adjust position
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 50, // Adjust for 50px header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+
+    });
+
+    document.querySelector('.fa-facebook').addEventListener('click', () => {
+        window.open('https://www.facebook.com/profile.php?id=100094091657200', '_blank');
+    });
+    document.querySelector('.fa-twitter').addEventListener('click', () => {
+        window.open('https://www.facebook.com/meetyourproperty/', '_blank');
+    });
+
+</script>  
+<script>
+    function showNotification(cMessage) {
+        const notification = document.getElementById("notification");
+        const notificationMessage = document.getElementById("notification-message");
+
+        // Display the notification with a sliding effect
+        notificationMessage.innerHTML=`<i class="fa fa-check"></i>  ${cMessage}`;
+        notification.classList.add("show");
+
+        // Set a time delay for how long the notification will stay visible (e.g., 3 seconds)
+        setTimeout(function() {
+            notification.classList.remove("show");
+        }, 3000); // 3000ms = 3 seconds
+    }
+
+</script>
+
+<script type="module">
+    import { db } from "./src/firestore-config.js";
+    import { doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    async function updateViewCount() {
+        // Reference to the document in Firestore
+        const docRef = doc(db, 'ViewsCtr', 'viewCounter');  
+
+        // Get the document snapshot
+        const docSnap = await getDoc(docRef);  
+
+        let ctr = 0;  // Default value if document does not exist
+
+        if (docSnap.exists()) {
+            // If the document exists, get the current count and increment it
+            // ctr = docSnap.data().countView || 0; // Use default 0 if countView is undefined
+            // ctr++;
+            // Update the document with the new count
+            // await updateDoc(docRef, { countView: ctr });
+        } else {
+            // If the document does not exist, create it with countView set to 1
+            // await setDoc(docRef, { countView: 1 });
+            ctr = 1;
+        }
+
+        // Update the view count on the page
+        document.getElementById('viewCounter').innerText = `Views: ${ctr}`;
+    }
+
+    // Call the function to update view count
+    updateViewCount();
+
+
+// MainApp.js
+let guestName=''
+document.getElementById('btnLogIn').addEventListener('click', async () => {
+    const btnLogIn = document.getElementById('btnLogIn');
+    const inputLogIn = document.getElementById('inputLogIn');
+    const labelLogIn = document.getElementById('labelLogIn');
+    const fromname = document.getElementById('fromname')
+
+    if (btnLogIn.innerHTML === '<i class="fa fa-sign-in"></i> Log In') {
+        inputLogIn.style.display = 'block';
+        labelLogIn.style.display = 'none';
+
+        inputLogIn.focus();
+        btnLogIn.innerHTML = '<i class="fa fa-sign-in"></i> Submit';
+        
+    } else {
+        btnLogIn.innerHTML = '<i class="fa fa-sign-in"></i> Log In';
+        inputLogIn.style.display = 'none';
+        labelLogIn.style.display = 'block';
+
+        if (inputLogIn.value.trim()==='') return
+        guestName=inputLogIn.value.trim()
+
+        if (guestName.toLowerCase()==='siteadmin') {
+            sessionStorage.setItem('admin','true')
+            // document.getElementById('addPropBtn').style.display = 'block';  
+            document.getElementById('settings').style.display = 'block';  
+            document.getElementById('settingshr').style.display = 'block';  
+            document.getElementById('Settings').style.display = 'flex';  
+    
+            // const fileuploadlabels = document.querySelectorAll('.file-upload-label');
+            // fileuploadlabels.forEach((fileLabel) => {
+            //     fileLabel.style.display = 'inline-block';
+            // });
+
+            // Fetch all .liDiv .imageWrapper elements and apply the class to each
+            // const liDivs = document.querySelectorAll('.liDiv');
+            // liDivs.forEach((liDiv) => {
+            //     liDiv.classList.add('show-delete-icon');
+            // });
+
+            // const imageWrappers = document.querySelectorAll('.imageWrapper');
+            // imageWrappers.forEach((imageWrapper) => {
+            //     imageWrapper.classList.add('show-delete-button');
+            // });
+
+            labelLogIn.innerText=`Hello, you may now update your website theme.`
+
+        } else {
+            sessionStorage.setItem('admin','false')
+            labelLogIn.innerText=`Hello ${guestName}, welcome to my website.`
+            fromname.value=guestName
+        }
+        btnLogIn.style.display='none'
+        inputLogIn.style.display = 'none';
+        labelLogIn.style.display = 'block';
+
+    }
+});
+
+
+
+</script>
+
+
+
+<script type="module" src="./src/Settings.js"></script>
+<!-- <script type="module" src="./src/MainApp.js"></script>  -->
+<!-- <script type="module" src="./src/AddImage.js"></script> -->
+<script type="module" src="./src/Inventory.js"></script>
+<script type="module" src="./src/Contact.js"></script>
+
+</body>
+</html>

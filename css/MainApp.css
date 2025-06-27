@@ -1,0 +1,366 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex; /* Enable flex on body */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* Taken from index.html */
+        :root {
+            --main-bg-color: rgb(0, 64, 128); 
+            --second-bg-color: rgb(91, 147, 193); 
+            --darker-bg-color: rgb(0,0,139); 
+        }
+        
+        /* Initially hide the body content */
+        #mySidenav, .mainWrapper {
+            visibility: hidden;
+        }
+        
+        /* Full-screen loading overlay */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            z-index: 9999;
+        }
+
+        /* Optional: Add a spinner icon (FontAwesome) */
+        #loading-spinner {
+            margin-right: 10px;
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }        
+
+        /* Animated Menu Icon */
+        .conMenuIcon {
+            display: inline-block;
+            cursor: pointer;
+        }
+        .bar1, .bar2, .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 1.5s;
+        }
+        .change .bar1 {
+            transform: translate(0, 11px) rotate(-45deg);
+        }
+        .change .bar2 {
+            opacity: 0;
+        }
+        .change .bar3 {
+            transform: translate(0, -11px) rotate(45deg);
+        }
+
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 80px;
+    right: -300px; /* Start offscreen */
+    background-color: var(--main-bg-color);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.5s ease; /* Slide-in effect */
+    z-index: 1000;
+    }
+
+    /* For the notification when it's visible */
+    .notification.show {
+    right: 20px; /* Visible position */
+    }
+
+    #notification-message{
+    padding: 10px;
+    margin:0;
+    border: 1px solid;
+    color: white;
+    border-radius: 5px;
+    }
+
+#Settings, #settingshr, #settings {
+    display: none;
+}
+/* SideNav Elements */
+
+.chip {
+    display: inline-block;
+    padding: 0 10px; 
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: white;
+    text-align: center;
+    white-space: nowrap; /* Prevent wrapping */
+  }
+
+.chip img {
+    float: left;
+    margin: -6px 10px 0 -25px;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+#mySidenav {
+    width: 250px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--main-bg-color);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+    z-index: 900;
+    font-size: 12px; 
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    display: flex;         
+    flex-direction: column;  /* Stack items vertically */
+    height: 100vh;           /* Full height of the viewport */
+}
+
+#content {
+    flex-grow: 1;             /* Allow the content to expand and take available space */
+    overflow-y: auto;         /* Enable scrolling if content overflows */
+}
+
+#viewCounter {
+    margin-top: auto;        /* Push the counter to the bottom of the container */
+    padding: 10px;           /* Optional padding */
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+.sidenav .image-wrapper {
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 0px;  
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+}
+
+.sidenav img {
+    border: 5px solid #fff; 
+    max-width: 100%; 
+    height: auto; 
+}
+
+.sidenav a {
+    display: block; 
+    color: #fff; 
+    text-decoration: none; 
+    text-align: left;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 22px;
+    padding: 10px;
+    margin: 10px;
+
+}
+
+.sidenav a:hover {
+    background-color: #575757; 
+}
+
+/* Header Elements */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    height: 60px;
+    background-color: var(--main-bg-color);
+    width: 100%; /* Full width */
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+}
+
+.header .headerLogIn {
+    display: flex;
+    width: auto;
+    margin: 5px;
+    padding: 0;
+    justify-items: center;
+    align-items: center;
+    color: white;
+    font-size: large; 
+}
+
+#inputLogIn {
+    outline: none;
+}
+
+.headerLogIn button {
+    color: white;
+    background-color: var(--main-bg-color);;
+    border: none;
+    width: 150px;
+}
+
+.headerLogIn button:hover {
+    color: white;
+    background-color:var(--second-bg-color);
+    cursor: pointer;
+    
+}
+
+#labelLogIn {
+    font-family: 'Times New Roman'; 
+    font-style: italic;
+    font-size: 20px;
+}
+
+/* Category Names */
+.sectionHeader, .settingSection {
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; /* Center content vertically */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    border-top: 1px double;
+    border-bottom: 1px double;
+    background-image: linear-gradient(to right, #f0f8ff, var(--main-bg-color)); 
+    margin-bottom: 10px;
+}
+
+.sectionHeader h2, .settingSection h2 {
+    margin: 0 30px 0 0; 
+    color: white;
+}
+
+.socialMedia {
+    text-align: right;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+.socialMedia span{
+    margin-right: 10px;
+
+}
+
+
+/* When sidenav is closed */
+.sidenav.closed {
+    width: 0;
+    padding: 0;
+    overflow: hidden; /* Hide overflow */
+    transform: translateX(-100%);
+}
+.mainWrapper.closed {
+    width: 100%; 
+    transition: margin-left 0.5s ease; 
+}
+
+.mainWrapper {
+    display: flex;
+    width: calc(100% - 250px); /* Subtract sidenav width */
+    transition: width 0.5s; /* Smooth transition */
+}
+.mainWrapper > * {
+    padding: 10px; /* Add padding to all direct children */
+}
+
+.sidenav.closed + .mainWrapper {
+    margin-left: 0; /* No margin when sidenav is closed */
+}
+
+.sidenav:not(.closed) + .mainWrapper {
+    margin-left: 250px; /* Adjust margin when sidenav is open */
+    transform: translateX(0);
+}
+
+.ShowcaseWrapper.closed {
+    margin-left: 0; /* No margin when sidenav is closed */
+}
+
+/* Footer Styles */
+footer {
+    color: white;
+    display:flex;
+    justify-content: space-between; /* Space out items to the left and right */
+    align-items: center;      /* Center items vertically */
+    width: 100%;
+    height: 60px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    background-color: var(--main-bg-color);;
+    font-family: 'Times New Roman';
+    font-style: italic;
+    font-size: 18px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    
+}
+
+footer img {
+    width: 50px;
+    height: 50px;
+    padding-right: 10px;
+    object-fit: contain;
+}
+
+.logoWinfoPlus {
+    display: flex; 
+    align-items: center; 
+
+}
+.imageWrapper p {
+    margin-left: 10px; /* Add some space between the image and text */
+}
+
+
+/* Try it here on sideNav when on mobile device */
+@media (max-width: 768px) {
+    .sidenav {
+        width: 0; /* Close by default */
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+    
+    .sidenav:not(.closed) {
+        width: 250px; /* Opened width */
+        transform: translateX(0);
+        transition: transform 0.5s ease;
+    }
+
+    .mainWrapper {
+        width: 100%; /* Full width when sidenav is closed */
+        transition: width 0.5s; /* Smooth transition */
+    }
+
+    .mainWrapper.closed {
+        margin-left: 0; /* No margin when sidenav is closed */
+        transition: margin-left 0.5s ease; 
+    }
+    
+    .mainWrapper:not(.closed) {
+        margin-left: 250px; /* Margin when sidenav is open */
+        transition: margin-left 0.5s ease; 
+    }
+}
+    

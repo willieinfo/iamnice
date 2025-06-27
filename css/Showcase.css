@@ -1,0 +1,443 @@
+.ShowcaseWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+    flex-grow: 1; 
+    transition: margin-left 0.5s; /* Smooth transition for margin */
+    padding: 0 10px 0 10px;
+}
+.ShowcaseWrapper > * {
+    padding: 20px; 
+}
+
+.Showcase {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    padding-top: 5px;
+    box-sizing: border-box; 
+}
+
+.topSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    margin: 0;
+    width: 100%;
+    border-bottom: .5px solid;
+    margin-bottom: 5px;
+    background-image: linear-gradient(to bottom, #f0f8ff, var(--main-bg-color)); 
+}
+.topSection h2 {
+    padding: 0;
+    margin: 0;
+}
+.topSection p {
+    padding: 0;
+    padding-bottom: 10px;
+    margin: 0;
+    font-size: 20px;
+ 
+}
+.showcaseContents {
+    display: flex;
+    width: 100%; /* Full width */
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-height:min-content;
+}
+
+.showcaseContents video {
+    width: 100%;
+    height: calc(100%-200px);
+    object-fit: cover; /* Ensures the video fills the container proportionally */
+    display: block; /* Removes any inline spacing */
+}
+
+#leftImage {
+    display: flex;
+    flex: 0 0 40%; 
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color:lightgrey;
+   
+}
+
+#leftImage img {
+    width: 100%; /* Full width */
+    height: 100%;   
+    object-fit: fill;
+    max-height: 1200px;
+}
+
+#rightCards {
+    display: flex;
+    flex-wrap: wrap; 
+    flex: 0 0 60%; 
+    background-color:lightgrey;
+    justify-content: center;
+    height: 100%;
+}
+
+
+.card {
+    width: calc(50% - 10px); 
+    margin: 0; 
+    padding: 10px;
+    box-sizing: border-box; 
+    /* border: 1px solid; */
+    
+} 
+#subTitles {
+    /* font-family: 'Times New Roman', Times, serif; */
+    /* font-style: italic; */
+    /* font-weight: bold; */
+    font-size: 26px;
+    margin: 0;
+    padding: 5px;
+    
+}
+.cardBottom {
+    width: 90%;
+    
+}
+.cardBottom img {
+    height: 300px; /* Fixed height for equal size */
+    width: 100%; /* Full width */
+    object-fit: cover;
+}
+/* Equal size for card images */
+.card img {
+    height: 300px; /* Fixed height for equal size */
+    width: 100%; /* Full width */
+    object-fit: cover;
+    /* border-radius: 10%; */
+}
+.card p,.cardBottom p {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+
+
+/* Portfolio Section */
+.Portfolio {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    background-color: lightgray;
+}
+
+.portfolio-content {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: fit-content;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 26px;
+    margin: 20px;
+    padding: 30px;
+    border-top-left-radius: 30px; /* Top left rounded corner */
+    border-bottom-right-radius: 30px; /* Bottom right rounded corner */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional shadow for more depth */
+    background-image: linear-gradient(to bottom, #f0f8ff, rgba(128, 128, 128, 0.864)); 
+
+    margin: 0;
+    text-align: center; /* This centers the text inside the paragraphs */
+}
+
+.portfolio-content p {
+    margin: 0;  /* Remove the default margin between paragraphs */
+    padding: 0;  /* Optionally remove padding if it's applied */
+    line-height: 1.2;  /* Adjust line height for closer spacing */
+}
+
+.portfolio-images {
+    width: 100%; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 20px; 
+    padding: 20px;
+    border-radius: 10px; 
+    
+}
+
+.portimage-item {
+    width: 250px; /* Fixed size for images */
+    height: 250px;
+    object-fit:contain;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.portimage-item:hover {
+    width: 300px; /* Fixed size for images */
+    height: 400px;
+    /* object-fit: cover; */
+}
+
+#port_1st_p em {
+    font-family: Times New Roman;
+    font-style: italic;
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Media Queries for responsiveness */
+@media (max-width: 600px) {
+    .portfolio-content {
+        width: 90%; /* Make the portfolio content take up more space on small screens */
+        font-size: 20px; /* Reduce font size for mobile */
+        padding: 20px; /* Reduce padding */
+        width: 80%;
+
+    }
+    
+    .portfolio-images {
+        width: 100%;
+        gap: 5px; /* Smaller gap between images */
+    }
+
+    .portimage-item {
+        width: 200px; /* Smaller image size for mobile */
+        height: 200px;
+    }
+}
+
+@media (max-width: 900px) {
+    .portfolio-content {
+        width: 80%; /* Make the portfolio content a bit smaller on tablets */
+        font-size: 22px; /* Slightly smaller font size on tablets */
+        width: 80%;
+    }
+
+    .portfolio-images {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .portimage-item {
+        width: 230px;
+        height: 230px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .portfolio-content {
+        width: 60%;
+    }
+
+    .portfolio-images {
+        max-width: 100%; /* Remove max-width to take full width */
+    }
+}
+
+
+
+/* About Me Section */
+.AboutMe {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-self: center;
+    width: 100%;
+}
+.aboutImg {
+    width: 100%;
+}
+.AboutMe img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+/* Parts of .Listing Section */
+.imageWrapper {
+    position: relative; 
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+    transition: box-shadow 0.3s; 
+    cursor: pointer;
+}
+
+.imageWrapper:hover {
+    width: 200px;
+    height: 300px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5); 
+ }
+
+.imageWrapper.show-delete-button:hover .delete-button {
+    display: flex;
+}
+
+
+
+.image-item {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+/* This is an <i> element */
+/* Not a <button> element */
+.delete-button {
+    position: absolute; 
+    top: 5px; 
+    right: 5px; 
+    border-radius: 50%; 
+    width: 30px; 
+    height: 30px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    display: none;
+}
+
+.delete-button:hover {
+    background-color: red; /* Change color on hover */
+}
+
+#delete-icon {
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    /* display: flex;     */
+}
+/* Ensure the delete icon's hover state is properly defined */
+#delete-icon:hover {
+    background-color: red !important; /* Use !important if you need to override other rules */
+}
+
+/* If you want the icon's color to stay unaffected by .liDiv hover */
+#delete-icon:hover,
+#delete-icon {
+    color: white; 
+}
+
+#searchDiv {
+    margin:0;
+    padding: 0;
+    display: flex;
+    margin-bottom: 5px;
+}
+#searchRec {
+    /* border-radius: 15px;  */
+    margin: 0 10px; /* Left and right margin */
+    padding: 8px 12px; /* Optional: adds padding inside the input field */
+    border: 1px solid #ccc; /* Optional: defines border style */
+    outline: none; /* Removes the default outline when focused */
+}
+
+#searchRec:focus {
+    border-color: #007bff; /* Optional: color of the border when focused */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional: adds a subtle shadow when focused */
+}
+#searchBtn, #addPropBtn {
+    margin: 0 10px 0 0;
+    color: white;
+    border: none;
+    background-color: var(--second-bg-color);
+    cursor: pointer;
+    width: 180px;
+}
+#addPropBtn {
+    width: 100px;
+    display: none;
+}
+
+#addPropBtn:hover,#searchBtn:hover, #sign_in_:hover {
+    background-color:var(--second-bg-color);
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1200px) {
+    #leftImage {
+        flex: 0 0 60%;
+    }
+    #rightCards {
+        flex: 0 0 40%; 
+      
+    }
+    .card {
+        width: 80%;
+    }
+    .InvenList, .showcaseContents {
+        flex-direction: column;
+        flex-wrap: wrap;
+        height:auto;
+    }
+}
+
+@media (max-width: 768px) {
+    #leftImage {
+        flex: 0 0 100%; /* Full width on small screens */
+        margin-right: 0; /* Remove margin */
+    }
+
+    #rightCards {
+        flex: 0 0 100%; /* Full width on small screens */
+    }
+    .showcaseContents {
+        height:auto;
+    }
+    #leftImage img {
+        object-fit: contain;
+    }
+    .AboutMe img {
+        width:100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* .InvenList {
+        flex-direction: column;
+        flex-wrap: wrap;
+    } */
+    .Inventory {
+        border-right: none;
+    }
+    .Listings {
+        height: fit-content;  /* Allow Listings to wrap and adjust height */
+        flex: initial;  /* Allow it to shrink or grow based on content */
+        width: 100%;
+        border-left: none;
+    }
+}
