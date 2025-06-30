@@ -78,6 +78,17 @@
 "FILENME4": "/inventory/Warehouses/whse4lease04.jpg"
 },
 {
+"FILENAME": "/inventory/Warehouses/industrial01.jpg",
+"CATEGORY": "WAREHOUSES",
+"LOCATION": "QUEZON CITY",
+"CAPTION_": "FOR SALE: 13,110 sqm Industrial Property in Quezon City",
+"DESCRIPT": "• Lot area: 13,110 sqm • 2 Covered warehouse, 1 roofed open warehouse/docking area• 2-Storey office and vast open space• Ideal for warehouse compound • Ideal for townhouse development or offices Code MYPCM082",
+"ITEMPRCE": "P 65K / sqm",
+"FILENME2": "/inventory/Warehouses/industrial02.png",
+"FILENME3": "/inventory/Warehouses/industrial03.png",
+"FILENME4": "/inventory/Warehouses/industrial04.png"
+},
+{
 "FILENAME": "/inventory/Lots/Whse-Old.jpg",
 "CATEGORY": "LOTS",
 "LOCATION": "CALOOCAN CITY",
@@ -112,6 +123,19 @@
 "FILENME5": "/inventory/Houses/BFHomes05.jpeg"
 },
 {
+"FILENAME": "/inventory/Houses/ayalaheight01.jpg",
+"CATEGORY": "HOUSES",
+"LOCATION": "AYALA HEIGHTS",
+"CAPTION_": "FOR SALE: Well-Priced 4BR House and Lot in Ayala Heights, Quezon City",
+"DESCRIPT": "• Lot Area: 647 sqm• Floor Area: 245 sqm• 4 bedrooms plus den and office• 2 Parking• Frontage: 13.04 meters• Cul de sac, Orientation East• House built in the 90s but liveable• With garden and attic",
+"ITEMPRCE": "P 225k / sqm",
+"FILENME2": "/inventory/Houses/ayalaheight02.jpg",
+"FILENME3": "/inventory/Houses/ayalaheight03.jpg",
+"FILENME4": "/inventory/Houses/ayalaheight04.jpg",
+"FILENME5": "/inventory/Houses/ayalaheight05.jpg",
+"FILENME6": "/inventory/Houses/ayalaheight06.jpg"
+},
+{
 "FILENAME": "/inventory/Houses/philamHouse.png",
 "CATEGORY": "HOUSES",
 "LOCATION": "PHILAMLIFE - Las Piñas",
@@ -131,5 +155,42 @@
 "FILENME2": "/inventory/Lots/nuVali02.jpg",
 "FILENME3": "/inventory/Lots/nuVali03.jpg",
 "FILENME4": "/inventory/Lots/nuVali04.jpg"
+},
+{
+"FILENAME": "/inventory/Houses/bfhomesbnew01.jpg",
+"CATEGORY": "HOUSES",
+"LOCATION": "BF HOMES - Las Piñas",
+"CAPTION_": "FOR SALE: Brand New 2 Storey House and Lot in BF Homes, Las Pinas City",
+"DESCRIPT": "• LA: 280 sqm •  FA: 400 sqm • 5 Bedrooms • 4 Bathrooms • Single Detached • Brand New • 2 Storey • 4 car garage • Swimming Pool • His and Hers Walk in Closet• 12 Feet High Ceilings • Kohler Bathroom Fixtures • Maids And Drivers Room with T&B",
+"ITEMPRCE": "40 M",
+"FILENME2": "/inventory/Houses/bfhomesbnew02.jpg",
+"FILENME3": "/inventory/Houses/bfhomesbnew03.jpg",
+"FILENME4": "/inventory/Houses/bfhomesbnew04.jpg",
+"FILENME5": "/inventory/Houses/bfhomesbnew05.jpg",
+"FILENME6": "/inventory/Houses/bfhomesbnew06.jpg"
+},
+{
+"FILENAME": "/inventory/Houses/ayalaalabbnew01.jpg",
+"CATEGORY": "HOUSES",
+"LOCATION": "AYALA ALABANG VILLAGE",
+"CAPTION_": "FOR SALE: Brand New 4BR Modern House in Ayala Alabang Village, Muntinlupa City",
+"DESCRIPT": "• LA: 163 sqm• FA: 185 sqm • 4 Bedrooms• 4 Bathrooms• 2 car garage• Pocket Garden• 2 brand new inverter split type airconditioners• Automatic gate• 4 shower ready heaters• Not perimeter• Not tumbok• Not backing creek Code MYPCM079",
+"ITEMPRCE": "65 M",
+"FILENME2": "/inventory/Houses/ayalaalabbnew02.jpg",
+"FILENME3": "/inventory/Houses/ayalaalabbnew03.jpg",
+"FILENME4": "/inventory/Houses/ayalaalabbnew04.jpg",
+"FILENME5": "/inventory/Houses/ayalaalabbnew05.jpg",
+"FILENME6": "/inventory/Houses/ayalaalabbnew06.jpg"
+},
+{
+"FILENAME": "/inventory/Lots/baytown01.jpg",
+"CATEGORY": "LOTS",
+"LOCATION": "MARINA BAYTOWN",
+"CAPTION_": "FOR SALE: 797 sqm Lot in Marina Baytown South Paranaque City",
+"DESCRIPT": "- Lot Area : 797 sqm",
+"ITEMPRCE": "Php 159,400",
+"FILENME2": "/inventory/Lots/baytown02.jpg",
+"FILENME3": "/inventory/Lots/baytown03.jpg",
+"FILENME4": "/inventory/Lots/baytown04.jpg"
 }
 ]

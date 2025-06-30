@@ -38,9 +38,14 @@ h4 {
 }
 
 .imgContainer:hover {
-    border: 1px solid;
     border-radius: 10px;;
     border: 1px solid var(--main-bg-color); 
+}
+.imgSmallBox:hover {
+    border-radius: 10px;;
+    border: 1px solid white; 
+    padding: 10px;
+    cursor: pointer;
 }
 
 .imgContainer img {
@@ -81,7 +86,7 @@ h4 {
     align-items: center;
     justify-content: center;
     overflow: auto;
-    z-index: 9999;
+    z-index: 9998;
 }
 
 .showImage {
@@ -132,20 +137,54 @@ textarea.descript {
     top: 0;
 }
 
-.close-showcase {
+.titleBar-showpict {
+    display: flex; 
+    width: 100%;
+    background-color: var(--second-bg-color);
+    color: white;
+    height: 40px; 
+    padding: 10px;
+    box-sizing: border-box;    
+    position: sticky;
+    top: 0;
+}
+
+.close-showcase, .close-showpict {
     position: absolute;
-    /* top: 10px; */
     right: 10px;
     background-color: var(--main-bg-color);
     color: #fff;
     border: none;
-    /* padding: 10px; */
     cursor: pointer;
 }
 
-.close-showcase:hover {
+.close-showcase:hover, .close-showpict {
     background-color: #c00;
 }
+
+.image-showpict {
+    display: none;
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 600px;
+    height: 600px; */
+    width: 1200px;
+    max-height: 80%;
+
+    background: white;
+    padding: 0px 0px 10px 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow:hidden;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
 
 #divVideos {
     display: flex;

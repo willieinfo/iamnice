@@ -52,9 +52,24 @@ document.addEventListener('DOMContentLoaded', function () {
             <textarea class="descript"></textarea>
         </div>
     `    
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = divShowCase;
-    document.body.appendChild(tempDiv.firstElementChild);
+
+    const divShowPict = `
+        <div class="image-showpict" style="display: none">
+            <div class="titleBar-showpict">
+                <span id="showpictTitle"></span>
+                <button class="close-showpict">X</button>
+            </div>
+            <div class="showPict"></div>
+        </div>
+    `    
+
+    const tempDiv1 = document.createElement('div');
+    tempDiv1.innerHTML = divShowCase;
+    const tempDiv2 = document.createElement('div');
+    tempDiv2.innerHTML = divShowPict;
+
+    document.body.appendChild(tempDiv1.firstElementChild);
+    document.body.appendChild(tempDiv2.firstElementChild);
 
 
     // Fetch the data from the JSON file
@@ -99,16 +114,19 @@ function showShowcase(property) {
     const showImageContainer = showcase.querySelector('.showImage');
     const descriptText = showcase.querySelector('.descript');
     const titleBar = document.getElementById('propertyTitle');
-
+    const titleBarPict = document.getElementById('showpictTitle');
+    const imageShowPict = document.querySelector('.image-showpict');
     const allShowcases = document.querySelectorAll('.image-section.showcase');
+    
     allShowcases.forEach((item) => {
         item.style.display = 'none';
     });    
 
     if (showcase.style.display === 'flex') {
         return; 
-    }    
+    }
 
+    // Create overlay
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.top = '0';
@@ -117,34 +135,47 @@ function showShowcase(property) {
     overlay.style.height = '100%';
     overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     overlay.style.zIndex = '1000';
-    document.body.appendChild(overlay)
+    document.body.appendChild(overlay);
 
-
-    // titleBar.innerHTML = `${property.LOCATION.trim()} ${property.ITEMPRCE.trim()} `
+    // Set the property title
     if (property.ITEMPRCE.trim()) {
-        titleBar.innerHTML = `${property.LOCATION.trim()}    Asking Price: ${property.ITEMPRCE.trim()}`
-     } else {
-        titleBar.innerHTML = property.LOCATION.trim()
-     }
+        titleBar.innerHTML = `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()}`;
+        titleBarPict.innerHTML = `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()}`;
+    } else {
+        titleBar.innerHTML = property.LOCATION.trim();
+        titleBarPict.innerHTML = property.LOCATION.trim();
+    }
 
     // Reset showImage container
     showImageContainer.innerHTML = '';
 
     // Render images in showImage div (FILENAME, FILENME2, FILENME3, FILENME4) for the specific record
     const images = [property.FILENAME, property.FILENME2, property.FILENME3, property.FILENME4,
-        property.FILENME5, property.FILENME6, property.FILENME7, property.FILENME8];
-
-    let imgCnt = 1
+             property.FILENME5,  property.FILENME6,  property.FILENME7,  property.FILENME8];
     images.forEach((imageSrc, index) => {
         if (imageSrc) {
             const img = document.createElement('img');
-            imgCnt = index + 1
-
             img.src = imageSrc;
-            showImageContainer.appendChild(img);
-        } 
-    });
+            img.classList.add('imgSmallBox');
+            img.addEventListener('click', () => {
+                // Show clicked image in imageShowPict
+                imageShowPict.style.display = 'flex'; 
+                let showPict = imageShowPict.querySelector('.showPict');
+                showPict.innerHTML = ''; // Clear the previous image
+                const newImg = document.createElement('img');
+                newImg.src = imageSrc;  // Set the source to the clicked image
+                newImg.objectfit = 'cover';
+                showPict.appendChild(newImg);
+                if (property.ITEMPRCE.trim()) {
+                    titleBarPict.innerHTML = `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()} Image ${index + 1}`;
+                } else {
+                    titleBarPict.innerHTML = `${property.LOCATION.trim()} Image ${index + 1}`;
+                }
 
+            });
+            showImageContainer.appendChild(img);
+        }
+    });
 
     // Format the DESCRIPT field
     let formattedDescript = property.DESCRIPT.replace(/\\\\n/g, '\n');
@@ -154,14 +185,99 @@ function showShowcase(property) {
     // Show the showcase div and center it in the viewport
     showcase.style.display = 'flex';
 
+    // Close the showcase when the close button is clicked
     const closeBtn = document.querySelector('.close-showcase');
     closeBtn.addEventListener('click', () => {
         showcase.style.display = 'none';
-        overlay.style.display =  'none'
+        overlay.style.display = 'none';
     });
 
-
+    // Close the image preview when the close button is clicked
+    const closePict = document.querySelector('.close-showpict');
+    closePict.addEventListener('click', () => {
+        imageShowPict.style.display = 'none';  // Corrected the line to hide imageShowPict
+    });
 }
+
+// function showShowcase(property) {
+//     const showcase = document.querySelector('.image-section.showcase');
+//     const showImageContainer = showcase.querySelector('.showImage');
+//     const descriptText = showcase.querySelector('.descript');
+//     const titleBar = document.getElementById('propertyTitle');
+//     const imageShowPict = document.querySelector('.image-showpict');
+//     const allShowcases = document.querySelectorAll('.image-section.showcase');
+//     allShowcases.forEach((item) => {
+//         item.style.display = 'none';
+//     });    
+
+//     if (showcase.style.display === 'flex') {
+//         return; 
+//     }    
+
+//     const overlay = document.createElement('div');
+//     overlay.style.position = 'fixed';
+//     overlay.style.top = '0';
+//     overlay.style.left = '0';
+//     overlay.style.width = '100%';
+//     overlay.style.height = '100%';
+//     overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+//     overlay.style.zIndex = '1000';
+//     document.body.appendChild(overlay)
+
+
+//     if (property.ITEMPRCE.trim()) {
+//         titleBar.innerHTML = `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()}`
+//      } else {
+//         titleBar.innerHTML = property.LOCATION.trim()
+//      }
+
+//     // Reset showImage container
+//     showImageContainer.innerHTML = '';
+
+//     // Render images in showImage div (FILENAME, FILENME2, FILENME3, FILENME4) for the specific record
+//     const images = [property.FILENAME, property.FILENME2, property.FILENME3, property.FILENME4,
+//         property.FILENME5, property.FILENME6, property.FILENME7, property.FILENME8];
+
+//     images.forEach((imageSrc) => {
+//         if (imageSrc) {
+//             const img = document.createElement('img');
+
+//             img.src = imageSrc;
+//             img.classList.add('imgSmallBox')
+//             img.addEventListener('click', () => {
+//                 imageShowPict.style.display = 'flex'
+//                 let showPict = document.querySelector('.showpict');
+//                 console.log(showPict)
+//                 showPict.innerHTML = '';
+//                 showPict = document.createElement('img');
+//                 showPict.src = imageSrc
+//             })
+//             showImageContainer.appendChild(img);
+//         } 
+//     });
+
+
+//     // Format the DESCRIPT field
+//     let formattedDescript = property.DESCRIPT.replace(/\\\\n/g, '\n');
+//     formattedDescript = formattedDescript.replace(/\n{2,}/g, '\n');
+//     descriptText.value = formattedDescript.trim();
+
+//     // Show the showcase div and center it in the viewport
+//     showcase.style.display = 'flex';
+
+//     const closeBtn = document.querySelector('.close-showcase');
+//     closeBtn.addEventListener('click', () => {
+//         showcase.style.display = 'none';
+//         overlay.style.display =  'none'
+//     });
+
+//     const closePict = document.querySelector('.close-showpict');
+//     closePict.addEventListener('click', () => {
+//         imageShowPict.display = 'none'
+//     });
+
+
+// }
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
