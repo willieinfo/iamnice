@@ -1,13 +1,4 @@
-[{
-"FILENAME": "/inventory/Lots/lots01.jpg",
-"CATEGORY": "LOTS",
-"LOCATION": "QUEZON CITY - Anvaya Cove",
-"CAPTION_": "FOR SALE 580 sqm Lot in Anvaya Cove South Coast with Ocean.",
-"DESCRIPT": "•Lot Area 580 sqm •Just 5 minutes away from the newest Nature Club •Class B (corporate) Anvaya Golf Membership •Location South Coast Area - courtyard green view with ocean view •Asking Price Php 23285000",
-"ITEMPRCE": "24M",
-"FILENME2": "/inventory/Lots/lots02.png",
-"FILENME3": "/inventory/Lots/lots03.png"
-},
+[
 {
 "FILENAME": "/inventory/Lots/407LotAyala.png",
 "CATEGORY": "LOTS",
@@ -18,6 +9,16 @@
 "FILENME2": "/inventory/Lots/ayalagreen01.jpg",
 "FILENME3": "/inventory/Lots/ayalagreen02.jpg",
 "FILENME4": ""
+},
+{
+"FILENAME": "/inventory/Lots/lots01.png",
+"CATEGORY": "LOTS",
+"LOCATION": "QUEZON CITY - Anvaya Cove",
+"CAPTION_": "FOR SALE 580 sqm Lot in Anvaya Cove South Coast with Ocean.",
+"DESCRIPT": "•Lot Area 580 sqm •Just 5 minutes away from the newest Nature Club •Class B (corporate) Anvaya Golf Membership •Location South Coast Area - courtyard green view with ocean view •Asking Price Php 23285000",
+"ITEMPRCE": "24M",
+"FILENME2": "/inventory/Lots/lots02.png",
+"FILENME3": "/inventory/Lots/lots03.png"
 },
 {
 "FILENAME": "/inventory/Condominiums/BGCCondo01.jpg",

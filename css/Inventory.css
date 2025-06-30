@@ -158,7 +158,7 @@ textarea.descript {
     cursor: pointer;
 }
 
-.close-showcase:hover, .close-showpict {
+.close-showcase:hover, .close-showpict:hover {
     background-color: #c00;
 }
 
@@ -173,6 +173,7 @@ textarea.descript {
     height: 600px; */
     width: 1200px;
     max-height: 80%;
+    /* min-height: 600px; */
 
     background: white;
     padding: 0px 0px 10px 0px;
@@ -208,3 +209,27 @@ textarea.descript {
     height: auto;      */
     object-fit: contain;  
 }
+
+/* Apply to all scrollable elements */
+*::-webkit-scrollbar {
+    width: 4px; /* Set the width of the scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px; /* Optional: round the thumb edges */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+/* FireFox :Apply to all scrollable elements */
+* {
+    scrollbar-width: thin; /* Make the scrollbar thin */
+    scrollbar-color: #888 #f1f1f1; /* Thumb color and track color */
+}
+
