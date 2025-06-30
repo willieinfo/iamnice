@@ -11,14 +11,14 @@
 "FILENME4": ""
 },
 {
-"FILENAME": "/inventory/Lots/lots01.png",
+"FILENAME": "/inventory/Lots/lots02.png",
 "CATEGORY": "LOTS",
 "LOCATION": "QUEZON CITY - Anvaya Cove",
 "CAPTION_": "FOR SALE 580 sqm Lot in Anvaya Cove South Coast with Ocean.",
 "DESCRIPT": "•Lot Area 580 sqm •Just 5 minutes away from the newest Nature Club •Class B (corporate) Anvaya Golf Membership •Location South Coast Area - courtyard green view with ocean view •Asking Price Php 23285000",
 "ITEMPRCE": "24M",
-"FILENME2": "/inventory/Lots/lots02.png",
-"FILENME3": "/inventory/Lots/lots03.png"
+"FILENME2": "/inventory/Lots/lots03.png",
+"FILENME3": "/inventory/Lots/lots01.png"
 },
 {
 "FILENAME": "/inventory/Condominiums/BGCCondo01.jpg",
@@ -33,6 +33,21 @@
 "FILENME5": "/inventory/Condominiums/BGCCondo05.jpg",
 "FILENME6": "/inventory/Condominiums/BGCCondo06.jpg",
 "FILENME7": "/inventory/Condominiums/BGCCondo07.jpg"
+},
+{
+"FILENAME": "/inventory/Condominiums/townhouse01.png",
+"CATEGORY": "CONDOMINIUMS",
+"LOCATION": "QUEZON CITY Townhouse",
+"CAPTION_": "FOR SALE: 307.7 sqm RFO 3BR Luxury Townhouse in Quezon City",
+"DESCRIPT": "• Floor Area: 307.7 sqm• Lot Area: 68.8 sqm• 3 Bedrooms + Maid's Room• 5 T&B + Powder Room• 3 Car Garage• Family Room + Roof Deck• Premium Finish with complete aircon & kitchen appliances• Corner Unit",
+"ITEMPRCE": "39.9 M",
+"FILENME2": "/inventory/Condominiums/townhouse02.png",
+"FILENME3": "/inventory/Condominiums/townhouse03.png",
+"FILENME4": "/inventory/Condominiums/townhouse04.png",
+"FILENME5": "/inventory/Condominiums/townhouse05.png",
+"FILENME6": "/inventory/Condominiums/townhouse06.png",
+"FILENME7": "/inventory/Condominiums/townhouse07.png",
+"FILENME8": "/inventory/Condominiums/townhouse08.png"
 },
 {
 "FILENAME": "/inventory/Condominiums/condo01.png",
