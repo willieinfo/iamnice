@@ -157,6 +157,8 @@ function showShowcase(property) {
     const images = [property.FILENAME, property.FILENME2, property.FILENME3, property.FILENME4,
              property.FILENME5,  property.FILENME6,  property.FILENME7,  property.FILENME8];
 
+    document.getElementById('loadingIndicator').style.display = 'flex';
+
     images.forEach((imageSrc, index) => {
         if (imageSrc) {
             const img = document.createElement('img');
@@ -181,6 +183,7 @@ function showShowcase(property) {
             showImageContainer.appendChild(img);
         }
     });
+    document.getElementById('loadingIndicator').style.display = 'none';
 
     // Format the DESCRIPT field
     let formattedDescript = property.DESCRIPT.replace(/\\\\n/g, '\n');
