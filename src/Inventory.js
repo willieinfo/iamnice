@@ -48,8 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 <span id="propertyTitle"></span>
                 <button class="close-showcase">X</button>
             </div>
+            <div class="imageDesc">
+                <span class=subTitle></span>
+                <p class="descript"></p>
+            </div>
             <div class="showImage"></div>
-            <textarea class="descript"></textarea>
         </div>
     `    
 
@@ -112,8 +115,9 @@ function renderInventory(data) {
 function showShowcase(property) {
     const showcase = document.querySelector('.image-section.showcase');
     const showImageContainer = showcase.querySelector('.showImage');
-    const descriptText = showcase.querySelector('.descript');
     const titleBar = document.getElementById('propertyTitle');
+    const subTitle = showcase.querySelector('.subTitle');
+    const descriptText = showcase.querySelector('.descript');
     const titleBarPict = document.getElementById('showpictTitle');
     const imageShowPict = document.querySelector('.image-showpict');
     const allShowcases = document.querySelectorAll('.image-section.showcase');
@@ -139,12 +143,12 @@ function showShowcase(property) {
 
     // Set the property title
     if (property.ITEMPRCE.trim()) {
-        titleBar.innerHTML = `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()}`;
         titleBarPict.innerHTML = `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()}`;
     } else {
-        titleBar.innerHTML = property.LOCATION.trim();
         titleBarPict.innerHTML = property.LOCATION.trim();
     }
+    titleBar.innerHTML = property.LOCATION.trim()
+    subTitle.innerHTML = `Asking Price: ${property.ITEMPRCE.trim()}`
 
     // Reset showImage container
     showImageContainer.innerHTML = '';
@@ -152,6 +156,7 @@ function showShowcase(property) {
     // Render images in showImage div (FILENAME, FILENME2, FILENME3, FILENME4) for the specific record
     const images = [property.FILENAME, property.FILENME2, property.FILENME3, property.FILENME4,
              property.FILENME5,  property.FILENME6,  property.FILENME7,  property.FILENME8];
+
     images.forEach((imageSrc, index) => {
         if (imageSrc) {
             const img = document.createElement('img');
@@ -180,7 +185,7 @@ function showShowcase(property) {
     // Format the DESCRIPT field
     let formattedDescript = property.DESCRIPT.replace(/\\\\n/g, '\n');
     formattedDescript = formattedDescript.replace(/\n{2,}/g, '\n');
-    descriptText.value = formattedDescript.trim();
+    descriptText.innerText = formattedDescript.trim();
 
     // Show the showcase div and center it in the viewport
     showcase.style.display = 'flex';
@@ -192,6 +197,7 @@ function showShowcase(property) {
         overlay.style.display = 'none';
     });
 
+
     // Close the image preview when the close button is clicked
     const closePict = document.querySelector('.close-showpict');
     closePict.addEventListener('click', () => {
@@ -199,85 +205,6 @@ function showShowcase(property) {
     });
 }
 
-// function showShowcase(property) {
-//     const showcase = document.querySelector('.image-section.showcase');
-//     const showImageContainer = showcase.querySelector('.showImage');
-//     const descriptText = showcase.querySelector('.descript');
-//     const titleBar = document.getElementById('propertyTitle');
-//     const imageShowPict = document.querySelector('.image-showpict');
-//     const allShowcases = document.querySelectorAll('.image-section.showcase');
-//     allShowcases.forEach((item) => {
-//         item.style.display = 'none';
-//     });    
-
-//     if (showcase.style.display === 'flex') {
-//         return; 
-//     }    
-
-//     const overlay = document.createElement('div');
-//     overlay.style.position = 'fixed';
-//     overlay.style.top = '0';
-//     overlay.style.left = '0';
-//     overlay.style.width = '100%';
-//     overlay.style.height = '100%';
-//     overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-//     overlay.style.zIndex = '1000';
-//     document.body.appendChild(overlay)
-
-
-//     if (property.ITEMPRCE.trim()) {
-//         titleBar.innerHTML = `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()}`
-//      } else {
-//         titleBar.innerHTML = property.LOCATION.trim()
-//      }
-
-//     // Reset showImage container
-//     showImageContainer.innerHTML = '';
-
-//     // Render images in showImage div (FILENAME, FILENME2, FILENME3, FILENME4) for the specific record
-//     const images = [property.FILENAME, property.FILENME2, property.FILENME3, property.FILENME4,
-//         property.FILENME5, property.FILENME6, property.FILENME7, property.FILENME8];
-
-//     images.forEach((imageSrc) => {
-//         if (imageSrc) {
-//             const img = document.createElement('img');
-
-//             img.src = imageSrc;
-//             img.classList.add('imgSmallBox')
-//             img.addEventListener('click', () => {
-//                 imageShowPict.style.display = 'flex'
-//                 let showPict = document.querySelector('.showpict');
-//                 console.log(showPict)
-//                 showPict.innerHTML = '';
-//                 showPict = document.createElement('img');
-//                 showPict.src = imageSrc
-//             })
-//             showImageContainer.appendChild(img);
-//         } 
-//     });
-
-
-//     // Format the DESCRIPT field
-//     let formattedDescript = property.DESCRIPT.replace(/\\\\n/g, '\n');
-//     formattedDescript = formattedDescript.replace(/\n{2,}/g, '\n');
-//     descriptText.value = formattedDescript.trim();
-
-//     // Show the showcase div and center it in the viewport
-//     showcase.style.display = 'flex';
-
-//     const closeBtn = document.querySelector('.close-showcase');
-//     closeBtn.addEventListener('click', () => {
-//         showcase.style.display = 'none';
-//         overlay.style.display =  'none'
-//     });
-
-//     const closePict = document.querySelector('.close-showpict');
-//     closePict.addEventListener('click', () => {
-//         imageShowPict.display = 'none'
-//     });
-
-
-// }
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
