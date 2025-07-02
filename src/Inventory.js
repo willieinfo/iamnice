@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="showVid">
                     <video autoplay muted loop>
-                        <source src="./inventory/Videos/ForSale3.mp4" type="video/mp4">
+                        <source src="./inventory/Videos/ForSale4.mp4" type="video/mp4">
                         <p>It seems your browser does not support videos. <a href="./Images/video1.mp4" download>Download the video here</a>.</p>
                     </video>
                 </div>
