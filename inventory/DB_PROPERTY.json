@@ -193,19 +193,6 @@
 "FILENME4": "/inventory/Houses/2storeyHL04.jpg"
 },
 {
-"FILENAME": "/inventory/Houses/tahanan01.jpg",
-"CATEGORY": "HOUSES",
-"LOCATION": "PARAÑAQUE - Tahanan Village",
-"CAPTION_": "FOR SALE: 5BR Brand New House and Lot in Tahanan Village, Paranaque City",
-"DESCRIPT": "• Lot Area: 292sqm• Floor Area: 375sqm• 5 Bedrooms• 5 Toilet & Bath• 3 Car Garage• Separate Maid’s and Driver’s Rooms• Orientation: East Code MYPCM101",
-"ITEMPRCE": "P 45M",
-"FILENME2": "/inventory/Houses/tahanan02.jpg",
-"FILENME3": "/inventory/Houses/tahanan03.jpg",
-"FILENME4": "/inventory/Houses/tahanan04.jpg",
-"FILENME5": "/inventory/Houses/tahanan05.jpg",
-"FILENME6": "/inventory/Houses/tahanan06.jpg"
-},
-{
 "FILENAME": "/inventory/Houses/philamHouse.png",
 "CATEGORY": "HOUSES",
 "LOCATION": "PHILAMLIFE - Las Piñas",
@@ -251,6 +238,19 @@
 "FILENME4": "/inventory/Houses/ayalaalabbnew04.jpg",
 "FILENME5": "/inventory/Houses/ayalaalabbnew05.jpg",
 "FILENME6": "/inventory/Houses/ayalaalabbnew06.jpg"
+},
+{
+"FILENAME": "/inventory/Houses/tahanan01.jpg",
+"CATEGORY": "HOUSES",
+"LOCATION": "PARAÑAQUE - Tahanan Village",
+"CAPTION_": "FOR SALE: 5BR Brand New House and Lot in Tahanan Village, Paranaque City",
+"DESCRIPT": "• Lot Area: 292sqm• Floor Area: 375sqm• 5 Bedrooms• 5 Toilet & Bath• 3 Car Garage• Separate Maid’s and Driver’s Rooms• Orientation: East Code MYPCM101",
+"ITEMPRCE": "P 45M",
+"FILENME2": "/inventory/Houses/tahanan02.jpg",
+"FILENME3": "/inventory/Houses/tahanan03.jpg",
+"FILENME4": "/inventory/Houses/tahanan04.jpg",
+"FILENME5": "/inventory/Houses/tahanan05.jpg",
+"FILENME6": "/inventory/Houses/tahanan06.jpg"
 },
 {
 "FILENAME": "/inventory/Lots/baytown01.jpg",
