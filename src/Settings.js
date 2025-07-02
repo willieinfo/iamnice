@@ -125,6 +125,7 @@ export async function setUserColor() {
             await setUserColor();
 
             // Hide the loading screen once the colors are applied
+            document.getElementById('loadingIndicator').style.display = 'none';
             document.getElementById('loading-overlay').style.display = 'none';
 
             // Once colors are applied, make the body visible

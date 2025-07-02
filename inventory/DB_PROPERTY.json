@@ -50,6 +50,21 @@
 "FILENME8": "/inventory/Condominiums/townhouse08.png"
 },
 {
+"FILENAME": "/inventory/Condominiums/mckinley01.jpeg",
+"CATEGORY": "CONDOMINIUMS",
+"LOCATION": "TAGUIG Mckinley",
+"CAPTION_": "FOR SALE: 2BR Condo Unit in Mckinley Hill Garden Villas 1, Taguig City",
+"DESCRIPT": "• FA 130 sqm• 2 Bedrooms• 2 T&B• 2 Balconies• Fully renovated and furnished• No parking (but easy to rent from admin at 3k/month)• Clean title Code MYPFS004" ,
+"ITEMPRCE": "23 M Gross",
+"FILENME2": "/inventory/Condominiums/mckinley02.jpeg",
+"FILENME3": "/inventory/Condominiums/mckinley03.jpeg",
+"FILENME4": "/inventory/Condominiums/mckinley04.jpeg",
+"FILENME5": "/inventory/Condominiums/mckinley05.jpeg",
+"FILENME6": "/inventory/Condominiums/mckinley06.jpeg",
+"FILENME7": "/inventory/Condominiums/mckinley07.jpeg",
+"FILENME8": "/inventory/Condominiums/mckinley08.jpeg"
+},
+{
 "FILENAME": "/inventory/Condominiums/condo01.png",
 "CATEGORY": "CONDOMINIUMS",
 "LOCATION": "MAKATI - Callistro",
@@ -70,6 +85,21 @@
 "FILENME2": "/inventory/Condominiums/Studio02.jpg",
 "FILENME3": "/inventory/Condominiums/Studio03.jpg",
 "FILENME4": ""
+},
+{
+"FILENAME": "/inventory/Condominiums/Beauforth01.jpeg",
+"CATEGORY": "CONDOMINIUMS",
+"LOCATION": "BGC Beauforth",
+"CAPTION_": "FOR SALE: 2BR Condo Unit in The Beaufort 5th Avenue, BGC Taguig City",
+"DESCRIPT": "- FA 103.3 sqm - 2 Bedrooms - 2 T&B- Maid's room w/ own T&B- Selling furnished- w/ 1 Parking slot - w/ Overlooking golf course Code MYPFS003" ,
+"ITEMPRCE": "30 M Negotiable",
+"FILENME2": "/inventory/Condominiums/Beauforth02.jpeg",
+"FILENME3": "/inventory/Condominiums/Beauforth03.jpeg",
+"FILENME4": "/inventory/Condominiums/Beauforth04.jpg",
+"FILENME5": "/inventory/Condominiums/Beauforth05.jpg",
+"FILENME6": "/inventory/Condominiums/Beauforth06.jpg",
+"FILENME7": "/inventory/Condominiums/Beauforth07.jpeg",
+"FILENME8": "/inventory/Condominiums/Beauforth08.jpeg"
 },
 {
 "FILENAME": "/inventory/Warehouses/whse01.png",
@@ -150,6 +180,30 @@
 "FILENME4": "/inventory/Houses/ayalaheight04.jpg",
 "FILENME5": "/inventory/Houses/ayalaheight05.jpg",
 "FILENME6": "/inventory/Houses/ayalaheight06.jpg"
+},
+{
+"FILENAME": "/inventory/Houses/2storeyHL01.jpg",
+"CATEGORY": "HOUSES",
+"LOCATION": "PARAÑAQUE - 2 Storey",
+"CAPTION_": "FOR SALE: 2 Storey House and Lot in Paranaque City",
+"DESCRIPT": "• Lot area: 300 sqm• Floor area: 288 sqm• 2 Storey• 5 Bedrooms (including a ground floor bedroom• 4 Bathrooms• Double height living room• Spacious dining area• 2 Car garage• Furnished with aircon in living spaces and furnitures• Well Designed•  Modern Home• 2 years old home",
+"ITEMPRCE": "P 33M",
+"FILENME2": "/inventory/Houses/2storeyHL02.jpg",
+"FILENME3": "/inventory/Houses/2storeyHL03.jpg",
+"FILENME4": "/inventory/Houses/2storeyHL04.jpg"
+},
+{
+"FILENAME": "/inventory/Houses/tahanan01.jpg",
+"CATEGORY": "HOUSES",
+"LOCATION": "PARAÑAQUE - Tahanan Village",
+"CAPTION_": "FOR SALE: 5BR Brand New House and Lot in Tahanan Village, Paranaque City",
+"DESCRIPT": "• Lot Area: 292sqm• Floor Area: 375sqm• 5 Bedrooms• 5 Toilet & Bath• 3 Car Garage• Separate Maid’s and Driver’s Rooms• Orientation: East Code MYPCM101",
+"ITEMPRCE": "P 45M",
+"FILENME2": "/inventory/Houses/tahanan02.jpg",
+"FILENME3": "/inventory/Houses/tahanan03.jpg",
+"FILENME4": "/inventory/Houses/tahanan04.jpg",
+"FILENME5": "/inventory/Houses/tahanan05.jpg",
+"FILENME6": "/inventory/Houses/tahanan06.jpg"
 },
 {
 "FILENAME": "/inventory/Houses/philamHouse.png",

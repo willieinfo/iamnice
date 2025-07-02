@@ -1,20 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
     const divInventory = `
         <div class="Inventory" id="Inventory">
-            <h4>Condominiums</h4>
-            <div id="divCondominiums" class="image-section main"></div>
-
-            <h4>Houses</h4>
-            <div id="divHouses" class="image-section main"
-                style="background-image: linear-gradient(to right, #ffff, gray) ">
+            <div>
+                <h4>Condominiums</h4>
+                <div id="divCondominiums" class="image-section main"></div>
             </div>
 
-            <h4>Lots</h4>
-            <div id="divLots" class="image-section main"></div>
+            <div style="background-image: linear-gradient(to right, #ffff, gray) ">
+                <h4>Houses</h4>
+                <div id="divHouses" class="image-section main"></div>
+            </div>
 
-            <h4>Warehouses</h4>
-            <div id="divWarehouses" class="image-section main"
-                style="background-image: linear-gradient(to right, #ffff, gray) ">
+            <div>
+                <h4>Lots</h4>
+                <div id="divLots" class="image-section main"></div>
+            </div>
+
+            <div style="background-image: linear-gradient(to right, #ffff, gray) ">
+                <h4>Warehouses</h4>
+                <div id="divWarehouses" class="image-section main""></div>
             </div>
 
             <h4></h4>
@@ -33,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="showVid">
                     <video autoplay muted loop>
-                        <source src="./inventory/Videos/ForSale1.mp4" type="video/mp4">
+                        <source src="./inventory/Videos/ForSale3.mp4" type="video/mp4">
                         <p>It seems your browser does not support videos. <a href="./Images/video1.mp4" download>Download the video here</a>.</p>
                     </video>
                 </div>
@@ -141,12 +145,6 @@ function showShowcase(property) {
     overlay.style.zIndex = '1000';
     document.body.appendChild(overlay);
 
-    // Set the property title
-    if (property.ITEMPRCE.trim()) {
-        titleBarPict.innerHTML = `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()}`;
-    } else {
-        titleBarPict.innerHTML = property.LOCATION.trim();
-    }
     titleBar.innerHTML = property.LOCATION.trim()
     subTitle.innerHTML = `Asking Price: ${property.ITEMPRCE.trim()}`
 
@@ -170,9 +168,12 @@ function showShowcase(property) {
                 let showPict = imageShowPict.querySelector('.showPict');
                 showPict.innerHTML = ''; // Clear the previous image
                 const newImg = document.createElement('img');
-                newImg.src = imageSrc;  // Set the source to the clicked image
+                newImg.style.minHeight = '700px';
+                newImg.src = imageSrc;  
                 newImg.objectfit = 'cover';
                 showPict.appendChild(newImg);
+
+                titleBarPict.style.top = '0';
                 if (property.ITEMPRCE.trim()) {
                     titleBarPict.innerHTML = `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()} Image ${index + 1}`;
                 } else {

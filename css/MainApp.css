@@ -25,13 +25,45 @@ body {
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+            background-color: rgba(0, 0, 0, 0.7); 
+            /* background-color: transparent; */
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 24px;
+            z-index: 9998;
+        }
+        #loadingImg {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            justify-content: center;
+            align-items: center;
             z-index: 9999;
+        }
+        #loadingIndicator {
+            display: block;
+            flex-direction: column;
+            align-items: center;
+
+            font-size: 20px; 
+            padding: 10px;
+            gap: 10px; 
+            /* background-color: #28a745; */
+
+            width:max-content;
+            color:white;
+            background-color: var(--darker-bg-color);
+            border-radius: 5px;
+            border: 2px solid;
+            border-color: white;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the form on the page */
+            z-index: 99999;
         }
 
         /* Optional: Add a spinner icon (FontAwesome) */
@@ -362,5 +394,6 @@ footer img {
         margin-left: 250px; /* Margin when sidenav is open */
         transition: margin-left 0.5s ease; 
     }
+
 }
     

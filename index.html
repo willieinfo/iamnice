@@ -27,10 +27,12 @@
     
     <!-- Loading overlay screen -->
     <div id="loading-overlay">
-        <div id="loading-spinner">
-            <i class="fa fa-spinner"></i> <!-- FontAwesome spinner icon -->
-        </div>
-        Loading, please wait...
+        <!-- <div id="loading-spinner">
+            <i class="fa fa-spinner"></i> 
+        </div> -->
+        <!-- Loading, please wait... -->
+        <!-- <span id="loadingImg">Loading, please wait...</span> -->
+        <img id="loadingImg" src='./Images/RealEstate1.JPG' alt="RealEstate1">
     </div>
     <div id="loadingIndicator" style="display:none;">
         <div style="margin-bottom: 0; padding-bottom: 0"><i class="fa fa-spinner fa-spin"></i> Loading data... Please wait</div>
@@ -259,6 +261,8 @@
 
 
 <script>
+    document.getElementById('loadingIndicator').style.display = 'block';
+
     const sidenav = document.getElementById('mySidenav');
     const mainWrapper = document.querySelector('.mainWrapper');
     const conMenuIcon=document.getElementById('conMenuIcon');
