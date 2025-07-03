@@ -26,19 +26,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="showVid">
                     <video autoplay muted loop>
                         <source src="./inventory/Videos/ForSale1.mp4" type="video/mp4">
-                        <p>It seems your browser does not support videos. <a href="./Images/video1.mp4" download>Download the video here</a>.</p>
-                    </video>
-                </div>
-                <div class="showVid">
-                    <video autoplay muted loop>
-                        <source src="./inventory/Videos/ForSale2.mp4" type="video/mp4">
-                        <p>It seems your browser does not support videos. <a href="./Images/video1.mp4" download>Download the video here</a>.</p>
                     </video>
                 </div>
                 <div class="showVid">
                     <video autoplay muted loop>
                         <source src="./inventory/Videos/ForSale4.mp4" type="video/mp4">
-                        <p>It seems your browser does not support videos. <a href="./Images/video1.mp4" download>Download the video here</a>.</p>
+                    </video>
+                </div>
+                <div class="showVid">
+                    <video autoplay muted loop>
+                        <source src="./inventory/Videos/ForSale2.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -72,13 +69,30 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
     `    
 
+    const divShowVideo = `
+        <div class="enlargeVid" style="display: none">
+            <div class="titleBar-showVid">
+                <span id="showVidTitle"></span>
+                <button class="close-video">X</button>
+            </div>
+            <div class="videoShowcase">
+                <video autoplay muted loop>
+                    <source type="video/mp4">
+                </video>
+            </div>
+        </div>
+    `    
+
     const tempDiv1 = document.createElement('div');
     tempDiv1.innerHTML = divShowCase;
     const tempDiv2 = document.createElement('div');
     tempDiv2.innerHTML = divShowPict;
+    const tempDiv3 = document.createElement('div');
+    tempDiv3.innerHTML = divShowVideo;
 
     document.body.appendChild(tempDiv1.firstElementChild);
     document.body.appendChild(tempDiv2.firstElementChild);
+    document.body.appendChild(tempDiv3.firstElementChild);
 
 
     // Fetch the data from the JSON file
@@ -211,8 +225,41 @@ function showShowcase(property) {
     });
 }
 
-
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+
+    document.querySelectorAll(".showVid").forEach((element, index) => {
+        element.addEventListener('click', () => {
+            // Get the video source from the clicked video
+            const videoSrc = element.querySelector("video source").getAttribute("src");
+            
+            // Show and animate the enlargeVid
+            const enlargeVid = document.querySelector(".enlargeVid");
+            enlargeVid.style.display = "block";  // Make the enlargeVid visible
+            enlargeVid.classList.add("active"); // Trigger the animation
+            
+            // Set the title dynamically (this could be adjusted if you have specific titles)
+            document.getElementById("showVidTitle").textContent = "Video #" + (index + 1);
+            
+            // Set the video source inside .videoShowcase
+            const showcaseVideo = enlargeVid.querySelector("video");
+            showcaseVideo.querySelector("source").setAttribute("src", videoSrc);
+            showcaseVideo.load();  // Reload video to play the new source
+            showcaseVideo.play();  // Start playing the video
+        });
+    });
+
+
+    // Close button functionality
+    document.querySelector(".close-video").addEventListener("click", () => {
+        const enlargeVid = document.querySelector(".enlargeVid");
+        enlargeVid.classList.remove("active");  // Animate back to 0 size
+        setTimeout(() => {
+            enlargeVid.style.display = "none";  // Hide the enlargeVid after animation
+        }, 500); 
+    });
+
+})

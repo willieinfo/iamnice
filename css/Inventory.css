@@ -234,7 +234,7 @@ p.descript {
     display: flex;
     flex-wrap: wrap;
     height: 500px;
-    justify-content: space-around;
+    justify-content:space-evenly;
     overflow: hidden;
 }
 
@@ -243,15 +243,201 @@ p.descript {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .showVid video {
     height: 100%;  
     width: auto;  
-    /* width: 100%;      
-    height: auto;      */
+    width:max-content;
     object-fit: contain;  
 }
+
+/* 
+.enlargeVid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    display: none;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden; 
+    z-index: 1001;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+.enlargeVid.active {
+    width: 300px;
+    height: 500px;
+
+    opacity: 1;
+}
+
+.titleBar-showVid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.close-video {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.videoShowcase video {
+    width: 100%;
+    height: auto;
+    height: 100%;
+    object-fit: contain; 
+    transform: scale(1.6); 
+    transform-origin: center; 
+
+}
+ */
+
+    /* .enlargeVid {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        padding: 20px;
+        display: none;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        overflow: hidden;
+        z-index: 1001;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .enlargeVid.active {
+        width: 60%; 
+        height: 600px; 
+        opacity: 1;
+    }
+
+    .titleBar-showVid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-size: 16px;
+        margin-bottom: 10px;
+        z-index: 1002; 
+    }
+
+    .close-video {
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .videoShowcase {
+        width: 100%;
+        height: 100%;
+        background-color: #888;
+        position: relative; 
+    }
+
+    .videoShowcase video {
+        width: 300px;
+        height: 300px;
+        object-fit: contain; 
+        transform: scale(1.6); 
+        transform-origin: center;
+        z-index: 1;
+    } */
+
+/*   ====  */
+.enlargeVid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    display: none;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden; 
+    z-index: 1001;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.enlargeVid.active {
+    width: 400px;  
+    height: 84%;  
+    opacity: 1;
+}
+
+.titleBar-showVid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+    z-index: 1002; 
+}
+
+.close-video {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.close-video:hover {
+    background-color: red;
+}
+.videoShowcase {
+    width: 100%;
+    height: 94%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: relative;
+    /* background-color: #555; */
+    overflow: hidden; 
+    overflow-y: auto;
+}
+
+.videoShowcase video {
+    max-width: 100%;  
+    max-height: 100%; 
+    object-fit: contain;  
+    /* transform: scale(1.6);  */
+    /* transform: scale(3);  */
+    transform-origin: center;
+    width: 100%;
+    height: calc(100%-200px);
+    object-fit: fill; 
+    z-index: 1;
+}
+
+
 
 /* Apply to all scrollable elements */
 *::-webkit-scrollbar {
@@ -277,7 +463,7 @@ p.descript {
 }
 
 @media (max-width: 1200px) {
-    .image-section.showcase, .image-showpict {
+    .image-section.showcase, .image-showpict, #divVideos {
         width: 80%;
     }
 }
