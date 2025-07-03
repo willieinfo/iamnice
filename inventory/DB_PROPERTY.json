@@ -240,6 +240,32 @@
 "FILENME6": "/inventory/Houses/ayalaalabbnew06.jpg"
 },
 {
+"FILENAME": "/inventory/Houses/multivill01.jpg",
+"CATEGORY": "HOUSES",
+"LOCATION": "MULTINATIONAL Village",
+"CAPTION_": "FOR SALE: 4BR House and Lot in Multinational Village, Paranaque City",
+"DESCRIPT": "• Lot area: 237 sqm • Floor area: 240 sqm • 4 Bedrooms • 3 Bathrooms • w/ 1 maid's room• w/ 4 Parking slots • w/ High-end Customize Imported furnishing • Clean title Code MYPFS108 ",
+"ITEMPRCE": "26 M Gross",
+"FILENME2": "/inventory/Houses/multivill02.jpg",
+"FILENME3": "/inventory/Houses/multivill03.jpg",
+"FILENME4": "/inventory/Houses/multivill04.jpg",
+"FILENME5": "/inventory/Houses/multivill05.jpg",
+"FILENME6": "/inventory/Houses/multivill06.jpg"
+},
+{
+"FILENAME": "/inventory/Houses/greenhills01.jpeg",
+"CATEGORY": "HOUSES",
+"LOCATION": "GREENHILLS Village San Juan",
+"CAPTION_": "FOR SALE: 3BR Suite in Viridian Greenhills, San Juan",
+"DESCRIPT": "• Floor Area: 207 sqm• Rectangular layout• Semi furnished• High floor• Newly renovated tiles• With 2 parking slots• Facing Wack Wack golf course ",
+"ITEMPRCE": "63 M",
+"FILENME2": "/inventory/Houses/greenhills02.jpeg",
+"FILENME3": "/inventory/Houses/greenhills03.jpeg",
+"FILENME4": "/inventory/Houses/greenhills04.jpeg",
+"FILENME5": "/inventory/Houses/greenhills05.jpeg",
+"FILENME6": "/inventory/Houses/greenhills06.jpeg"
+},
+{
 "FILENAME": "/inventory/Lots/baytown01.jpg",
 "CATEGORY": "LOTS",
 "LOCATION": "MARINA BAYTOWN",
