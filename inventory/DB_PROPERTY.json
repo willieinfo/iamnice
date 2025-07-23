@@ -50,6 +50,21 @@
 "FILENME8": "/inventory/Condominiums/townhouse08.png"
 },
 {
+"FILENAME": "/inventory/Condominiums/venice01.jpg",
+"CATEGORY": "CONDOMINIUMS",
+"LOCATION": "MANDALUYONG Condo Unit",
+"CAPTION_": "RUSH SALE: 1BR Condo Unit in Venice Luxury Residences",
+"DESCRIPT": "- FA 67 sqm- 1 Bedroom- 1 Bathroom- Corner unit - w/ L shaped balcony.- 23rd Floor- Fully furnished- Currently rented out at ₱40k/month- No parking- Clean Title- Rush Sale-  Tenanted until August 2024",
+"ITEMPRCE": "10 M",
+"FILENME2": "/inventory/Condominiums/venice02.jpg",
+"FILENME3": "/inventory/Condominiums/venice03.jpg",
+"FILENME4": "/inventory/Condominiums/venice04.jpg",
+"FILENME5": "/inventory/Condominiums/venice05.jpg",
+"FILENME6": "/inventory/Condominiums/venice06.jpg",
+"FILENME7": "/inventory/Condominiums/venice07.jpg",
+"FILENME8": "/inventory/Condominiums/venice08.jpg"
+},
+{
 "FILENAME": "/inventory/Condominiums/mckinley01.jpeg",
 "CATEGORY": "CONDOMINIUMS",
 "LOCATION": "TAGUIG Mckinley",
