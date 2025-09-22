@@ -10,6 +10,20 @@
 "FILENME3": "/inventory/Lots/lots01.png"
 },
 {
+"FILENAME": "/inventory/Condominiums/Marcelo01.jpg",
+"CATEGORY": "CONDOMINIUMS",
+"LOCATION": "Marcelo Green, Paranaque City",
+"CAPTION_": "FOR SALE: Newly Renovated Townhouse in Marcelo Green Village, Paranaque City",
+"DESCRIPT": "- LA: 60 sqm- FA: 100 sqm- 2 Bedrooms- 3 Bathrooms- w/ 2 Car Garage- w/ Maid's room- Newly Renovated- Free aircon in all rooms - Free Smeg range hood-  Guarded community- AMENITIES: Pavilion, Swimming Pool and 24/7 Security - Minutes away to BGC- Minutes away to Makati- Near Azure Paris , easy access to SLEX and new train station in SLEX ",
+"ITEMPRCE": "9M Gross Neg",
+"FILENME2": "/inventory/Condominiums/Marcelo02.jpg",
+"FILENME3": "/inventory/Condominiums/Marcelo03.jpg",
+"FILENME4": "/inventory/Condominiums/Marcelo04.jpg",
+"FILENME5": "/inventory/Condominiums/Marcelo05.jpg",
+"FILENME6": "/inventory/Condominiums/Marcelo06.jpg",
+"FILENME7": "/inventory/Condominiums/Marcelo07.jpg"
+},
+{
 "FILENAME": "/inventory/Condominiums/BGCCondo01.jpg",
 "CATEGORY": "CONDOMINIUMS",
 "LOCATION": "BGC - Two Serendra",
@@ -159,6 +173,20 @@
 "FILENME2": "/inventory/Lots/qcRod02.jpg",
 "FILENME3": "",
 "FILENME4": ""
+},
+{
+"FILENAME": "/inventory/Houses/sunvalley01.jpg",
+"CATEGORY": "HOUSES",
+"LOCATION": "SUN VALLEY Paranaque City",
+"CAPTION_": "FOR SALE: Brand New 4BR House and Lot in Sun Valley, Paranaque City",
+"DESCRIPT": "• LA: 338 sqm• FA: 228 sqm (not including Helper's Quarters)• 4 Bedrooms• 3 Bathrooms• w/ 4-5 Car Garage   • 2 Living Areas   • Entertainment Room (Can be converted to a gym/office)  • Detached Helper's Quarters  • Clean Title • 7 minute ride to SM Bicutan• A few steps away from the Sun Valley Tennis Court ",
+"ITEMPRCE": "𝐏𝟑𝟎,𝟓𝟐𝟎,𝟎𝟎𝟎 𝐠𝐫𝐨𝐬𝐬 𝐧𝐞𝐠𝐨𝐭𝐢𝐚𝐛𝐥𝐞",
+"FILENME2": "/inventory/Houses/sunvalley02.jpg",
+"FILENME3": "/inventory/Houses/sunvalley03.jpg",
+"FILENME4": "/inventory/Houses/sunvalley04.jpg",
+"FILENME5": "/inventory/Houses/sunvalley05.jpg",
+"FILENME6": "/inventory/Houses/sunvalley06.jpg",
+"FILENME7": "/inventory/Houses/sunvalley07.jpg"
 },
 {
 "FILENAME": "/inventory/Houses/BFHomes01.jpeg",
