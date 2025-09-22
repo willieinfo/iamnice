@@ -123,7 +123,32 @@ function renderInventory(data) {
         imgContainer.appendChild(img);
         caption.innerText = `${property.LOCATION.trim()} \n ${property.CAPTION_}`;
 
-    
+
+        if (property.BADGEMSG) {
+            const badge = document.createElement('span')
+                // badge.className = 'message-badge';
+                badge.style.backgroundColor = '#ff4d4f';
+                badge.style.color = '#fff';
+                badge.style.borderRadius = '20px';
+                badge.style.padding = '2px 6px';
+                badge.style.fontSize = '12px';
+                badge.style.position = 'absolute';
+                badge.style.top = '-5px';
+                badge.style.right = '-5px';
+                badge.style.zIndex = '10';
+                badge.style.boxShadow = '2px 2px 6px rgba(0, 0, 0, 0.2)';
+                badge.textContent = property.BADGEMSG.trim()
+
+                if (property.BADGEMSG.trim()==='SOLD') {
+                    badge.style.backgroundColor = 'rgb(0,0,255)';
+                    badge.style.transform = 'rotate(-30deg)';  
+                    badge.style.transformOrigin = 'center';
+                    badge.style.top = '-12px';  
+                    badge.style.right = '-5px'; 
+                }
+                imgContainer.appendChild(badge);
+        }
+
         // Handle click event on imgContainer for the specific property
         imgContainer.addEventListener('click', function () {
             showShowcase(property);

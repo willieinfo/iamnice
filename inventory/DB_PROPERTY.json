@@ -11,6 +11,7 @@
 },
 {
 "FILENAME": "/inventory/Condominiums/Marcelo01.jpg",
+"BADGEMSG": "Must See!",
 "CATEGORY": "CONDOMINIUMS",
 "LOCATION": "Marcelo Green, Paranaque City",
 "CAPTION_": "FOR SALE: Newly Renovated Townhouse in Marcelo Green Village, Paranaque City",
@@ -25,6 +26,7 @@
 },
 {
 "FILENAME": "/inventory/Condominiums/BGCCondo01.jpg",
+"BADGEMSG": "Must See!",
 "CATEGORY": "CONDOMINIUMS",
 "LOCATION": "BGC - Two Serendra",
 "CAPTION_": "FOR SALE : Special 2BR Condo Unit in Red Oak, Two Serendra (Large Terrace)",
@@ -54,6 +56,7 @@
 },
 {
 "FILENAME": "/inventory/Condominiums/venice01.jpg",
+"BADGEMSG": "SOLD",
 "CATEGORY": "CONDOMINIUMS",
 "LOCATION": "MANDALUYONG (VENICE) Condo Unit",
 "CAPTION_": "RUSH SALE: 1BR Condo Unit in Venice Luxury Residences",
@@ -176,6 +179,7 @@
 },
 {
 "FILENAME": "/inventory/Houses/sunvalley01.jpg",
+"BADGEMSG": "Must See!",
 "CATEGORY": "HOUSES",
 "LOCATION": "SUN VALLEY Paranaque City",
 "CAPTION_": "FOR SALE: Brand New 4BR House and Lot in Sun Valley, Paranaque City",
@@ -247,6 +251,7 @@
 },
 {
 "FILENAME": "/inventory/Houses/bfhomesbnew01.jpg",
+"BADGEMSG": "SOLD",
 "CATEGORY": "HOUSES",
 "LOCATION": "BF HOMES - Las Piñas",
 "CAPTION_": "FOR SALE: Brand New 2 Storey House and Lot in BF Homes, Las Pinas City",
