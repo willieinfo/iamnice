@@ -193,6 +193,21 @@
 "FILENME7": "/inventory/Houses/sunvalley07.jpg"
 },
 {
+"FILENAME": "/inventory/Houses/ayaala01.jpg",
+"BADGEMSG": "Must See!",
+"CATEGORY": "HOUSES",
+"LOCATION": "AYALA ALABANG Village, Muntinlupa City",
+"CAPTION_": "FOR SALE: 8BR House and Lot in Ayala Alabang Village, Muntinlupa City",
+"DESCRIPT": "- Lot Area: 374 sqm- Floor Area: Around 900 sqm (3floors)- 8 Bedrooms (master entire 3F with small kitchen, den & veranda)- 13 Bathrooms- w/ 4-5 car garage horizontal - Maid & drivers room ",
+"ITEMPRCE": "105 M neg.",
+"FILENME2": "/inventory/Houses/ayaala02.jpg",
+"FILENME3": "/inventory/Houses/ayaala03.jpg",
+"FILENME4": "/inventory/Houses/ayaala04.jpg",
+"FILENME5": "/inventory/Houses/ayaala05.jpg",
+"FILENME6": "/inventory/Houses/ayaala06.jpg",
+"FILENME7": "/inventory/Houses/ayaala07.jpg"
+},
+{
 "FILENAME": "/inventory/Houses/BFHomes01.jpeg",
 "CATEGORY": "HOUSES",
 "LOCATION": "BF HOMES - Parañaque",
