@@ -178,21 +178,6 @@
 "FILENME4": ""
 },
 {
-"FILENAME": "/inventory/Houses/sunvalley01.jpg",
-"BADGEMSG": "Must See!",
-"CATEGORY": "HOUSES",
-"LOCATION": "SUN VALLEY Paranaque City",
-"CAPTION_": "FOR SALE: Brand New 4BR House and Lot in Sun Valley, Paranaque City",
-"DESCRIPT": "• LA: 338 sqm• FA: 228 sqm (not including Helper's Quarters)• 4 Bedrooms• 3 Bathrooms• w/ 4-5 Car Garage   • 2 Living Areas   • Entertainment Room (Can be converted to a gym/office)  • Detached Helper's Quarters  • Clean Title • 7 minute ride to SM Bicutan• A few steps away from the Sun Valley Tennis Court ",
-"ITEMPRCE": "30.5 M gross neg.",
-"FILENME2": "/inventory/Houses/sunvalley02.jpg",
-"FILENME3": "/inventory/Houses/sunvalley03.jpg",
-"FILENME4": "/inventory/Houses/sunvalley04.jpg",
-"FILENME5": "/inventory/Houses/sunvalley05.jpg",
-"FILENME6": "/inventory/Houses/sunvalley06.jpg",
-"FILENME7": "/inventory/Houses/sunvalley07.jpg"
-},
-{
 "FILENAME": "/inventory/Houses/ayaala01.jpg",
 "BADGEMSG": "Must See!",
 "CATEGORY": "HOUSES",
@@ -206,6 +191,21 @@
 "FILENME5": "/inventory/Houses/ayaala05.jpg",
 "FILENME6": "/inventory/Houses/ayaala06.jpg",
 "FILENME7": "/inventory/Houses/ayaala07.jpg"
+},
+{
+"FILENAME": "/inventory/Houses/sunvalley01.jpg",
+"BADGEMSG": "Must See!",
+"CATEGORY": "HOUSES",
+"LOCATION": "SUN VALLEY Paranaque City",
+"CAPTION_": "FOR SALE: Brand New 4BR House and Lot in Sun Valley, Paranaque City",
+"DESCRIPT": "• LA: 338 sqm• FA: 228 sqm (not including Helper's Quarters)• 4 Bedrooms• 3 Bathrooms• w/ 4-5 Car Garage   • 2 Living Areas   • Entertainment Room (Can be converted to a gym/office)  • Detached Helper's Quarters  • Clean Title • 7 minute ride to SM Bicutan• A few steps away from the Sun Valley Tennis Court ",
+"ITEMPRCE": "30.5 M gross neg.",
+"FILENME2": "/inventory/Houses/sunvalley02.jpg",
+"FILENME3": "/inventory/Houses/sunvalley03.jpg",
+"FILENME4": "/inventory/Houses/sunvalley04.jpg",
+"FILENME5": "/inventory/Houses/sunvalley05.jpg",
+"FILENME6": "/inventory/Houses/sunvalley06.jpg",
+"FILENME7": "/inventory/Houses/sunvalley07.jpg"
 },
 {
 "FILENAME": "/inventory/Houses/BFHomes01.jpeg",
