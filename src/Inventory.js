@@ -139,7 +139,7 @@ function renderInventory(data) {
                 badge.style.boxShadow = '2px 2px 6px rgba(0, 0, 0, 0.2)';
                 badge.textContent = property.BADGEMSG.trim()
 
-                if (property.BADGEMSG.trim()==='SOLD') {
+                if (property.BADGEMSG.trim()==='SOLD' || property.BADGEMSG.trim()==='ON HOLD') {
                     badge.style.backgroundColor = 'rgb(0,0,255)';
                     badge.style.transform = 'rotate(-30deg)';  
                     badge.style.transformOrigin = 'center';

@@ -56,7 +56,6 @@
 },
 {
 "FILENAME": "/inventory/Condominiums/venice01.jpg",
-"BADGEMSG": "SOLD",
 "CATEGORY": "CONDOMINIUMS",
 "LOCATION": "MANDALUYONG (VENICE) Condo Unit",
 "CAPTION_": "RUSH SALE: 1BR Condo Unit in Venice Luxury Residences",
@@ -98,6 +97,7 @@
 },
 {
 "FILENAME": "/inventory/Condominiums/Studio01.jpg",
+"BADGEMSG": "SOLD",
 "CATEGORY": "CONDOMINIUMS",
 "LOCATION": "MAKATI - Rockwell",
 "CAPTION_": "FOR SALE: Studio Unit in Manansala Rockwell, Makati City",
@@ -266,7 +266,6 @@
 },
 {
 "FILENAME": "/inventory/Houses/bfhomesbnew01.jpg",
-"BADGEMSG": "SOLD",
 "CATEGORY": "HOUSES",
 "LOCATION": "BF HOMES - Las Piñas",
 "CAPTION_": "FOR SALE: Brand New 2 Storey House and Lot in BF Homes, Las Pinas City",
@@ -306,6 +305,7 @@
 },
 {
 "FILENAME": "/inventory/Houses/greenhills01.jpeg",
+"BADGEMSG": "ON HOLD",
 "CATEGORY": "HOUSES",
 "LOCATION": "GREENHILLS Village San Juan",
 "CAPTION_": "FOR SALE: 3BR Suite in Viridian Greenhills, San Juan",
