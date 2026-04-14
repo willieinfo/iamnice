@@ -63,9 +63,10 @@ function changeTheme(color) {
             document.documentElement.style.setProperty('--darker-bg-color', 'rgb(0, 0, 105)');
             break;
         case 'green':
-            document.documentElement.style.setProperty('--main-bg-color', 'rgb(0, 64, 64)');
-            document.documentElement.style.setProperty('--second-bg-color', 'rgb(34, 139, 34)');
-            document.documentElement.style.setProperty('--darker-bg-color', 'rgb(0, 100, 0)');
+            // document.documentElement.style.setProperty('--main-bg-color', 'rgb(0, 64, 64)');
+            document.documentElement.style.setProperty('--main-bg-color', 'rgb(58, 73, 32)');
+            document.documentElement.style.setProperty('--second-bg-color', 'rgb(85, 107, 47)');
+            document.documentElement.style.setProperty('--darker-bg-color', 'rgb(0, 64, 64)');
             break;
         case 'violet':
             document.documentElement.style.setProperty('--main-bg-color', 'rgb(64, 0, 128)');
