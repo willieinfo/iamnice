@@ -34,7 +34,7 @@
 }
 
 #blueDiv, #greenDiv, #violetDiv,
-#maroonDiv, #redDiv, #tomatoDiv {
+#maroonDiv, #redDiv, #charcoalDiv {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -50,11 +50,11 @@
 #violetDiv { background-color: rgb(64,0,128); }
 #maroonDiv { background-color: rgb(128, 0, 64); }
 #redDiv { background-color: rgb(179,0,0); }
-#tomatoDiv { background-color: rgb(255, 99, 71); }
+#charcoalDiv { background-color: rgb(54,69,79); }
 
 /* Hover effect for color divs */
 #blueDiv:hover, #greenDiv:hover, #violetDiv:hover,
-#maroonDiv:hover, #redDiv:hover, #tomatoDiv:hover {
+#maroonDiv:hover, #redDiv:hover, #charcoalDiv:hover {
     transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
