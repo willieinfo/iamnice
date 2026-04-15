@@ -114,7 +114,7 @@ function renderInventory(data) {
 
         divCategory.appendChild(imgContainer);
         imgContainer.appendChild(caption);
-        imgContainer.classList.add('imgContainer')
+        // imgContainer.classList.add('imgContainer')
 
         // Set up the first image (FILENAME)
         const img = document.createElement('img');
