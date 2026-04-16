@@ -174,7 +174,7 @@ body {
     transition: 0.5s;
     padding-top: 20px;
     z-index: 900;
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: 12px; 
     padding: 20px;
     box-sizing: border-box;
@@ -195,7 +195,7 @@ body {
     margin-top: auto;        /* Push the counter to the bottom of the container */
     padding: 10px;           /* Optional padding */
     text-align: center;
-    font-size: 16px;
+    font-size: 12px;
     color: white;
 }
 .sidenav .image-wrapper {
