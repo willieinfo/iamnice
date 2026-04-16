@@ -176,7 +176,6 @@ body {
     z-index: 900;
     font-family: var(--font-body);
     font-size: 12px; 
-    padding: 20px;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -208,7 +207,7 @@ body {
 }
 
 .sidenav img {
-    border: 5px solid #fff; 
+    /* border: 5px solid #fff;  */
     max-width: 100%; 
     height: auto; 
 }
