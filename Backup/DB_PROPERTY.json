@@ -25,21 +25,6 @@
 "FILENME7": "/inventory/Condominiums/Marcelo07.jpg"
 },
 {
-"FILENAME": "/inventory/Condominiums/BGCCondo01.jpg",
-"BADGEMSG": "Must See!",
-"CATEGORY": "CONDOMINIUMS",
-"LOCATION": "BGC - Two Serendra",
-"CAPTION_": "FOR SALE : Special 2BR Condo Unit in Red Oak, Two Serendra (Large Terrace)",
-"DESCRIPT": "• Floor Area: 111sqm plus large free balcony space• 2 Bedrooms• 2 Bathrooms• Maid’s area with t&B• 1 parking slot • comes with a large terrace (can actually be used as an indoor golf practice area)• Master’s bedroom has balcony• Orientation: West• 43rd floor",
-"ITEMPRCE": "32.5 M",
-"FILENME2": "/inventory/Condominiums/BGCCondo02.jpg",
-"FILENME3": "/inventory/Condominiums/BGCCondo03.jpg",
-"FILENME4": "/inventory/Condominiums/BGCCondo04.jpg",
-"FILENME5": "/inventory/Condominiums/BGCCondo05.jpg",
-"FILENME6": "/inventory/Condominiums/BGCCondo06.jpg",
-"FILENME7": "/inventory/Condominiums/BGCCondo07.jpg"
-},
-{
 "FILENAME": "/inventory/Condominiums/townhouse01.png",
 "CATEGORY": "CONDOMINIUMS",
 "LOCATION": "QUEZON CITY Townhouse",
@@ -135,6 +120,7 @@
 },
 {
 "FILENAME": "/inventory/Warehouses/whse4lease01.jpg",
+"BADGEMSG": "SOLD",
 "CATEGORY": "WAREHOUSES",
 "LOCATION": "APALIT PAMPANGA",
 "CAPTION_": "FOR LEASE: 1295.48 sqm Warehouse in Apalit, Pampanga",
@@ -157,6 +143,7 @@
 },
 {
 "FILENAME": "/inventory/Lots/Whse-Old.jpg",
+"BADGEMSG": "SOLD",
 "CATEGORY": "LOTS",
 "LOCATION": "CALOOCAN CITY",
 "CAPTION_": "FOR SALE: 360 sqm Lot in Caloocan City",
