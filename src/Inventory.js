@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="image-section showcase" style="display: none">
             <div class="titleBar-showcase">
                 <span id="propertyTitle"></span>
-                <span id="contactMe">Please call me 0917-828-3887 or email @ e.estrada@remaxcapital.ph</span>
+                <span id="contactMe">Please call 0917-828-3887 or email e.estrada@remaxcapital.ph</span>
                 <button class="close-showcase">X</button>
             </div>
             <div class="imageDesc">
