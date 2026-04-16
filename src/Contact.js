@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     message: message_,     // Message content
                     subject: subject_,     // Subject of the email
                     from_name: fromname,   // Sender's Name
-                    emailfrom: emailfrom   // Sender's email
+                    reply_to: emailfrom   // Sender's email
                 };
 
                 // Send the email using EmailJS

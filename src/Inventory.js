@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="image-section showcase" style="display: none">
             <div class="titleBar-showcase">
                 <span id="propertyTitle"></span>
+                <span id="contactMe">Please call me 0917-828-3887 or email @ e.estrada@remaxcapital.ph</span>
                 <button class="close-showcase">X</button>
             </div>
             <div class="imageDesc">
@@ -114,14 +115,13 @@ function renderInventory(data) {
 
         divCategory.appendChild(imgContainer);
         imgContainer.appendChild(caption);
-        // imgContainer.classList.add('imgContainer')
 
         // Set up the first image (FILENAME)
         const img = document.createElement('img');
         img.src = property.FILENAME;
         img.alt = property.CAPTION_;
         imgContainer.appendChild(img);
-        caption.innerText = `${property.LOCATION.trim()} \n ${property.CAPTION_}`;
+        caption.innerText = `${property.LOCATION.trim()} \n ${property.CAPTION_.trim()} \n ${property.ITEMPRCE.trim()}`;
 
 
         if (property.BADGEMSG) {

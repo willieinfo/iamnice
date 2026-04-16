@@ -99,18 +99,6 @@ h4 {
     transition: border 0.3s ease;
 }
 
-.titleBar-showcase {
-    display: flex; 
-    width: 100%;
-    background-color: var(--second-bg-color);
-    color: white;
-    height: 40px; 
-    padding: 0px 10px;
-    box-sizing: border-box;    
-    align-items: center;
-    position: sticky;
-    top: 0;
-}
 .imageDesc {
     display: flex; 
     align-items: center;
@@ -159,6 +147,19 @@ p.descript {
     top: 0;
 }
 
+.titleBar-showcase {
+    display: flex; 
+    width: 100%;
+    background-color: var(--second-bg-color);
+    color: white;
+    height: 40px; 
+    padding: 0px 10px;
+    box-sizing: border-box;    
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
 .close-showcase, .close-showpict {
     position: absolute;
     right: 10px;
@@ -171,6 +172,24 @@ p.descript {
 .close-showcase:hover, .close-showpict:hover {
     background-color: #c00;
 }
+
+
+/**/
+
+#contactMe {
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+.close-showcase {
+    margin-left: auto;
+}
+
+/**/
+
 
 .image-showpict {
     display: none;
