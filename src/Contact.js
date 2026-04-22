@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Prepare the parameters for EmailJS
                 const templateParams = {
-                    // to_email: 'willie.estrada@regent-trg.com', 
                     to_email: 'e.estrada@remaxcapital.ph', // Owner's email
                     message: message_,     // Message content
                     subject: subject_,     // Subject of the email

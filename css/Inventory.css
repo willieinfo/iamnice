@@ -36,6 +36,33 @@ h4 {
     position: relative; 
 }
 
+.imgHighlighter {
+    background-color: var(--main-bg-color);
+    
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+    animation: glowPulse 1.8s ease-in-out infinite;
+}
+.imgHighlighter .caption {
+    color: #fff;
+}
+.prceRnge {
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+/* Hover effect (optional but nice) */
+.prceRnge:hover {
+    transform: translateY(-2px);
+}
+/* ACTIVE state */
+.prceRnge.active {
+    background-color: var(--main-bg-color);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 5px 10px;
+}
+
 .imgContainer:hover {
     border-radius: 10px;;
     border: 1px solid var(--main-bg-color); 
@@ -474,5 +501,18 @@ p.descript {
     }
     100% {
         transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* ✨ Glow animation img Highlighter*/
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 0px rgba(0, 123, 255, 0.0);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 123, 255, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 0px rgba(0, 123, 255, 0.0);
     }
 }

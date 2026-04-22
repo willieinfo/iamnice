@@ -1,3 +1,11 @@
+export function clearInventory() {
+    const condos = document.getElementById('divCondominiums');
+    const houses = document.getElementById('divHouses');
+
+    if (condos) condos.innerHTML = '';
+    if (houses) houses.innerHTML = '';
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const divInventory = `
         <div class="Inventory" id="Inventory">
@@ -97,13 +105,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // Fetch the data from the JSON file
+    // let globalData = []; // store JSON once
+
+    // fetch('./inventory/DB_PROPERTY.json')
+    //     .then(response => response.json())
+    //     .then(data => renderInventory(data))
+    //     .catch(err => console.error('Error fetching JSON:', err));
+
+
+    // Fetch once
     fetch('./inventory/DB_PROPERTY.json')
         .then(response => response.json())
-        .then(data => renderInventory(data))
-        .catch(err => console.error('Error fetching JSON:', err));
+        .then(data => {
+            globalData = data;
+            renderInventory(globalData); // initial load
+        });
+
 });
 
-function renderInventory(data) {
+export function renderInventory(data, min = 0, max = Infinity) {
+
+    document.querySelectorAll('.image-section').forEach(div => div.innerHTML = '');
+    let invCounter=0
+
     data.forEach(property => {
         const category = property.CATEGORY.toLowerCase(); // Convert category to lowercase
         const divCategory = document.getElementById(`div${capitalizeFirstLetter(category)}`);
@@ -122,6 +146,11 @@ function renderInventory(data) {
         img.alt = property.CAPTION_;
         imgContainer.appendChild(img);
         caption.innerText = `${property.LOCATION.trim()} \n ${property.CAPTION_.trim()} \n ${property.ITEMPRCE.trim()}`;
+
+        if (min>0 && property.ASKPRICE >= min && property.ASKPRICE <= max) {
+	    	imgContainer.classList.add('imgHighlighter')
+            invCounter++
+    	}
 
 
         if (property.BADGEMSG) {
@@ -155,7 +184,36 @@ function renderInventory(data) {
         });
 
     });
-}
+
+    if (invCounter > 0) {
+        showNotification( `${invCounter} properties highlighted` ) 
+    }
+} 
+
+document.querySelectorAll('.prceRnge').forEach(el => {
+    el.addEventListener('click', function () {
+        const rangeId = this.id; // e.g. prceRnge10_15
+
+        document.querySelectorAll('.prceRnge').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        this.classList.add('active');
+
+        let min = 0, max = Infinity;
+
+        if (rangeId === 'prceRnge10_15') {
+            min = 10; max = 15;
+        } else if (rangeId === 'prceRnge16_25') {
+            min = 16; max = 25;
+        } else if (rangeId === 'prceRnge26_50') {
+            min = 26; max = 50;
+        } else if (rangeId === 'prceRnge51_Up') {
+            min = 51; max = Infinity;
+        }
+        renderInventory(globalData, min, max); // pass range
+    });
+});
 
 function showShowcase(property) {
     const showcase = document.querySelector('.image-section.showcase');
@@ -288,3 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 })
+
+
+
+

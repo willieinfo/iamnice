@@ -6,6 +6,7 @@
 "CAPTION_": "FOR SALE 580 sqm Lot in Anvaya Cove South Coast with Ocean.",
 "DESCRIPT": "•Lot Area 580 sqm •Just 5 minutes away from the newest Nature Club •Class B (corporate) Anvaya Golf Membership •Location South Coast Area - courtyard green view with ocean view •Asking Price Php 23285000",
 "ITEMPRCE": "24M",
+"ASKPRICE": 24,
 "FILENME2": "/inventory/Lots/lots03.png",
 "FILENME3": "/inventory/Lots/lots01.png"
 },
@@ -17,6 +18,7 @@
 "CAPTION_": "FOR SALE: Newly Renovated Townhouse in Marcelo Green Village, Paranaque City",
 "DESCRIPT": "- LA: 60 sqm- FA: 100 sqm- 2 Bedrooms- 3 Bathrooms- w/ 2 Car Garage- w/ Maid's room- Newly Renovated- Free aircon in all rooms - Free Smeg range hood-  Guarded community- AMENITIES: Pavilion, Swimming Pool and 24/7 Security - Minutes away to BGC- Minutes away to Makati- Near Azure Paris , easy access to SLEX and new train station in SLEX ",
 "ITEMPRCE": "9M Gross Neg",
+"ASKPRICE": 9,
 "FILENME2": "/inventory/Condominiums/Marcelo02.jpg",
 "FILENME3": "/inventory/Condominiums/Marcelo03.jpg",
 "FILENME4": "/inventory/Condominiums/Marcelo04.jpg",
@@ -31,6 +33,7 @@
 "CAPTION_": "FOR SALE: 307.7 sqm RFO 3BR Luxury Townhouse in Quezon City",
 "DESCRIPT": "• Floor Area: 307.7 sqm• Lot Area: 68.8 sqm• 3 Bedrooms + Maid's Room• 5 T&B + Powder Room• 3 Car Garage• Family Room + Roof Deck• Premium Finish with complete aircon & kitchen appliances• Corner Unit",
 "ITEMPRCE": "39.9 M",
+"ASKPRICE": 39,
 "FILENME2": "/inventory/Condominiums/townhouse02.png",
 "FILENME3": "/inventory/Condominiums/townhouse03.png",
 "FILENME4": "/inventory/Condominiums/townhouse04.png",
@@ -46,6 +49,7 @@
 "CAPTION_": "RUSH SALE: 1BR Condo Unit in Venice Luxury Residences",
 "DESCRIPT": "- FA 67 sqm- 1 Bedroom- 1 Bathroom- Corner unit - w/ L shaped balcony.- 23rd Floor- Fully furnished- Currently rented out at ₱40k/month- No parking- Clean Title- Rush Sale-  Tenanted until August 2024",
 "ITEMPRCE": "10 M",
+"ASKPRICE": 10,
 "FILENME2": "/inventory/Condominiums/venice02.jpg",
 "FILENME3": "/inventory/Condominiums/venice03.jpg",
 "FILENME4": "/inventory/Condominiums/venice04.jpg",
@@ -61,6 +65,7 @@
 "CAPTION_": "FOR SALE: 2BR Condo Unit in Mckinley Hill Garden Villas 1, Taguig City",
 "DESCRIPT": "• FA 130 sqm• 2 Bedrooms• 2 T&B• 2 Balconies• Fully renovated and furnished• No parking (but easy to rent from admin at 3k/month)• Clean title Code MYPFS004" ,
 "ITEMPRCE": "23 M Gross",
+"ASKPRICE": 23,
 "FILENME2": "/inventory/Condominiums/mckinley02.jpeg",
 "FILENME3": "/inventory/Condominiums/mckinley03.jpeg",
 "FILENME4": "/inventory/Condominiums/mckinley04.jpeg",
@@ -76,6 +81,7 @@
 "CAPTION_": "FOR SALE 2BR Condo Unit Callistro Tower 1 Makati",
 "DESCRIPT": "•Floor Area 91 sqm •2 Bedrooms •3Bathrooms •Maid's Room •1 Parking Slot •Balcony with Pool View •Located on the 11th Floor •Bright and spacious layout with premium finishes •Prime location beside Ayala M",
 "ITEMPRCE": "27.5M",
+"ASKPRICE": 27,
 "FILENME2": "/inventory/Condominiums/condo02.png",
 "FILENME3": "",
 "FILENME4": ""
@@ -88,6 +94,7 @@
 "CAPTION_": "FOR SALE: Studio Unit in Manansala Rockwell, Makati City",
 "DESCRIPT": "• FA: 36 sqm• 1 Bathroom• Fully Furnished• with Parking Code MYPFS156",
 "ITEMPRCE": "11M",
+"ASKPRICE": 11,
 "FILENME2": "/inventory/Condominiums/Studio02.jpg",
 "FILENME3": "/inventory/Condominiums/Studio03.jpg",
 "FILENME4": ""
@@ -99,6 +106,7 @@
 "CAPTION_": "FOR SALE: 2BR Condo Unit in The Beaufort 5th Avenue, BGC Taguig City",
 "DESCRIPT": "- FA 103.3 sqm - 2 Bedrooms - 2 T&B- Maid's room w/ own T&B- Selling furnished- w/ 1 Parking slot - w/ Overlooking golf course Code MYPFS003" ,
 "ITEMPRCE": "30 M Negotiable",
+"ASKPRICE": 30,
 "FILENME2": "/inventory/Condominiums/Beauforth02.jpeg",
 "FILENME3": "/inventory/Condominiums/Beauforth03.jpeg",
 "FILENME4": "/inventory/Condominiums/Beauforth04.jpg",
@@ -149,6 +157,7 @@
 "CAPTION_": "FOR SALE: 360 sqm Lot in Caloocan City",
 "DESCRIPT": "•LA: 360 sqm • Good for a small warehouse Code MYPFS114",
 "ITEMPRCE": "35 M",
+"ASKPRICE": 35,
 "FILENME2": "",
 "FILENME3": "",
 "FILENME4": ""
@@ -172,6 +181,7 @@
 "CAPTION_": "FOR SALE: 8BR House and Lot in Ayala Alabang Village, Muntinlupa City",
 "DESCRIPT": "- Lot Area: 374 sqm- Floor Area: Around 900 sqm (3floors)- 8 Bedrooms (master entire 3F with small kitchen, den & veranda)- 13 Bathrooms- w/ 4-5 car garage horizontal - Maid & drivers room ",
 "ITEMPRCE": "105 M neg.",
+"ASKPRICE": 105,
 "FILENME2": "/inventory/Houses/ayaala02.jpg",
 "FILENME3": "/inventory/Houses/ayaala03.jpg",
 "FILENME4": "/inventory/Houses/ayaala04.jpg",
@@ -187,6 +197,7 @@
 "CAPTION_": "FOR SALE: Brand New 4BR House and Lot in Sun Valley, Paranaque City",
 "DESCRIPT": "• LA: 338 sqm• FA: 228 sqm (not including Helper's Quarters)• 4 Bedrooms• 3 Bathrooms• w/ 4-5 Car Garage   • 2 Living Areas   • Entertainment Room (Can be converted to a gym/office)  • Detached Helper's Quarters  • Clean Title • 7 minute ride to SM Bicutan• A few steps away from the Sun Valley Tennis Court ",
 "ITEMPRCE": "30.5 M gross neg.",
+"ASKPRICE": 30,
 "FILENME2": "/inventory/Houses/sunvalley02.JPG",
 "FILENME3": "/inventory/Houses/sunvalley03.JPG",
 "FILENME4": "/inventory/Houses/sunvalley04.JPG",
@@ -226,6 +237,7 @@
 "CAPTION_": "FOR SALE: 2 Storey House and Lot in Paranaque City",
 "DESCRIPT": "• Lot area: 300 sqm• Floor area: 288 sqm• 2 Storey• 5 Bedrooms (including a ground floor bedroom• 4 Bathrooms• Double height living room• Spacious dining area• 2 Car garage• Furnished with aircon in living spaces and furnitures• Well Designed•  Modern Home• 2 years old home",
 "ITEMPRCE": "P 33M",
+"ASKPRICE": 33,
 "FILENME2": "/inventory/Houses/2storeyHL02.jpg",
 "FILENME3": "/inventory/Houses/2storeyHL03.jpg",
 "FILENME4": "/inventory/Houses/2storeyHL04.jpg"
@@ -237,6 +249,7 @@
 "CAPTION_": "FOR SALE: 3BR House and Lot in BF Homes, Paranaque ",
 "DESCRIPT": "- Lot Area: 520 sqm- Old property Code MYPCM007",
 "ITEMPRCE": "34M Gross",
+"ASKPRICE": 34,
 "FILENME2": "/inventory/Houses/philamHouse2.png",
 "FILENME3": "/inventory/Houses/philamHouse3.jpg"
 },
@@ -258,6 +271,7 @@
 "CAPTION_": "FOR SALE: Brand New 2 Storey House and Lot in BF Homes, Las Pinas City",
 "DESCRIPT": "• LA: 280 sqm •  FA: 400 sqm • 5 Bedrooms • 4 Bathrooms • Single Detached • Brand New • 2 Storey • 4 car garage • Swimming Pool • His and Hers Walk in Closet• 12 Feet High Ceilings • Kohler Bathroom Fixtures • Maids And Drivers Room with T&B",
 "ITEMPRCE": "40 M",
+"ASKPRICE": 40,
 "FILENME2": "/inventory/Houses/bfhomesbnew02.jpg",
 "FILENME3": "/inventory/Houses/bfhomesbnew03.jpg",
 "FILENME4": "/inventory/Houses/bfhomesbnew04.jpg",
@@ -271,6 +285,7 @@
 "CAPTION_": "FOR SALE: Brand New 4BR Modern House in Ayala Alabang Village, Muntinlupa City",
 "DESCRIPT": "• LA: 163 sqm• FA: 185 sqm • 4 Bedrooms• 4 Bathrooms• 2 car garage• Pocket Garden• 2 brand new inverter split type airconditioners• Automatic gate• 4 shower ready heaters• Not perimeter• Not tumbok• Not backing creek Code MYPCM079",
 "ITEMPRCE": "65 M",
+"ASKPRICE": 65,
 "FILENME2": "/inventory/Houses/ayalaalabbnew02.jpg",
 "FILENME3": "/inventory/Houses/ayalaalabbnew03.jpg",
 "FILENME4": "/inventory/Houses/ayalaalabbnew04.jpg",
@@ -284,6 +299,7 @@
 "CAPTION_": "FOR SALE: 4BR House and Lot in Multinational Village, Paranaque City",
 "DESCRIPT": "• Lot area: 237 sqm • Floor area: 240 sqm • 4 Bedrooms • 3 Bathrooms • w/ 1 maid's room• w/ 4 Parking slots • w/ High-end Customize Imported furnishing • Clean title Code MYPFS108 ",
 "ITEMPRCE": "26 M Gross",
+"ASKPRICE": 26,
 "FILENME2": "/inventory/Houses/multivill02.jpg",
 "FILENME3": "/inventory/Houses/multivill03.jpg",
 "FILENME4": "/inventory/Houses/multivill04.jpg",
@@ -298,6 +314,7 @@
 "CAPTION_": "FOR SALE: 3BR Suite in Viridian Greenhills, San Juan",
 "DESCRIPT": "• Floor Area: 207 sqm• Rectangular layout• Semi furnished• High floor• Newly renovated tiles• With 2 parking slots• Facing Wack Wack golf course ",
 "ITEMPRCE": "63 M",
+"ASKPRICE": 63,
 "FILENME2": "/inventory/Houses/greenhills02.jpeg",
 "FILENME3": "/inventory/Houses/greenhills03.jpeg",
 "FILENME4": "/inventory/Houses/greenhills04.jpeg",
@@ -311,6 +328,7 @@
 "CAPTION_": "FOR SALE: 797 sqm Lot in Marina Baytown South Paranaque City",
 "DESCRIPT": "- Lot Area : 797 sqm",
 "ITEMPRCE": "Php 159,400",
+"ASKPRICE": 100,
 "FILENME2": "/inventory/Lots/baytown02.jpg",
 "FILENME3": "/inventory/Lots/baytown03.jpg",
 "FILENME4": "/inventory/Lots/baytown04.jpg"
@@ -323,6 +341,7 @@
   "CAPTION_": "FOR SALE: 674 sqm Vacant Lot in The Courtyards Vermosa, Imus, Cavite",
   "DESCRIPT": "Lot Area: 674 sqm | Clean Title",
   "ITEMPRCE": "₱55,000/sqm (Negotiable)",
+  "ASKPRICE": 37,
   "FILENME2": "/inventory/Lots/Vermosa02.jpeg"
 },
 {
@@ -333,6 +352,7 @@
   "CAPTION_": "FOR SALE: 339 sqm Lot in Venare Nuvali, Laguna",
   "DESCRIPT": "Lot Area: 339 sqm | Near Clubhouse | Single Loaded | Facing South | Corner Lot",
   "ITEMPRCE": "₱45,000/sqm (Negotiable)",
+  "ASKPRICE": 37,
   "FILENME2": "/inventory/Lots/MYPFS301_02.jpeg",
   "FILENME3": "/inventory/Lots/MYPFS301_03.jpeg",
   "FILENME4": "/inventory/Lots/MYPFS301_04.jpeg"
@@ -345,6 +365,7 @@
   "CAPTION_": "FOR SALE: 685 sqm Lot in Rockwell South at Carmelray, Calamba, Laguna",
   "DESCRIPT": "Lot Area: 685 sqm | Phase 1 | Near Future Gate | Near Commercial Area | Walking Distance to Treehouse Park | Near Central Amenity & Clubhouse | Elevated Lot with Vista",
   "ITEMPRCE": "₱58,000/sqm",
+  "ASKPRICE": 15,
   "FILENME2": "/inventory/Lots/MYPFS307_02.jpeg",
   "FILENME3": "/inventory/Lots/MYPFS307_03.jpeg"
 },
@@ -356,6 +377,7 @@
   "CAPTION_": "FOR SALE: 680 sqm Lot in Manila Marina Baytown, Parañaque City",
   "DESCRIPT": "Lot Area: 680 sqm | Phase South | Regular Cut | Facing Northwest | Title Under Corporation",
   "ITEMPRCE": "₱220,000/sqm",
+  "ASKPRICE": 149,
   "FILENME2": "/inventory/Lots/MYPFS306_02.jpeg",
   "FILENME3": "/inventory/Lots/MYPFS306_03.jpeg",
   "FILENME4": "/inventory/Lots/MYPFS306_04.jpeg"
@@ -368,6 +390,7 @@
   "CAPTION_": "FOR SALE: 1BR Condominium Unit in Lincoln Tower at The Proscenium Rockwell, Makati City",
   "DESCRIPT": "Floor Area: 64 sqm | 1 Bedroom | 1 Bathroom | 1 Parking | Furnished",
   "ITEMPRCE": "₱375,000/sqm",
+  "ASKPRICE": 24,
   "FILENME2": "/inventory/Condominiums/LincolnTower02.jpeg",
   "FILENME3": "/inventory/Condominiums/LincolnTower03.jpeg",
   "FILENME4": "/inventory/Condominiums/LincolnTower04.jpeg",
@@ -381,6 +404,7 @@
   "CAPTION_": "FOR SALE: 1BR Loft Type Condominium Unit in Eton Residences Greenbelt, Legazpi Village, Makati City",
   "DESCRIPT": "Floor Area: 45.84 sqm | 1 Bedroom | 1 Bathroom | Loft Type | Across Old Greenbelt 1 | No Parking | Fully Furnished",
   "ITEMPRCE": "₱11,500,000",
+  "ASKPRICE": 11,
   "FILENME2": "/inventory/Condominiums/EtonResidences02.jpeg",
   "FILENME3": "/inventory/Condominiums/EtonResidences03.jpeg",
   "FILENME4": "/inventory/Condominiums/EtonResidences04.jpeg"
@@ -393,6 +417,7 @@
   "CAPTION_": "FOR SALE: 3BR House & Lot in Ayala Westgrove Heights, Silang, Cavite",
   "DESCRIPT": "2 Storey House + Basement | Lot Area: 413 sqm | Floor Area: 220 sqm | Built in 2008 | Small Pocket Garden | Maid’s & Driver’s Quarters | 4 Car Garage",
   "ITEMPRCE": "₱45,000,000 (Negotiable)",
+  "ASKPRICE": 45,
   "FILENME2": "/inventory/Houses/AyalaWestgrove02.jpeg",
   "FILENME3": "/inventory/Houses/AyalaWestgrove03.jpeg",
   "FILENME4": "/inventory/Houses/AyalaWestgrove04.jpeg"
@@ -405,6 +430,7 @@
   "CAPTION_": "FOR SALE: Prime 263 sqm North-Facing Lot in Venare Nuvali",
   "DESCRIPT": "Lot Area: 263 sqm | North Facing | Clean Title",
   "ITEMPRCE": "₱11,300,000",
+  "ASKPRICE": 11,
   "FILENME2": "/inventory/Lots/Venare02.jpeg"
 },
 {
@@ -415,6 +441,7 @@
   "CAPTION_": "FOR SALE: 3BR Luxury Condominiums Unit in Aurelia Residences, BGC, Taguig City",
   "DESCRIPT": "FA: 241 sqm | 3 Bedrooms + Maid’s Room | 3 Bathrooms | 2 Parking Slots | Very High Floor | Southeast Facing | Laguna Bay View",
   "ITEMPRCE": "₱170,000,000",
+  "ASKPRICE": 170,
   "FILENME2": "/inventory/Condominiums/Aurelia02.jpg",
   "FILENME3": "/inventory/Condominiums/Aurelia03.jpg",
   "FILENME4": "/inventory/Condominiums/Aurelia04.jpg",
@@ -430,6 +457,7 @@
   "CAPTION_": "FOR SALE: 385 sqm Old House and Lot in Project 4, Quezon City",
   "DESCRIPT": "Lot Area: 385 sqm | Approx. Frontage: 16.5 m | Approx. Depth: 22.5 m | Prime Location Near EDSA Cubao MRT, Camp Aguinaldo, UP, Pasig, Marikina, Ortigas",
   "ITEMPRCE": "₱27,000,000 (Gross)",
+  "ASKPRICE": 27,
   "FILENME2": "/inventory/Houses/Project4QC02.jpg"
 },
 {
@@ -440,6 +468,7 @@
   "CAPTION_": "FOR SALE: 4BR House & Lot in Ayala Alabang Village, Muntinlupa",
   "DESCRIPT": "LA 844 sqm | 1980's Property with Improvement | 4BR with Den | 4 T&B | Powder Room | With Swimming Pool | With Basement | 4-Car Garage | Not Tumbok | Not Perimeter",
   "ITEMPRCE": "₱200,000/sqm (₱168.8M)",
+  "ASKPRICE": 168,
   "FILENME2": "/inventory/Houses/AyalaAlabangVillage02.jpg",
   "FILENME3": "/inventory/Houses/AyalaAlabangVillage03.jpg",
   "FILENME4": "/inventory/Houses/AyalaAlabangVillage04.jpg",
