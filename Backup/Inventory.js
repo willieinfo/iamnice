@@ -91,6 +91,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.appendChild(tempDiv2.firstElementChild);
     document.body.appendChild(tempDiv3.firstElementChild);
 
+    // document.body.insertAdjacentHTML('beforeend', divShowCase);
+    // document.body.insertAdjacentHTML('beforeend', divShowPict);
+    // document.body.insertAdjacentHTML('beforeend', divShowVideo);
 
     // Fetch once
     fetch('./inventory/DB_PROPERTY.json')
@@ -105,16 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 export function renderInventory(data, min = 0, max = Infinity) {
 
-    // document.querySelectorAll('.image-section.main').forEach(div => div.innerHTML = '');
-    [
-      'divCondominiums',
-      'divHouses',
-      'divLots',
-      'divWarehouses'
-    ].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = '';
-    });    
+    document.querySelectorAll('.image-section').forEach(div => div.innerHTML = '');
 
     let invCounter=0
     let firstMatchElement = null; // 👈 track first match
@@ -139,6 +133,16 @@ export function renderInventory(data, min = 0, max = Infinity) {
         imgContainer.appendChild(img);
         caption.innerText = `${property.LOCATION.trim()} \n ${property.CAPTION_.trim()} \n ${property.ITEMPRCE.trim()}`;
 
+        // if (min>0 && property.ASKPRICE >= min && property.ASKPRICE <= max) {
+	    // 	imgContainer.classList.add('imgHighlighter')
+        //     invCounter++
+
+        // //    ✅ capture ONLY the first match
+        //     if (!firstMatchElement) {
+        //         firstMatchElement = imgContainer;
+        //     }            
+    	// }
+
         const isMatch = property.ASKPRICE >= min && property.ASKPRICE <= max;
         if (hasFilter) {
             if (isMatch) {
@@ -151,7 +155,7 @@ export function renderInventory(data, min = 0, max = Infinity) {
 
                 invCounter++;
             } else {
-                // imgContainer.classList.add('imgDim');
+                imgContainer.classList.add('imgDim');
             }
         }
 
@@ -190,11 +194,15 @@ export function renderInventory(data, min = 0, max = Infinity) {
 
     if (invCounter > 0) {
         showNotification( `${invCounter} properties highlighted` ) 
-    } else {
-        showNotification( `No records found` ) 
     }
 
     // ✅ Scroll AFTER everything is rendered
+    // setTimeout(() => {
+    //     firstMatchElement.scrollIntoView({
+    //         behavior: 'smooth',
+    //         block: 'center'
+    //     });
+    // }, 100);    
    if (firstMatchElement) {
         firstMatchElement.scrollIntoView({
             behavior: 'smooth',
@@ -202,145 +210,6 @@ export function renderInventory(data, min = 0, max = Infinity) {
         });
     }
 } 
-
-// function showShowcases(property) {
-
-//     const showcase = document.querySelector('.image-section.showcase');
-//     if (!showcase) {
-//         console.error('Showcase not found');
-//         return;
-//     }
-
-//     const showImageContainer = showcase.querySelector('.showImage');
-//     const titleBar = showcase.querySelector('#propertyTitle');
-//     const subTitle = showcase.querySelector('.subTitle');
-//     const descriptText = showcase.querySelector('.descript');
-//     const titleBarPict = document.getElementById('showpictTitle');
-//     const imageShowPict = document.querySelector('.image-showpict');
-
-//     if (!titleBar || !showImageContainer) {
-//         console.error('Required showcase elements missing');
-//         return;
-//     }
-
-//     // Hide any existing showcase states
-//     document.querySelectorAll('.image-section.showcase').forEach(el => {
-//         el.style.display = 'none';
-//     });
-
-//     // Prevent duplicate overlay
-//     const oldOverlay = document.querySelector('.showcase-overlay');
-//     if (oldOverlay) oldOverlay.remove();
-
-//     // Create overlay
-//     const overlay = document.createElement('div');
-//     overlay.className = 'showcase-overlay';
-//     overlay.style.position = 'fixed';
-//     overlay.style.top = '0';
-//     overlay.style.left = '0';
-//     overlay.style.width = '100%';
-//     overlay.style.height = '100%';
-//     overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
-//     overlay.style.zIndex = '1000';
-//     document.body.appendChild(overlay);
-
-//     // Populate text fields
-//     titleBar.textContent = property.LOCATION?.trim() || '';
-//     subTitle.textContent = `Asking Price: ${property.ITEMPRCE?.trim() || ''}`;
-
-//     let formattedDescript = (property.DESCRIPT || '')
-//         .replace(/\\\\n/g, '\n')
-//         .replace(/\n{2,}/g, '\n')
-//         .trim();
-
-//     descriptText.textContent = formattedDescript;
-
-//     // Clear image container BEFORE rendering
-//     showImageContainer.innerHTML = '';
-
-//     // Show modal FIRST (important for layout rendering)
-//     showcase.style.display = 'flex';
-
-//     // Force layout paint before injecting images
-//     requestAnimationFrame(() => {
-
-//         const images = [
-//             property.FILENAME,
-//             property.FILENME2,
-//             property.FILENME3,
-//             property.FILENME4,
-//             property.FILENME5,
-//             property.FILENME6,
-//             property.FILENME7,
-//             property.FILENME8
-//         ];
-
-//         images.forEach((src, index) => {
-//             if (!src) return;
-
-//             const img = document.createElement('img');
-//             img.src = src;
-//             img.classList.add('imgSmallBox');
-
-//             // IMPORTANT for rendering stability
-//             img.style.display = 'block';
-//             img.style.maxWidth = '100%';
-//             img.style.height = 'auto';
-
-//             img.addEventListener('click', () => {
-
-//                 const imageShowPict = document.querySelector('.image-showpict');
-//                 const showPict = imageShowPict?.querySelector('.showPict');
-
-//                 if (!imageShowPict || !showPict) return;
-
-//                 imageShowPict.style.display = 'flex';
-//                 showPict.innerHTML = '';
-
-//                 const newImg = document.createElement('img');
-//                 newImg.src = src;
-//                 newImg.style.minHeight = '700px';
-//                 newImg.style.maxWidth = '100%';
-//                 newImg.style.objectFit = 'cover';
-
-//                 showPict.appendChild(newImg);
-
-//                 if (titleBarPict) {
-//                     titleBarPict.textContent =
-//                         property.ITEMPRCE?.trim()
-//                             ? `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()} Image ${index + 1}`
-//                             : `${property.LOCATION.trim()} Image ${index + 1}`;
-//                 }
-//             });
-
-//             showImageContainer.appendChild(img);
-//         });
-
-//         document.getElementById('loadingIndicator').style.display = 'none';
-//     });
-
-//     // Close main showcase
-//     const closeBtn = showcase.querySelector('.close-showcase');
-//     if (closeBtn && !closeBtn.dataset.bound) {
-//         closeBtn.addEventListener('click', () => {
-//             showcase.style.display = 'none';
-//             overlay.remove();
-//         });
-//         closeBtn.dataset.bound = "true";
-//     }
-
-//     // Close picture modal
-//     const closePict = document.querySelector('.close-showpict');
-//     if (closePict && !closePict.dataset.bound) {
-//         closePict.addEventListener('click', () => {
-//             if (imageShowPict) imageShowPict.style.display = 'none';
-//         });
-//         closePict.dataset.bound = "true";
-//     }
-
-//     console.log('Showcase rendered successfully');
-// }
-
 
 function showShowcase(property) {
     const showcase = document.querySelector('.image-section.showcase');
@@ -352,6 +221,11 @@ function showShowcase(property) {
     const imageShowPict = document.querySelector('.image-showpict');
     const allShowcases = document.querySelectorAll('.image-section.showcase');
 
+if (!titleBar) {
+    console.error('propertyTitle not found in DOM');
+    return;
+}
+    
     allShowcases.forEach((item) => {
         item.style.display = 'none';
     });    
@@ -378,17 +252,8 @@ function showShowcase(property) {
     showImageContainer.innerHTML = '';
 
     // Render images in showImage div (FILENAME, FILENME2, FILENME3, FILENME4) for the specific record
-    const images = [
-        property.FILENAME,
-        property.FILENME2,
-        property.FILENME3,
-        property.FILENME4,
-        property.FILENME5,
-        property.FILENME6,
-        property.FILENME7,
-        property.FILENME8
-    ];
-
+    const images = [property.FILENAME, property.FILENME2, property.FILENME3, property.FILENME4,
+             property.FILENME5,  property.FILENME6,  property.FILENME7,  property.FILENME8];
 
     document.getElementById('loadingIndicator').style.display = 'flex';
 
@@ -398,18 +263,14 @@ function showShowcase(property) {
             img.src = imageSrc;
             img.classList.add('imgSmallBox');
             img.addEventListener('click', () => {
-                // const imageShowPict = document.querySelector('.image-showpict');
-                // const showPict = imageShowPict.querySelector('.showPict');   
-
                 // Show clicked image in imageShowPict
                 imageShowPict.style.display = 'flex'; 
                 let showPict = imageShowPict.querySelector('.showPict');
                 showPict.innerHTML = ''; // Clear the previous image
-
                 const newImg = document.createElement('img');
                 newImg.style.minHeight = '700px';
                 newImg.src = imageSrc;  
-                newImg.style.objectFit = 'cover';
+                newImg.objectfit = 'cover';
                 showPict.appendChild(newImg);
 
                 titleBarPict.style.top = '0';
@@ -423,51 +284,8 @@ function showShowcase(property) {
             showImageContainer.appendChild(img);
         }
     });
-
-        // images.forEach((src, index) => {
-        //     console.log(src)
-        //     if (!src) return;
-
-        //     const img = document.createElement('img');
-        //     img.src = src;
-        //     img.classList.add('imgSmallBox');
-
-        //     // IMPORTANT for rendering stability
-        //     img.style.display = 'block';
-        //     img.style.maxWidth = '100%';
-        //     img.style.height = 'auto';
-
-        //     img.addEventListener('click', () => {
-
-        //         // const imageShowPict = document.querySelector('.image-showpict');
-        //         const showPict = imageShowPict?.querySelector('.showPict');
-
-        //         if (!imageShowPict || !showPict) return;
-
-        //         imageShowPict.style.display = 'flex';
-        //         showPict.innerHTML = '';
-
-        //         const newImg = document.createElement('img');
-        //         newImg.src = src;
-        //         newImg.style.minHeight = '700px';
-        //         newImg.style.maxWidth = '100%';
-        //         newImg.style.objectFit = 'cover';
-
-        //         showPict.appendChild(newImg);
-
-        //         if (titleBarPict) {
-        //             titleBarPict.textContent =
-        //                 property.ITEMPRCE?.trim()
-        //                     ? `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()} Image ${index + 1}`
-        //                     : `${property.LOCATION.trim()} Image ${index + 1}`;
-        //         }
-        //     });
-
-        //     showImageContainer.appendChild(img);
-        // });
-
-
     document.getElementById('loadingIndicator').style.display = 'none';
+
     // Format the DESCRIPT field
     let formattedDescript = property.DESCRIPT.replace(/\\\\n/g, '\n');
     formattedDescript = formattedDescript.replace(/\n{2,}/g, '\n');
@@ -489,7 +307,6 @@ function showShowcase(property) {
     closePict.addEventListener('click', () => {
         imageShowPict.style.display = 'none';  // Corrected the line to hide imageShowPict
     });
-
 }
 
 

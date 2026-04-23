@@ -385,9 +385,9 @@
         if (docSnap.exists()) {
             // If the document exists, get the current count and increment it
             ctr = docSnap.data().countView || 0; // Use default 0 if countView is undefined
-            ctr++;
+            // ctr++;
             // Update the document with the new count
-            await updateDoc(docRef, { countView: ctr });
+            // await updateDoc(docRef, { countView: ctr });
         } else {
             // If the document does not exist, create it with countView set to 1
             await setDoc(docRef, { countView: 1 });
@@ -468,10 +468,10 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
 <script type="module" src="./src/Settings.js"></script>
 <!-- <script type="module" src="./src/MainApp.js"></script>  -->
 <!-- <script type="module" src="./src/AddImage.js"></script> -->
-<script type="module" src="./src/Inventory.js"></script>
+<script type="module" src="./src/Inventory.js" defer></script>
 <script type="module" src="./src/Contact.js"></script>
 
-<script type="module">
+<!-- <script type="module">
     import {clearInventory,renderInventory} from './src/Inventory.js'
     window.filterData = function(filteredData) {
         console.log('Data is filtered')
@@ -479,7 +479,7 @@ document.getElementById('btnLogIn').addEventListener('click', async () => {
         clearInventory();
         renderInventory(filteredData);
     }
-</script>
+</script> -->
 
 
 </body>

@@ -35,7 +35,7 @@ h4 {
 
     position: relative; 
 }
-
+/* CSS for highlighting properties meeting price range */
 .imgHighlighter {
     background-color: var(--main-bg-color);
     
@@ -62,6 +62,32 @@ h4 {
     border-radius: 6px;
     padding: 5px 10px;
 }
+
+/* Default state */
+.imgContainer {
+    transition: all 0.35s ease;
+}
+/* MATCH (highlighted) */
+.imgMatch {
+    opacity: 1;
+    transform: scale(1.02);
+    z-index: 1;
+}
+/* NON-MATCH (dimmed) */
+.imgDim {
+    opacity: 0.25;
+    filter: grayscale(80%) blur(1px);
+    transform: scale(0.98);
+}
+/* Optional: caption clarity for match */
+.imgMatch .caption {
+    color: #fff;
+}
+/* Optional: smooth glow (reuse if you want) */
+.imgMatch {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+/* =========== */
 
 .imgContainer:hover {
     border-radius: 10px;;
@@ -510,7 +536,7 @@ p.descript {
         box-shadow: 0 0 0px rgba(0, 123, 255, 0.0);
     }
     50% {
-        box-shadow: 0 0 20px rgba(0, 123, 255, 0.6);
+        box-shadow: 0 0 30px rgba(0, 123, 255, 0.6);
     }
     100% {
         box-shadow: 0 0 0px rgba(0, 123, 255, 0.0);
