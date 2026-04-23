@@ -230,12 +230,22 @@ p.descript {
 
 #gotoEmail {
     cursor: pointer;
-    transition: all 0.25s ease;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: transparent;
+    background-color: var(--darker-bg-color);
+    /* color: #007bff; */
+    text-decoration: underline;
+    transition: all 0.25s ease;    
+    display: inline-block; 
 }
 
 #gotoEmail:hover {
     background-color: var(--main-bg-color);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+}
+#gotoEmail:active {
+    transform: translateY(0);
 }
 /**/
 

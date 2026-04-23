@@ -204,14 +204,14 @@
                 <div id="colorsDiv">
                     <p>Choose Theme Color</p>
                     <div class="grpColorDivs">
-                        <div id="blueDiv"></div>
-                        <div id="greenDiv"></div>
-                        <div id="violetDiv"></div>
+                        <div id="blueDiv" title="Dark Blue"></div>
+                        <div id="greenDiv" title="Dark Olive"></div>
+                        <div id="violetDiv" title="Violet"></div>
                     </div>
                     <div class="grpColorDivs">
-                        <div id="maroonDiv"></div>
-                        <div id="redDiv"></div>
-                        <div id="charcoalDiv"></div>
+                        <div id="maroonDiv" title="Maroon"></div>
+                        <div id="redDiv" title="Red"></div>
+                        <div id="charcoalDiv" title="Charcoal"></div>
                     </div>
                     <div id="btnDiv">
                         <button type="submit" id="saveBtn">Save</button>
@@ -385,9 +385,9 @@
         if (docSnap.exists()) {
             // If the document exists, get the current count and increment it
             ctr = docSnap.data().countView || 0; // Use default 0 if countView is undefined
-            ctr++;
+            //ctr++;
             // Update the document with the new count
-            await updateDoc(docRef, { countView: ctr });
+            //await updateDoc(docRef, { countView: ctr });
         } else {
             // If the document does not exist, create it with countView set to 1
             await setDoc(docRef, { countView: 1 });
