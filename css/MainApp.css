@@ -408,5 +408,9 @@ footer img {
         transition: margin-left 0.5s ease; 
     }
 
+    #propertyTitle {
+        display: none;
+    }
+
 }
     

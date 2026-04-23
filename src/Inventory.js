@@ -41,12 +41,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     document.getElementById("InvenList").innerHTML = divInventory;
+                // <div id="contactMe">Please call 0917-828-3887 or <span id="gotoEmail">email e.estrada@remaxcapital.ph</span></div>
 
     const divShowCase = `
         <div class="image-section showcase" style="display: none">
             <div class="titleBar-showcase">
                 <span id="propertyTitle"></span>
-                <span id="contactMe">Please call 0917-828-3887 or email e.estrada@remaxcapital.ph</span>
+                <div id="contactMe">Interested? Please call 0917-828-3887 or <span id="gotoEmail">email e.estrada@remaxcapital.ph</span></div>
                 <button class="close-showcase">X</button>
             </div>
             <div class="imageDesc">
@@ -203,145 +204,6 @@ export function renderInventory(data, min = 0, max = Infinity) {
     }
 } 
 
-// function showShowcases(property) {
-
-//     const showcase = document.querySelector('.image-section.showcase');
-//     if (!showcase) {
-//         console.error('Showcase not found');
-//         return;
-//     }
-
-//     const showImageContainer = showcase.querySelector('.showImage');
-//     const titleBar = showcase.querySelector('#propertyTitle');
-//     const subTitle = showcase.querySelector('.subTitle');
-//     const descriptText = showcase.querySelector('.descript');
-//     const titleBarPict = document.getElementById('showpictTitle');
-//     const imageShowPict = document.querySelector('.image-showpict');
-
-//     if (!titleBar || !showImageContainer) {
-//         console.error('Required showcase elements missing');
-//         return;
-//     }
-
-//     // Hide any existing showcase states
-//     document.querySelectorAll('.image-section.showcase').forEach(el => {
-//         el.style.display = 'none';
-//     });
-
-//     // Prevent duplicate overlay
-//     const oldOverlay = document.querySelector('.showcase-overlay');
-//     if (oldOverlay) oldOverlay.remove();
-
-//     // Create overlay
-//     const overlay = document.createElement('div');
-//     overlay.className = 'showcase-overlay';
-//     overlay.style.position = 'fixed';
-//     overlay.style.top = '0';
-//     overlay.style.left = '0';
-//     overlay.style.width = '100%';
-//     overlay.style.height = '100%';
-//     overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
-//     overlay.style.zIndex = '1000';
-//     document.body.appendChild(overlay);
-
-//     // Populate text fields
-//     titleBar.textContent = property.LOCATION?.trim() || '';
-//     subTitle.textContent = `Asking Price: ${property.ITEMPRCE?.trim() || ''}`;
-
-//     let formattedDescript = (property.DESCRIPT || '')
-//         .replace(/\\\\n/g, '\n')
-//         .replace(/\n{2,}/g, '\n')
-//         .trim();
-
-//     descriptText.textContent = formattedDescript;
-
-//     // Clear image container BEFORE rendering
-//     showImageContainer.innerHTML = '';
-
-//     // Show modal FIRST (important for layout rendering)
-//     showcase.style.display = 'flex';
-
-//     // Force layout paint before injecting images
-//     requestAnimationFrame(() => {
-
-//         const images = [
-//             property.FILENAME,
-//             property.FILENME2,
-//             property.FILENME3,
-//             property.FILENME4,
-//             property.FILENME5,
-//             property.FILENME6,
-//             property.FILENME7,
-//             property.FILENME8
-//         ];
-
-//         images.forEach((src, index) => {
-//             if (!src) return;
-
-//             const img = document.createElement('img');
-//             img.src = src;
-//             img.classList.add('imgSmallBox');
-
-//             // IMPORTANT for rendering stability
-//             img.style.display = 'block';
-//             img.style.maxWidth = '100%';
-//             img.style.height = 'auto';
-
-//             img.addEventListener('click', () => {
-
-//                 const imageShowPict = document.querySelector('.image-showpict');
-//                 const showPict = imageShowPict?.querySelector('.showPict');
-
-//                 if (!imageShowPict || !showPict) return;
-
-//                 imageShowPict.style.display = 'flex';
-//                 showPict.innerHTML = '';
-
-//                 const newImg = document.createElement('img');
-//                 newImg.src = src;
-//                 newImg.style.minHeight = '700px';
-//                 newImg.style.maxWidth = '100%';
-//                 newImg.style.objectFit = 'cover';
-
-//                 showPict.appendChild(newImg);
-
-//                 if (titleBarPict) {
-//                     titleBarPict.textContent =
-//                         property.ITEMPRCE?.trim()
-//                             ? `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()} Image ${index + 1}`
-//                             : `${property.LOCATION.trim()} Image ${index + 1}`;
-//                 }
-//             });
-
-//             showImageContainer.appendChild(img);
-//         });
-
-//         document.getElementById('loadingIndicator').style.display = 'none';
-//     });
-
-//     // Close main showcase
-//     const closeBtn = showcase.querySelector('.close-showcase');
-//     if (closeBtn && !closeBtn.dataset.bound) {
-//         closeBtn.addEventListener('click', () => {
-//             showcase.style.display = 'none';
-//             overlay.remove();
-//         });
-//         closeBtn.dataset.bound = "true";
-//     }
-
-//     // Close picture modal
-//     const closePict = document.querySelector('.close-showpict');
-//     if (closePict && !closePict.dataset.bound) {
-//         closePict.addEventListener('click', () => {
-//             if (imageShowPict) imageShowPict.style.display = 'none';
-//         });
-//         closePict.dataset.bound = "true";
-//     }
-
-//     console.log('Showcase rendered successfully');
-// }
-
-
 function showShowcase(property) {
     const showcase = document.querySelector('.image-section.showcase');
     const showImageContainer = showcase.querySelector('.showImage');
@@ -398,8 +260,6 @@ function showShowcase(property) {
             img.src = imageSrc;
             img.classList.add('imgSmallBox');
             img.addEventListener('click', () => {
-                // const imageShowPict = document.querySelector('.image-showpict');
-                // const showPict = imageShowPict.querySelector('.showPict');   
 
                 // Show clicked image in imageShowPict
                 imageShowPict.style.display = 'flex'; 
@@ -424,48 +284,6 @@ function showShowcase(property) {
         }
     });
 
-        // images.forEach((src, index) => {
-        //     console.log(src)
-        //     if (!src) return;
-
-        //     const img = document.createElement('img');
-        //     img.src = src;
-        //     img.classList.add('imgSmallBox');
-
-        //     // IMPORTANT for rendering stability
-        //     img.style.display = 'block';
-        //     img.style.maxWidth = '100%';
-        //     img.style.height = 'auto';
-
-        //     img.addEventListener('click', () => {
-
-        //         // const imageShowPict = document.querySelector('.image-showpict');
-        //         const showPict = imageShowPict?.querySelector('.showPict');
-
-        //         if (!imageShowPict || !showPict) return;
-
-        //         imageShowPict.style.display = 'flex';
-        //         showPict.innerHTML = '';
-
-        //         const newImg = document.createElement('img');
-        //         newImg.src = src;
-        //         newImg.style.minHeight = '700px';
-        //         newImg.style.maxWidth = '100%';
-        //         newImg.style.objectFit = 'cover';
-
-        //         showPict.appendChild(newImg);
-
-        //         if (titleBarPict) {
-        //             titleBarPict.textContent =
-        //                 property.ITEMPRCE?.trim()
-        //                     ? `${property.LOCATION.trim()} Asking Price: ${property.ITEMPRCE.trim()} Image ${index + 1}`
-        //                     : `${property.LOCATION.trim()} Image ${index + 1}`;
-        //         }
-        //     });
-
-        //     showImageContainer.appendChild(img);
-        // });
-
 
     document.getElementById('loadingIndicator').style.display = 'none';
     // Format the DESCRIPT field
@@ -483,6 +301,24 @@ function showShowcase(property) {
         overlay.style.display = 'none';
     });
 
+    const gotoEmail = document.getElementById('gotoEmail');
+    gotoEmail.addEventListener('click', () => {
+        showcase.style.display = 'none';
+        overlay.style.display = 'none';
+
+        emailMessage(property.LOCATION.trim())
+        // scroll to #Contact
+        const contactDiv = document.getElementById('Contact')
+
+        setTimeout(() => {
+            contactDiv.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }, 100);        
+      
+    });
+
 
     // Close the image preview when the close button is clicked
     const closePict = document.querySelector('.close-showpict');
@@ -492,6 +328,12 @@ function showShowcase(property) {
 
 }
 
+function emailMessage(msg) {
+    const textBody = document.getElementById('message_')
+    let emailMsg = `Hello Eunice, I am interested to see ${msg} property`
+    textBody.value = emailMsg
+    textBody.focus()
+ }
 
 document.querySelectorAll('.prceRnge').forEach(el => {
     el.addEventListener('click', function () {

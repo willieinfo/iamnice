@@ -6,7 +6,9 @@
     height: 100%;
     /* background-color:cadetblue; */
 }
-
+html {
+  scroll-behavior: smooth;
+}
 h4 {
     margin: 10px;
     padding: 10px;
@@ -226,7 +228,15 @@ p.descript {
     background-color: #c00;
 }
 
+#gotoEmail {
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
 
+#gotoEmail:hover {
+    background-color: var(--main-bg-color);
+    transform: translateY(-2px);
+}
 /**/
 
 #contactMe {
